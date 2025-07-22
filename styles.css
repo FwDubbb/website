@@ -1,3 +1,6 @@
+/* Note: This might be very disorganised, sorry about that */
+/* I made so many changes to the website, and so some things in here might be unecessary.*/
+
 html, body {
   margin: 0;
   padding: 0;
@@ -5,11 +8,12 @@ html, body {
   max-width: 100%;
   overflow-x: hidden;
 }
+
 * {
   box-sizing: border-box;
 }
 
-/* Reset + Base */
+
 * {
   margin: 0;
   padding: 0;
@@ -27,7 +31,9 @@ body {
   scroll-behavior: smooth;
 }
 
-/* Navbar */
+
+
+
 .navbar {
   background: rgba(0,0,0,0.6);
   display: flex;
@@ -57,7 +63,10 @@ body {
   color: #0ff;
 }
 
-/* Hero Section */
+
+
+
+
 .hero {
   display: flex;
   flex-direction: row;
@@ -129,7 +138,13 @@ body {
   font-size: 1rem;
 }
 
-/* About */
+
+
+
+
+
+
+
 .about {
   padding: 20px;
   text-align: center;
@@ -142,12 +157,12 @@ body {
 .about-wrapper {
   display: flex;
   align-items: center;
-  justify-content: center; /* ensures content is centered */
+  justify-content: center; 
   gap: 40px;
-  flex-wrap: nowrap; /* wrap if needed */
+  flex-wrap: nowrap;
   text-align: left;
-  margin: 0 auto; /* centers the wrapper if needed */
-  max-width: 1000px; /* or whatever max makes sense */
+  margin: 0 auto; 
+  max-width: 1000px; 
 }
 
 .bitmoji-avatar {
@@ -172,7 +187,13 @@ body {
   50% { transform: translateY(-10px); }
 }
 
-/* Work Projects Section */
+
+
+
+
+
+
+
 .projects-showcase {
   padding: 60px 20px;
 }
@@ -257,7 +278,7 @@ body {
   padding: 10px 0;
   align-self: flex-start;
 
-  /* Fixed: allow text to wrap */
+
   white-space: normal;
   word-wrap: break-word;
   overflow: visible;
@@ -269,13 +290,13 @@ body {
 
 .reflections-section {
   padding: 4rem 2rem;
-  background: var(--section-bg); /* match your site's background theme */
+  background: var(--section-bg);
   text-align: center;
 }
 
 .reflections-section h2 {
   font-size: 2.5rem;
-  color: var(--primary-color); /* match existing header color */
+  color: var(--primary-color); 
   margin-bottom: 2rem;
 }
 
@@ -333,7 +354,10 @@ body {
 }
 
 
-/* Contact */
+
+
+
+
 .contact {
   padding: 60px 20px;
   text-align: center;
@@ -349,22 +373,27 @@ body {
 
 #typewriter {
   font-family: monospace;
-  white-space: normal;      /* Allow wrapping */
-  overflow: visible;        /* Let long text show */
-  text-align: left;         /* Optional: align text nicely */
-  max-width: 90vw;          /* Prevent overflow on smaller screens */
-  word-break: break-word;   /* Break long words if needed */
-  margin: 0 auto;           /* Center the block */
+  white-space: normal;      
+  overflow: visible;        
+  text-align: left;         
+  max-width: 90vw;          
+  word-break: break-word;   
+  margin: 0 auto;           
 }
 
 #typed-text,
 #typed-extra {
   display: block;
-  white-space: normal;      /* Allow wrapping inside spans */
+  white-space: normal;      
   overflow: visible;
   word-break: break-word;
 }
-/* Custom Link */
+
+
+
+
+
+
 .custom-link {
   color: inherit;
   text-decoration: none;
@@ -418,7 +447,7 @@ body {
 
 .project-row {
   display: flex;
-  flex: 1 1 100%;  /* ✅ Takes up full horizontal space */
+  flex: 1 1 100%;  
 }
 
 
@@ -428,7 +457,9 @@ body {
 
 
 
-/* Mobile Tweaks */
+
+
+
 @media (max-width: 768px) {
   .about-wrapper {
     flex-direction: column;

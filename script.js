@@ -1,7 +1,7 @@
+//Some things in here might be unnecessary and unrelated to the website
+//I made many changes to the website whilst building it, so ignore those.
 
 
-
-// ==== About Section Typewriter ====
 const mainText = document.getElementById("typed-text");
 const extraText = document.getElementById("typed-extra");
 
@@ -35,7 +35,7 @@ async function runTypewriter() {
 runTypewriter();
 
 
-// ==== Scroll-in and Project Descriptions Typewriter ====
+//  Scroll-in and Project Descriptions Typewriter 
 function typeWriterEffect(el, text, speed = 20) {
   let i = 0;
   function type() {
@@ -53,7 +53,7 @@ const observer = new IntersectionObserver((entries) => {
     if (entry.isIntersecting && !entry.target.classList.contains('show')) {
       entry.target.classList.add('show');
 
-      // Optional: Typewriter effect for project descriptions
+
       const description = entry.target.querySelector('.project-description');
       if (description && description.dataset.text && !description.classList.contains('typed')) {
         description.classList.add('typed');
@@ -63,7 +63,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.3 });
 
-// Observe each project row (for slide + typing)
+
 document.querySelectorAll('.project-row').forEach(row => {
   observer.observe(row);
 });
@@ -85,12 +85,12 @@ function nextSlide() {
 
 // Initialize
 showSlide(currentSlide);
-setInterval(nextSlide, 3000); // change every 3 seconds
+setInterval(nextSlide, 3000); 
 
 
 document.querySelectorAll('.school-card').forEach(card => {
   card.addEventListener('click', () => {
-    // Flip this card
+
     card.classList.toggle('flipped');
 
   });
