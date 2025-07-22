@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>William Osei-Hwere | Portfolio</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* Intro Screen */
+    #intro-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: white;
+      color: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: transform 1s ease-in-out;
+      overflow: hidden;
+    }
+
+    #intro-text {
+      font-size: 2.5rem;
+      font-family: monospace;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 3px solid black;
+      animation: blink-caret 0.75s step-end infinite;
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent; }
+      50% { border-color: black; }
+    }
+
+    body.intro-finished #intro-screen {
+      transform: translateX(-100%);
+    }
+
+    /* Main Content (hero/homepage) */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out 1s;
+    }
+
+    body.intro-finished .hero {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Intro -->
+  <div id="intro-screen">
+    <h1 id="intro-text"></h1>
+  </div>
+
+  <!-- Main Hero Section -->
+  <section class="hero">
+    <div>
+      <h1>Welcome to My Portfolio</h1>
+      <p>Let's build something cool.</p>
+    </div>
+  </section>
+
+  <!-- Typewriter & Transition -->
+  <script>
+    const text = "Hi! Welcome to William's Online Portfolio :)";
+    const introText = document.getElementById("intro-text");
+    let i = 0;
+
+    function typeWriter() {
+      if (i < text.length) {
+        introText.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+      } else {
+        setTimeout(() => {
+          document.body.classList.add("intro-finished");
+          setTimeout(() => {
+            document.getElementById("intro-screen").style.display = "none";
+          }, 1000);
+        }, 1000);
+      }
+    }
+
+    window.onload = typeWriter;
+  </script>
+
+</body>
+</html>
