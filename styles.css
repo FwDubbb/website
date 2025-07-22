@@ -1,3 +1,13 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+* {
+  box-sizing: border-box;
+}
 
 /* Reset + Base */
 * {
@@ -10,6 +20,8 @@
 body {
   font-family: 'Segoe UI', sans-serif;
   background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
   color: white;
   overflow-x: hidden;
   scroll-behavior: smooth;
