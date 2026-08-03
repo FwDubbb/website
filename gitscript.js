@@ -10,7 +10,7 @@
 
   function setReveal(value) {
     if (!inspectionWindow) return;
-    const bounded = Math.max(8, Math.min(92, Number(value)));
+    const bounded = Math.max(0, Math.min(100, Number(value)));
     inspectionWindow.style.setProperty('--reveal', `${bounded}%`);
     if (layerLabel) {
       layerLabel.textContent = bounded > 64 ? 'Surface layer' : bounded < 36 ? 'System layer' : 'Cross-section';
