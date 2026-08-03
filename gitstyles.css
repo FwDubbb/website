@@ -203,7 +203,7 @@ main { padding-top: 82px; }
 .surface-content > p { margin: 16px 0 0; color: var(--muted); font-size: 12px; }
 .inspection-divider { position: absolute; z-index: 4; top: 0; bottom: 0; left: var(--reveal); width: 2px; background: var(--accent); pointer-events: none; }
 .inspection-divider:before { content: ""; position: absolute; left: -6px; top: 50%; width: 12px; height: 62px; transform: translateY(-50%); background: var(--accent); }
-.inspection-divider span { position: absolute; left: -16px; top: calc(50% - 8px); z-index: 1; color: white; font: 8px var(--mono); writing-mode: vertical-rl; }
+.inspection-divider span { position: absolute; left: -25px; top: calc(50% - 8px); z-index: 1; color: #e24a22; font: 12px var(--mono); writing-mode: vertical-rl; }
 .reveal-control { position: absolute; z-index: 5; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; }
 .layer-legend { margin-top: 13px; display: flex; justify-content: space-between; font: 9px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
 .layer-legend span { display: flex; align-items: center; gap: 7px; }
