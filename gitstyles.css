@@ -175,7 +175,7 @@ main { padding-top: 82px; }
 .node-f { left: 8%; bottom: 19%; }
 .system-lines { position: absolute; inset: 0; width: 100%; height: 100%; }
 .system-lines path { fill: none; stroke: rgba(216,240,223,.6); stroke-width: 1.5; stroke-dasharray: 6 5; }
-.diagnostic-note { position: absolute; top: 120px; right: 28px; width: 220px; padding-left: 12px; border-left: 2px solid #ff8e69; font: 10px/1.45 var(--mono); }
+.diagnostic-note { position: absolute; top: 70px; right: 1px; width: 220px; padding-left: 12px; border-left: 2px solid #ff8e69; font: 10px/1.45 var(--mono); }
 .diagnostic-note span { display: block; color: #ff8e69; margin-bottom: 4px; }
 
 .surface-layer {
