@@ -86,7 +86,7 @@ img, svg { max-width: 100%; }
 .hero-instructions p { max-width: 420px; margin: 0; font-size: 12px; }
 
 .inspection-stage { min-width: 0; }
-.stage-heading, .layer-legend { display: flex; justify-content: space-between; gap: 20px; font: 8px var(--mono); letter-spacing: .06em; text-transform: uppercase; }
+.stage-heading, .layer-legend { display: flex; justify-content: space-between; gap: 20px; font: 12px var(--mono); letter-spacing: .06em; text-transform: uppercase; }
 .stage-heading { margin-bottom: 10px; }
 .identity-window { position: relative; min-height: 570px; overflow: hidden; border: 1px solid var(--ink); background: var(--professional); box-shadow: 12px 14px 0 rgba(26,27,23,.1); }
 .personal-layer, .professional-layer { position: absolute; inset: 0; }
@@ -100,7 +100,7 @@ img, svg { max-width: 100%; }
 .interest { position: absolute; min-width: 180px; padding: 13px 15px; border: 1px solid var(--personal-dark); background: rgba(242,238,227,.32); display: grid; grid-template-columns: 30px 1fr; }
 .interest b { grid-row: 1 / span 2; color: var(--accent); font: 8px var(--mono); }
 .interest span { font: 400 16px var(--serif); }
-.interest small { font: 7px var(--mono); text-transform: uppercase; opacity: .7; }
+.interest small { font: 10px var(--mono); text-transform: uppercase; opacity: .7; }
 .interest-a { left: 8%; top: 53%; transform: rotate(-2deg); }
 .interest-b { left: 38%; top: 47%; transform: rotate(1.5deg); }
 .interest-c { left: 18%; top: 68%; transform: rotate(1deg); }
@@ -117,7 +117,7 @@ img, svg { max-width: 100%; }
 .professional-counters div { min-height: 92px; padding: 16px; border-right: 1px solid rgba(220,242,227,.35); }
 .professional-counters div:last-child { border: 0; }
 .professional-counters strong { display: block; margin-bottom: 7px; color: var(--accent-soft); font: 400 18px var(--serif); }
-.professional-counters span { color: rgba(220,242,227,.65); font: 7px/1.5 var(--mono); text-transform: uppercase; }
+.professional-counters span { color: rgba(220,242,227,.65); font: 10px/1.5 var(--mono); text-transform: uppercase; }
 .inspection-divider { position: absolute; z-index: 4; top: 0; bottom: 0; left: var(--reveal); width: 1px; background: var(--accent); pointer-events: none; }
 .inspection-divider:before { content: ""; position: absolute; top: 0; bottom: 0; left: -6px; width: 12px; background: rgba(229,84,47,.07); }
 .inspection-divider span { position: absolute; top: 50%; left: 50%; padding: 7px 9px; color: var(--paper-light); background: var(--accent); font: 7px var(--mono); letter-spacing: .08em; transform: translate(-50%, -50%) rotate(-90deg); }
