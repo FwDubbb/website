@@ -208,7 +208,7 @@ img, svg { max-width: 100%; }
 .result-stamp small { font-size: 7px; }
 
 .case-layout { display: grid; grid-template-columns: .82fr 1.3fr; border-bottom: 1px solid var(--ink); }
-.case-layout.reverse { grid-template-columns: .78fr 1.35fr; }
+.case-layout.reverse { grid-template-columns:  1.35fr .78fr; }
 .experience-machine { position: relative; min-height: 590px; overflow: hidden; border-left: 1px solid var(--ink); background: var(--paper-deep); }
 .phone-surface, .machine-underlay { position: absolute; inset: 0; transition: transform .55s cubic-bezier(.65,0,.2,1), opacity .4s ease; }
 .phone-surface { z-index: 2; width: min(390px, 72%); height: 500px; margin: auto; inset: 42px 0 auto; padding: 18px 24px 25px; border: 1px solid var(--ink); border-radius: 32px; background: var(--white); box-shadow: 8px 10px 0 rgba(24,25,20,.12); }
