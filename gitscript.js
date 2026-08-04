@@ -31,10 +31,12 @@
     });
 
     if (active) {
-      document.querySelector('[data-route="dijkstra"]')?.click();
+      document.querySelector('[data-route="cost"]')?.click();
       document.querySelector('[data-guide-view="continuity"]')?.click();
+      document.querySelector('[data-flight-view="model"]')?.click();
     } else {
       document.querySelector('[data-guide-view="features"]')?.click();
+      document.querySelector('[data-flight-view="queries"]')?.click();
     }
   }
 
@@ -87,29 +89,29 @@
   });
 
   const routeData = {
-    bfs: {
-      status: 'FEWEST CONNECTIONS',
-      method: 'Breadth-first search',
-      path: 'BIS → ORD → JFK',
-      priority: 'Fewest edges first',
-      result: '2 legs · cost not weighted',
-      pathD: 'M90 210 L385 175 L675 205'
-    },
-    dfs: {
-      status: 'DEPTH EXPLORATION',
-      method: 'Depth-first search',
-      path: 'BIS → MSP → DFW → ATL → JFK',
-      priority: 'Follow one branch deeply',
-      result: '4 legs · first valid route',
-      pathD: 'M90 210 L245 285 L530 300 L555 80 L675 205'
-    },
-    dijkstra: {
-      status: 'CHEAPEST PATH',
-      method: 'Dijkstra',
+    cost: {
+      status: 'LOWEST TOTAL FARE',
+      method: 'Minimum total cost',
       path: 'BIS → DEN → ORD → JFK',
-      priority: 'Lowest total cost',
-      result: '$428 · 3 legs',
+      priority: 'Fare in dollars',
+      result: 'Weighted path search',
       pathD: 'M90 210 L245 90 L385 175 L675 205'
+    },
+    miles: {
+      status: 'SHORTEST TOTAL DISTANCE',
+      method: 'Minimum total miles',
+      path: 'BIS → MSP → ORD → JFK',
+      priority: 'Miles traveled',
+      result: 'Weighted path search',
+      pathD: 'M90 210 L245 285 L385 175 L675 205'
+    },
+    hops: {
+      status: 'FEWEST FLIGHTS',
+      method: 'Minimum number of hops',
+      path: 'BIS → ORD → JFK',
+      priority: 'Number of directed edges',
+      result: 'Layer-by-layer search',
+      pathD: 'M90 210 L385 175 L675 205'
     }
   };
 
@@ -132,6 +134,56 @@
           routePath.style.animation = '';
         });
       }
+    });
+  });
+
+  document.querySelectorAll('.flight-dossier').forEach((dossier) => {
+    const tabs = [...dossier.querySelectorAll('[data-flight-view]')];
+    const panels = [...dossier.querySelectorAll('[data-flight-panel]')];
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const view = tab.dataset.flightView;
+        tabs.forEach((item) => {
+          const selected = item === tab;
+          item.classList.toggle('active', selected);
+          item.setAttribute('aria-selected', String(selected));
+        });
+        panels.forEach((panel) => panel.classList.toggle('active', panel.dataset.flightPanel === view));
+      });
+    });
+  });
+
+  const flightQueryData = {
+    airport: { number: '01', title: 'Display airport details', description: 'Resolve an airport code and return the information stored for that airport.', input: 'Airport code', output: 'Airport name, city, state, and other stored details', engine: 'Unordered-map index lookup' },
+    state: { number: '02', title: 'List airports in a state', description: 'Find every airport whose record belongs to the selected state and report both the list and total count.', input: 'State name or abbreviation', output: 'Matching airports and number found', engine: 'Airport-record filtering' },
+    departures: { number: '03', title: 'Show flights leaving a source', description: 'Retrieve every directed flight whose origin matches the selected airport.', input: 'Source airport code', output: 'All outbound flight options', engine: 'Origin-index adjacency lookup' },
+    arrivals: { number: '04', title: 'Show flights arriving at a destination', description: 'Find every directed flight whose destination matches the selected airport.', input: 'Destination airport code', output: 'All inbound flight options', engine: 'Destination scan across directed routes' },
+    direct: { number: '05', title: 'Find direct flights between two airports', description: 'Access every stored flight option for one exact origin-to-destination pair.', input: 'Source and destination codes', output: 'Direct flights, if available', engine: '3D vector route lookup' },
+    path: { number: '06', title: 'Find a path with stops', description: 'Search the directed graph for a valid sequence of flights even when no direct route exists.', input: 'Source and destination codes', output: 'A valid multi-stop path', engine: 'Graph traversal using BFS or DFS as appropriate' },
+    mincost: { number: '07', title: 'Find the minimum-cost route', description: 'Compare route totals using fare as the edge weight.', input: 'Source and destination codes', output: 'Cheapest available route and fare', engine: 'Dijkstra with monetary cost weights' },
+    minmiles: { number: '08', title: 'Find the minimum-mile route', description: 'Compare route totals using flight distance as the edge weight.', input: 'Source and destination codes', output: 'Shortest-distance route and mileage', engine: 'Dijkstra with distance weights' },
+    minhops: { number: '09', title: 'Find the route with the fewest flights', description: 'Treat every flight as one step and minimize the number of directed connections.', input: 'Source and destination codes', output: 'Route requiring the fewest flights', engine: 'Breadth-first search by graph level' },
+    withinflights: { number: '10', title: 'Find destinations reachable within F flights', description: 'Start from one airport after time T and limit exploration to a maximum number of flight legs.', input: 'Source, time T, and flight limit F', output: 'All destinations meeting the hop limit', engine: 'Constrained reachability traversal' },
+    underfare: { number: '11', title: 'Find destinations under a total fare', description: 'Explore destinations that remain reachable without exceeding the the customer maximum budget.', input: 'Source, time T, and fare limit M', output: 'Reachable destinations within budget', engine: 'Cost-constrained graph search' },
+    underhours: { number: '12', title: 'Find destinations reachable within H hours', description: 'Limit possible trips using the the customer maximum elapsed travel time.', input: 'Source, time T, and hour limit H', output: 'Destinations reachable within the time window', engine: 'Time-constrained route evaluation' },
+    viahops: { number: '13', title: 'Travel through M using the fewest flights', description: 'Require one intermediate airport and minimize the total number of flight legs after time T.', input: 'Source, destination, required stop M, and time T', output: 'Valid via-stop route with minimum hops', engine: 'Combined constrained path search' },
+    viaearly: { number: '14', title: 'Travel through M with the earliest arrival', description: 'Require one intermediate airport and compare valid trips by final arrival time.', input: 'Source, destination, required stop M, and time T', output: 'Valid via-stop route arriving earliest', engine: 'Time-aware constrained route comparison' },
+    viacheap: { number: '15', title: 'Travel through M at the lowest fare', description: 'Require one intermediate airport and minimize the total fare of the complete trip.', input: 'Source, destination, required stop M, and time T', output: 'Cheapest valid route through M', engine: 'Weighted constrained route comparison' }
+  };
+
+  const flightQueryButtons = [...document.querySelectorAll('[data-flight-query]')];
+  flightQueryButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const data = flightQueryData[button.dataset.flightQuery];
+      if (!data) return;
+      flightQueryButtons.forEach((item) => item.classList.toggle('active', item === button));
+      document.getElementById('flightQueryNumber').textContent = data.number;
+      document.getElementById('flightQueryTitle').textContent = data.title;
+      document.getElementById('flightQueryDescription').textContent = data.description;
+      document.getElementById('flightQueryInput').textContent = data.input;
+      document.getElementById('flightQueryOutput').textContent = data.output;
+      document.getElementById('flightQueryEngine').textContent = data.engine;
     });
   });
 
