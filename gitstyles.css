@@ -542,7 +542,7 @@ footer {
 .identity-trace b { color: var(--accent); font: 12px var(--mono); }
 .identity-trace span { color: var(--muted); font-size: 13px; }
 .identity-trace i { position: relative; height: 1px; background: var(--ink); }
-.identity-trace i:after { content: "›"; position: absolute; right: -2px; top: -13px; font-size: 19px; }
+.identity-trace i:after { content: "›"; position: absolute; right: -2px; top: -15px; font-size: 19px; }
 .continuity-grid { display: grid; grid-template-columns: .75fr 1.25fr; border: 1px solid var(--ink); }
 .database-catalog { padding: 28px; border-right: 1px solid var(--ink); background: var(--paper-deep); }
 .database-catalog > span, .operator-bar { font: 12px var(--mono); letter-spacing: .04em; }
