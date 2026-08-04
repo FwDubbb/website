@@ -335,6 +335,161 @@ footer a { color: var(--accent-soft); text-decoration: none; }
 .reveal-on-scroll.visible { opacity: 1; transform: none; }
 body.system-mode .case-record { box-shadow: 9px 11px 0 rgba(229,84,47,.22); }
 
+
+/* Calendar evidence viewer */
+.calendar-evidence {
+  padding: 44px 48px 50px;
+  border-bottom: 1px solid var(--ink);
+  background: #ece6da;
+}
+.evidence-header {
+  margin-bottom: 28px;
+  display: grid;
+  grid-template-columns: 1fr .72fr;
+  gap: 60px;
+  align-items: end;
+}
+.evidence-header .case-label { margin-bottom: 16px; }
+.evidence-header h4 {
+  max-width: 760px;
+  margin: 0;
+  font: 400 clamp(30px, 3.3vw, 48px)/1.02 var(--serif);
+  letter-spacing: -.035em;
+}
+.evidence-header > p { margin: 0 0 4px; color: var(--muted); }
+.calendar-compare { border: 1px solid var(--ink); background: var(--paper-light); box-shadow: 7px 8px 0 rgba(26,27,23,.09); }
+.compare-toolbar {
+  min-height: 62px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  border-bottom: 1px solid var(--ink);
+  background: var(--paper-deep);
+}
+.compare-control-group { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; }
+.compare-control-group > span { margin-right: 4px; color: var(--muted); font: 12px var(--mono); letter-spacing: .08em; }
+.compare-control-group button {
+  padding: 9px 12px;
+  border: 1px solid var(--ink);
+  background: transparent;
+  cursor: pointer;
+  font: 12px var(--mono);
+  text-transform: uppercase;
+  transition: .18s ease;
+}
+.compare-control-group button:hover { color: var(--accent); border-color: var(--accent); }
+.compare-control-group button.active { color: var(--paper-light); background: var(--ink); }
+.compare-control-group button[disabled] { cursor: not-allowed; opacity: .38; }
+.compare-image-shell { position: relative; overflow: hidden; border-bottom: 1px solid var(--ink); background: #d9d4c8; }
+.compare-image-shell img { display: block; width: 100%; height: auto; animation: evidenceIn .3s ease; }
+@keyframes evidenceIn { from { opacity: .15; transform: scale(.995); } to { opacity: 1; transform: none; } }
+.compare-image-shell > span {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  padding: 8px 10px;
+  color: var(--paper-light);
+  background: rgba(23,32,29,.92);
+  border: 1px solid rgba(255,255,255,.45);
+  font: 11px var(--mono);
+  letter-spacing: .07em;
+}
+.compare-figure { margin: 0; }
+.compare-figure figcaption {
+  padding: 22px 24px;
+  display: grid;
+  grid-template-columns: .65fr 1.35fr;
+  gap: 36px;
+  align-items: start;
+}
+.compare-figure figcaption strong { font: 400 24px/1.1 var(--serif); }
+.compare-figure figcaption p { margin: 0; color: var(--muted); }
+.impact-grid {
+  margin-top: 34px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--ink);
+}
+.impact-grid div { min-height: 112px; padding: 18px; border-right: 1px solid var(--ink); }
+.impact-grid div:last-child { border-right: 0; }
+.impact-grid strong { display: block; margin-bottom: 8px; color: var(--accent); font: 400 30px var(--serif); }
+.impact-grid span { display: block; color: var(--muted); font-size: 13px; }
+
+/* Legibility pass: the original visual hierarchy is retained, but tiny labels are no longer 6-8px. */
+body { font-size: 16px; }
+.eyebrow,
+.section-index,
+.identity-copy small,
+.status,
+.inspect-button,
+.trace-rail li,
+.personal-heading small,
+.professional-kicker,
+.interest b,
+.personal-note span,
+.professional-topline,
+.professional-footer,
+.inspection-divider span,
+.notation span,
+.case-tab span,
+.case-state,
+.case-label,
+.case-summary dt,
+.calendar-demo-bar,
+.calendar-demo-footer,
+.calendar-demo-tabs button,
+.calendar-demo-body aside,
+.calendar-days > span,
+.inspector-tabs button,
+.view-code,
+.detail-grid span,
+.change-ledger span,
+.mini-flow,
+.phone-top,
+.phone-label,
+.challenge-card span,
+.challenge-card button,
+.phone-surface > small,
+.machine-title,
+.machine-underlay li b,
+.machine-underlay li small,
+.machine-switch,
+.project-notes-grid span,
+.flight-notes span,
+.route-machine-top,
+.route-controls button,
+.design-switches button,
+.intranet-brand span,
+.intranet-hero small,
+.intranet-tools i,
+.design-annotation,
+.blueprint-modules span,
+.design-principles span,
+.history-date,
+.history-main > span,
+.history-main small,
+.history-tags span,
+.method-list > li > span,
+.contact-action .secondary-link,
+footer {
+  font-size: 12px;
+}
+.calendar-days small,
+.calendar-days em,
+.airport span,
+.route-output small { font-size: 10px; }
+.calendar-days b,
+.interest small,
+.professional-counters span,
+.case-view pre,
+.airport b { font-size: 13px; }
+.case-summary dd,
+.project-notes-grid p,
+.flight-notes p,
+.method-list p { font-size: 14px; }
+
 @media (max-width: 1180px) {
   :root { --shell: calc(100vw - 130px); }
   .trace-rail { left: 18px; width: 80px; }
@@ -434,4 +589,32 @@ body.system-mode .case-record { box-shadow: 9px 11px 0 rgba(229,84,47,.22); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *:before, *:after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
+
+@media (max-width: 820px) {
+  .calendar-evidence { padding: 34px 27px 38px; }
+  .evidence-header { grid-template-columns: 1fr; gap: 22px; }
+  .compare-toolbar { align-items: flex-start; flex-direction: column; }
+  .compare-figure figcaption { grid-template-columns: 1fr; gap: 10px; }
+  .impact-grid { grid-template-columns: 1fr 1fr; }
+  .impact-grid div:nth-child(2) { border-right: 0; }
+  .impact-grid div:nth-child(-n+2) { border-bottom: 1px solid var(--ink); }
+}
+
+@media (max-width: 560px) {
+  .compare-control-group { width: 100%; }
+  .compare-control-group > span { width: 100%; }
+  .compare-control-group button { flex: 1; }
+  .compare-image-shell { overflow-x: auto; }
+  .compare-image-shell img { width: 920px; max-width: none; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .impact-grid div { border-right: 0; border-bottom: 1px solid var(--ink); }
+  .impact-grid div:last-child { border-bottom: 0; }
+}
+
+@media (max-width: 560px) {
+  .identity-copy strong { font-size: 13px; }
+  .inspect-button { font-size: 10px; }
+  .personal-note { font-size: 12px; }
+  .professional-main > p { font-size: 14px; }
 }

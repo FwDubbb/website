@@ -20,7 +20,7 @@
     </a>
 
     <div class="header-actions">
-      <span class="status"><i></i> Portfolio field record / revision 02</span>
+      <span class="status"><i></i> Portfolio field record / revision 03</span>
       <button class="inspect-button" id="globalInspect" type="button" aria-pressed="false">
         <span class="inspect-default">Open project layers</span>
         <span class="inspect-active">Return to project surfaces</span>
@@ -129,13 +129,13 @@
         <div class="calendar-case-grid">
           <div class="case-summary expanded-summary">
             <p class="case-label">The project</p>
-            <h3>One calendar for the rooms, vehicles, schedules, and operational information people need every day.</h3>
-            <p>The original calendar already solved an important problem. My work focused on preserving the company’s visual identity while making the platform easier to navigate, easier to extend, and more dependable as new resources and views were added.</p>
+            <h3>One place to understand what is booked, what is happening, when it is happening, and where people need to be.</h3>
+            <p>The calendar brings rooms, vehicles, events, and department schedules into one internal platform. The original system already contained working data, but much of the information employees needed was clipped, hidden, or difficult to interpret. I rebuilt the most-used views around the way people actually scan availability and make decisions.</p>
             <dl>
-              <div><dt>Environment</dt><dd>Microsoft 365 · Exchange · IIS</dd></div>
-              <div><dt>Build</dt><dd>HTML · CSS · JavaScript · Node</dd></div>
-              <div><dt>Role</dt><dd>Design · development · operations</dd></div>
-              <div><dt>Users</dt><dd>Internal staff across departments</dd></div>
+              <div><dt>Coverage</dt><dd>LSC · RRH · GES · Vehicles · Schafer · Training &amp; Development</dd></div>
+              <div><dt>Original views</dt><dd>Month · Week · Agenda</dd></div>
+              <div><dt>Added views</dt><dd>Day · Holiday through 2027</dd></div>
+              <div><dt>Reach</dt><dd>Company environment supporting 900+ users</dd></div>
             </dl>
           </div>
 
@@ -148,12 +148,49 @@
                 <span>MON</span><span>TUE</span><span class="today">WED</span><span>THU</span><span>FRI</span>
                 <article><small>8:00</small><b>Vehicle 18</b><em>Booked · Facilities</em></article>
                 <article class="wide"><small>10:30</small><b>LSC Boardroom</b><em>Operations meeting</em></article>
-                <article class="available"><small>ALL DAY</small><b>Vehicle 116</b><em>Available</em></article>
+                <article class="available"><small>ALL DAY</small><b>Vehicle 116</b><em>Available · click to book</em></article>
               </div>
             </div>
-            <div class="calendar-demo-footer"><span>Brand language retained</span><span>Multiple operational views added</span></div>
+            <div class="calendar-demo-footer"><span>Existing brand language retained</span><span>Information redesigned around decisions</span></div>
           </div>
         </div>
+
+        <section class="calendar-evidence" aria-labelledby="calendarEvidenceTitle">
+          <div class="evidence-header">
+            <div>
+              <p class="case-label">Visual evidence</p>
+              <h4 id="calendarEvidenceTitle">The same operational data became much easier to read.</h4>
+            </div>
+            <p>Choose a calendar area, then switch between the original and redesigned view. Names and email addresses in these public screenshots have been blurred.</p>
+          </div>
+
+          <div class="calendar-compare" id="calendarCompare">
+            <div class="compare-toolbar">
+              <div class="compare-control-group" role="tablist" aria-label="Choose a calendar area">
+                <span>AREA</span>
+                <button class="active" type="button" data-compare-area="lsc">LSC</button>
+                <button type="button" data-compare-area="vehicles">Vehicles</button>
+                <button type="button" data-compare-area="day">Day view</button>
+              </div>
+              <div class="compare-control-group" role="tablist" aria-label="Choose the original or redesigned view">
+                <span>VERSION</span>
+                <button class="active" type="button" data-compare-version="before">Original</button>
+                <button type="button" data-compare-version="after">Redesigned</button>
+              </div>
+            </div>
+
+            <figure class="compare-figure">
+              <div class="compare-image-shell">
+                <img id="calendarCompareImage" src="oldlsc.png" alt="Original LSC weekly calendar view">
+                <span id="calendarCompareBadge">ORIGINAL / LSC WEEK</span>
+              </div>
+              <figcaption>
+                <strong id="calendarCompareTitle">Original LSC week view</strong>
+                <p id="calendarCompareCaption">Events were positioned mainly by time. When many bookings overlapped, cards became narrow, titles were clipped, and employees could not quickly see the requester or enough booking context.</p>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
 
         <div class="case-inspector rich-inspector">
           <div class="inspector-tabs" role="tablist" aria-label="Calendar project details">
@@ -165,30 +202,32 @@
           <div class="inspector-body">
             <div class="case-view active" data-panel="purpose">
               <span class="view-code">P / 01</span>
-              <h4>Several calendars become one dependable operational view.</h4>
-              <p>The server retrieves events from multiple Microsoft 365 resource mailboxes, normalizes the information, applies mailbox and date filters, and returns a single event collection to the browser. Staff can switch between company-specific views without opening each room or vehicle calendar separately.</p>
-              <div class="detail-grid"><div><b>Resource views</b><span>Vehicles, meeting rooms, department spaces</span></div><div><b>Time views</b><span>Month, week, day, agenda, holidays</span></div><div><b>Booking context</b><span>Time, purpose, requester, availability</span></div></div>
+              <h4>Several operational calendars become one place employees can actually use.</h4>
+              <p>The platform combines room bookings, vehicle bookings, department events, and company schedules across LSC, RRH, GES, Vehicles, Schafer, and Training &amp; Development. Employees can move between month, week, day, agenda, and holiday views instead of opening separate calendars and comparing them manually.</p>
+              <div class="detail-grid"><div><b>Know what is booked</b><span>Rooms and vehicles appear alongside their status and booking window.</span></div><div><b>Know what is happening</b><span>Company events are grouped by place, date, and operational context.</span></div><div><b>Know where to act</b><span>Available vehicles can open the booking form with the vehicle already selected.</span></div></div>
             </div>
             <div class="case-view" data-panel="evolution">
               <span class="view-code">E / 01</span>
-              <h4>The redesign extended the system without erasing what employees recognized.</h4>
-              <p>The company’s existing branding, color language, and familiar calendar behavior stayed intact. The work added clearer navigation, separate visual treatments for operational areas, a dedicated holiday view, day-level detail, vehicle filters, booking links, availability states, and a structure that could support additional resources.</p>
-              <div class="change-ledger"><span>Kept</span><b>Brand identity · familiar calendar flow · existing data source</b><span>Added</span><b>New views · filters · resource pages · responsive layouts · stronger status cues</b></div>
+              <h4>I kept the familiar company brand, then rebuilt the views around the information people were missing.</h4>
+              <p>The original version included month, week, and agenda views for all six calendar areas, but crowded time-based layouts hid important details. I designed a new day view, created a holiday view covering company holidays through 2027, and redesigned the week experience for each area so rooms, vehicles, and events could present the information their users needed.</p>
+              <div class="change-ledger"><span>Preserved</span><b>Company branding · existing data · familiar navigation · six operational areas</b><span>Rebuilt</span><b>Week layouts for LSC, RRH, GES, Vehicles, Schafer, and Training &amp; Development</b><span>Added</span><b>Day view · holiday view · requester details · availability · booking actions · hover information</b></div>
             </div>
             <div class="case-view" data-panel="architecture">
               <span class="view-code">A / 01</span>
-              <h4>The interface is the final stop in a longer chain.</h4>
-              <p>Exchange resource mailboxes supply the booking data. A Node service handles mailbox selection, deduplication, cache keys, time-zone rules, requester logic, and disabled-resource configuration before the browser renders the correct view.</p>
-              <div class="mini-flow"><b>Exchange</b><i></i><b>Node service</b><i></i><b>Calendar API</b><i></i><b>Browser views</b></div>
+              <h4>The redesign also changed how the browser turns calendar data into useful decisions.</h4>
+              <p>Exchange resource mailboxes and event calendars provide the source data. The Node service retrieves and normalizes events, applies date and mailbox filters, handles time-zone rules, and returns more fields from the API—including requester, time, purpose, and availability. The redesigned week and day views render event-based cards instead of relying only on narrow time-grid placement.</p>
+              <div class="mini-flow"><b>Exchange calendars</b><i></i><b>Node service</b><i></i><b>Calendar API</b><i></i><b>Event-based views</b></div>
               <pre><code>GET /api/calendar?start=&amp;end=&amp;mbox=
-GET /api/vehicles/disabled
-cache: date range | mailbox set | Mountain Time</code></pre>
+status = past | happening-now | upcoming | available
+booking link = Microsoft Form + preselected vehicle
+sort(today) = happening now → upcoming → earlier</code></pre>
             </div>
             <div class="case-view" data-panel="outcome">
               <span class="view-code">O / 01</span>
-              <h4>The platform became more useful without becoming unfamiliar.</h4>
-              <p>Employees gained a faster way to understand availability and move between operational contexts. The technical structure also became easier to maintain: resources could be enabled or disabled through configuration, view behavior was separated, and failures could be traced to the layer that caused them.</p>
-              <div class="result-stamp">MORE USEFUL<br><small>STILL RECOGNIZABLE</small></div>
+              <h4>The finished platform reduces the time between “What is available?” and “I know what to do next.”</h4>
+              <p>Green identifies availability, blue identifies future bookings, orange identifies events happening now, grey identifies past events, and a red treatment marks the current day. Current events automatically appear ahead of future and past items. Requester and booking information is visible where useful, and clicking an available vehicle opens a shorter booking path with the vehicle already selected.</p>
+              <div class="impact-grid"><div><strong>900+</strong><span>users in the supported company environment</span></div><div><strong>6</strong><span>calendar areas redesigned for their own information needs</span></div><div><strong>5</strong><span>ways to inspect time: month, week, day, agenda, holiday</span></div><div><strong>1 click</strong><span>from an available vehicle to a preselected booking form</span></div></div>
+              <div class="result-stamp">LESS SEARCHING<br><small>FASTER DECISIONS</small></div>
             </div>
           </div>
         </div>

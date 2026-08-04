@@ -123,6 +123,104 @@
     });
   });
 
+
+  const calendarCompareData = {
+    lsc: {
+      before: {
+        image: 'oldlsc.png',
+        alt: 'Original LSC weekly calendar view',
+        badge: 'ORIGINAL / LSC WEEK',
+        title: 'Original LSC week view',
+        caption: 'Events were positioned mainly by time. When many bookings overlapped, cards became narrow, titles were clipped, and employees could not quickly see the requester or enough booking context.'
+      },
+      after: {
+        image: 'newlsc.png',
+        alt: 'Redesigned LSC weekly bookings view',
+        badge: 'REDESIGNED / LSC WEEK',
+        title: 'Redesigned LSC week view',
+        caption: 'Each day becomes an event-based column. Past, current, future, and open states are immediately visible; the current day is clearly marked; and each card has room for time, location, purpose, and requester context.'
+      }
+    },
+    vehicles: {
+      before: {
+        image: 'oldveh.png',
+        alt: 'Original vehicle weekly calendar view',
+        badge: 'ORIGINAL / VEHICLES WEEK',
+        title: 'Original vehicle week view',
+        caption: 'The time-grid layout technically displayed reservations, but simultaneous bookings produced extremely narrow cards. Vehicle numbers and booking details were difficult to scan, and availability was not obvious.'
+      },
+      after: {
+        image: 'newveh.png',
+        alt: 'Redesigned vehicle weekly bookings view',
+        badge: 'REDESIGNED / VEHICLES WEEK',
+        title: 'Redesigned vehicle week view',
+        caption: 'Vehicles are now grouped by day as readable booking records. Color communicates status, requester and purpose details are visible, available vehicles are clearly separated, and a booking action is placed directly in the card.'
+      }
+    },
+    day: {
+      after: {
+        image: 'newday.png',
+        alt: 'New vehicle daily calendar view',
+        badge: 'ADDED / VEHICLES DAY VIEW',
+        title: 'A dedicated day view that did not exist before',
+        caption: 'The new day view summarizes what is happening now, what is coming up, what happened earlier, all-day activity, and currently available vehicles. Current events appear first so the page answers the most urgent question immediately.'
+      }
+    }
+  };
+
+  const calendarCompare = document.getElementById('calendarCompare');
+  if (calendarCompare) {
+    const areaButtons = [...calendarCompare.querySelectorAll('[data-compare-area]')];
+    const versionButtons = [...calendarCompare.querySelectorAll('[data-compare-version]')];
+    const compareImage = document.getElementById('calendarCompareImage');
+    const compareBadge = document.getElementById('calendarCompareBadge');
+    const compareTitle = document.getElementById('calendarCompareTitle');
+    const compareCaption = document.getElementById('calendarCompareCaption');
+    let selectedArea = 'lsc';
+    let selectedVersion = 'before';
+
+    function renderCalendarComparison() {
+      const areaData = calendarCompareData[selectedArea];
+      if (!areaData[selectedVersion]) selectedVersion = 'after';
+      const data = areaData[selectedVersion];
+
+      areaButtons.forEach((button) => button.classList.toggle('active', button.dataset.compareArea === selectedArea));
+      versionButtons.forEach((button) => {
+        const isBefore = button.dataset.compareVersion === 'before';
+        button.disabled = selectedArea === 'day' && isBefore;
+        button.classList.toggle('active', button.dataset.compareVersion === selectedVersion);
+      });
+
+      if (compareImage) {
+        compareImage.style.animation = 'none';
+        compareImage.src = data.image;
+        compareImage.alt = data.alt;
+        requestAnimationFrame(() => { compareImage.style.animation = ''; });
+      }
+      if (compareBadge) compareBadge.textContent = data.badge;
+      if (compareTitle) compareTitle.textContent = data.title;
+      if (compareCaption) compareCaption.textContent = data.caption;
+    }
+
+    areaButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        selectedArea = button.dataset.compareArea;
+        if (selectedArea === 'day') selectedVersion = 'after';
+        renderCalendarComparison();
+      });
+    });
+
+    versionButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        if (button.disabled) return;
+        selectedVersion = button.dataset.compareVersion;
+        renderCalendarComparison();
+      });
+    });
+
+    renderCalendarComparison();
+  }
+
   const revealTargets = document.querySelectorAll('.case-record, .principle-statement, .history-heading, .history-ledger, .method-grid, .contact-grid');
   revealTargets.forEach((target) => target.classList.add('reveal-on-scroll'));
 
