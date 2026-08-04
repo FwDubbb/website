@@ -30,7 +30,12 @@
       target?.click();
     });
 
-    if (active) document.querySelector('[data-route="dijkstra"]')?.click();
+    if (active) {
+      document.querySelector('[data-route="dijkstra"]')?.click();
+      document.querySelector('[data-guide-view="continuity"]')?.click();
+    } else {
+      document.querySelector('[data-guide-view="features"]')?.click();
+    }
   }
 
   globalInspect?.addEventListener('click', () => {
@@ -61,6 +66,23 @@
       const machine = button.closest('.experience-machine');
       const active = machine.classList.toggle('inspecting');
       button.setAttribute('aria-pressed', String(active));
+    });
+  });
+
+  document.querySelectorAll('.guide-dossier').forEach((dossier) => {
+    const tabs = [...dossier.querySelectorAll('[data-guide-view]')];
+    const panels = [...dossier.querySelectorAll('[data-guide-panel]')];
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const view = tab.dataset.guideView;
+        tabs.forEach((item) => {
+          const selected = item === tab;
+          item.classList.toggle('active', selected);
+          item.setAttribute('aria-selected', String(selected));
+        });
+        panels.forEach((panel) => panel.classList.toggle('active', panel.dataset.guidePanel === view));
+      });
     });
   });
 
