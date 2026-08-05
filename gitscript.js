@@ -94,7 +94,7 @@
       method: 'Minimum total cost',
       path: 'BIS → DEN → ORD → JFK',
       priority: 'Fare in dollars',
-      result: 'Weighted path search',
+      result: 'Dijkstra with fare weights',
       pathD: 'M90 210 L245 90 L385 175 L675 205'
     },
     miles: {
@@ -102,15 +102,15 @@
       method: 'Minimum total miles',
       path: 'BIS → MSP → ORD → JFK',
       priority: 'Miles traveled',
-      result: 'Weighted path search',
+      result: 'Dijkstra with distance weights',
       pathD: 'M90 210 L245 285 L385 175 L675 205'
     },
     hops: {
-      status: 'FEWEST FLIGHTS',
-      method: 'Minimum number of hops',
+      status: 'FEWEST CONNECTIONS',
+      method: 'Minimum unit-weight path',
       path: 'BIS → ORD → JFK',
-      priority: 'Number of directed edges',
-      result: 'Layer-by-layer search',
+      priority: 'One unit per directed flight',
+      result: 'Dijkstra with unit weights',
       pathD: 'M90 210 L385 175 L675 205'
     }
   };
@@ -160,16 +160,17 @@
     departures: { number: '03', title: 'Show flights leaving a source', description: 'Retrieve every directed flight whose origin matches the selected airport.', input: 'Source airport code', output: 'All outbound flight options', engine: 'Origin-index adjacency lookup' },
     arrivals: { number: '04', title: 'Show flights arriving at a destination', description: 'Find every directed flight whose destination matches the selected airport.', input: 'Destination airport code', output: 'All inbound flight options', engine: 'Destination scan across directed routes' },
     direct: { number: '05', title: 'Find direct flights between two airports', description: 'Access every stored flight option for one exact origin-to-destination pair.', input: 'Source and destination codes', output: 'Direct flights, if available', engine: '3D vector route lookup' },
-    path: { number: '06', title: 'Find a path with stops', description: 'Search the directed graph for a valid sequence of flights even when no direct route exists.', input: 'Source and destination codes', output: 'A valid multi-stop path', engine: 'Graph traversal using BFS or DFS as appropriate' },
+    path: { number: '06', title: 'Find a path with stops', description: 'Search the directed graph for a valid sequence of flights even when no direct route exists.', input: 'Source and destination codes', output: 'A valid multi-stop path with flight details', engine: 'Queue-based breadth-first search' },
     mincost: { number: '07', title: 'Find the minimum-cost route', description: 'Compare route totals using fare as the edge weight.', input: 'Source and destination codes', output: 'Cheapest available route and fare', engine: 'Dijkstra with monetary cost weights' },
     minmiles: { number: '08', title: 'Find the minimum-mile route', description: 'Compare route totals using flight distance as the edge weight.', input: 'Source and destination codes', output: 'Shortest-distance route and mileage', engine: 'Dijkstra with distance weights' },
-    minhops: { number: '09', title: 'Find the route with the fewest flights', description: 'Treat every flight as one step and minimize the number of directed connections.', input: 'Source and destination codes', output: 'Route requiring the fewest flights', engine: 'Breadth-first search by graph level' },
-    withinflights: { number: '10', title: 'Find destinations reachable within F flights', description: 'Start from one airport after time T and limit exploration to a maximum number of flight legs.', input: 'Source, time T, and flight limit F', output: 'All destinations meeting the hop limit', engine: 'Constrained reachability traversal' },
-    underfare: { number: '11', title: 'Find destinations under a total fare', description: 'Explore destinations that remain reachable without exceeding the the customer maximum budget.', input: 'Source, time T, and fare limit M', output: 'Reachable destinations within budget', engine: 'Cost-constrained graph search' },
-    underhours: { number: '12', title: 'Find destinations reachable within H hours', description: 'Limit possible trips using the the customer maximum elapsed travel time.', input: 'Source, time T, and hour limit H', output: 'Destinations reachable within the time window', engine: 'Time-constrained route evaluation' },
-    viahops: { number: '13', title: 'Travel through M using the fewest flights', description: 'Require one intermediate airport and minimize the total number of flight legs after time T.', input: 'Source, destination, required stop M, and time T', output: 'Valid via-stop route with minimum hops', engine: 'Combined constrained path search' },
-    viaearly: { number: '14', title: 'Travel through M with the earliest arrival', description: 'Require one intermediate airport and compare valid trips by final arrival time.', input: 'Source, destination, required stop M, and time T', output: 'Valid via-stop route arriving earliest', engine: 'Time-aware constrained route comparison' },
-    viacheap: { number: '15', title: 'Travel through M at the lowest fare', description: 'Require one intermediate airport and minimize the total fare of the complete trip.', input: 'Source, destination, required stop M, and time T', output: 'Cheapest valid route through M', engine: 'Weighted constrained route comparison' }
+    minhops: { number: '09', title: 'Find the route with the fewest connections', description: 'Treat every directed flight as an edge with weight one and minimize the total number of connections.', input: 'Source and destination codes', output: 'Minimum-hop path and airport sequence', engine: 'Dijkstra with unit edge weights' },
+    withinflights: { number: '10', title: 'Find destinations reachable within F flights', description: 'Start from one airport after time T and limit exploration to a maximum number of flight legs.', input: 'Source, time T, and flight limit F', output: 'All destinations meeting the hop limit', engine: 'Queue-based flight-limited reachability' },
+    underfare: { number: '11', title: 'Find destinations under a total fare', description: 'Explore destinations that remain reachable without exceeding the customer maximum budget.', input: 'Source, time T, and fare limit M', output: 'Reachable destinations within budget', engine: 'Queue-based fare-constrained reachability' },
+    underhours: { number: '12', title: 'Find destinations reachable within H hours', description: 'Limit possible trips using the customer maximum elapsed travel time, including waiting and flight time.', input: 'Source, time T, and hour limit H', output: 'Destinations reachable within the time window', engine: 'Queue-based time-constrained search' },
+    earliest: { number: '13', title: 'Find the earliest arrival after time T', description: 'Evaluate flights that depart after the current arrival time and keep the earliest known arrival at each airport.', input: 'Source, destination, and starting time T', output: 'Earliest arrival time and airport path', engine: 'Time-aware earliest-arrival search' },
+    viahops: { number: '14', title: 'Travel through M using the fewest flights', description: 'Run the fewest-flight search from the source to M, then continue from M to the destination using the first segment arrival time.', input: 'Source, destination, required stop M, and time T', output: 'Two sequential minimum-flight path results', engine: 'Two-stage search: source → M → destination' },
+    viaearly: { number: '15', title: 'Travel through M with the earliest arrival', description: 'Find the earliest source-to-M arrival, then use that arrival time to search from M to the final destination.', input: 'Source, destination, required stop M, and time T', output: 'Two sequential earliest-arrival path results', engine: 'Two-stage time-aware search' },
+    viacheap: { number: '16', title: 'Travel through M at the lowest fare', description: 'Run a minimum-cost search from the source to M, then continue from M to the destination using the first segment arrival time.', input: 'Source, destination, required stop M, and time T', output: 'Two sequential minimum-cost path results', engine: 'Two-stage weighted search' }
   };
 
   const flightQueryButtons = [...document.querySelectorAll('[data-flight-query]')];
@@ -305,6 +306,21 @@
   }, { threshold: 0.1 });
   revealTargets.forEach((target) => revealObserver.observe(target));
 
+  function positionRailItems() {
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    if (scrollable <= 0) return;
+
+    observedSections.forEach((section) => {
+      const item = railItems.find((railItem) => railItem.dataset.section === section.dataset.observe);
+      if (!item) return;
+
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+      const activationScroll = sectionTop - (window.innerHeight * 0.36);
+      const ratio = Math.max(0, Math.min(1, activationScroll / scrollable));
+      item.style.top = `${ratio * 100}%`;
+    });
+  }
+
   function updateRail() {
     const scrollable = document.documentElement.scrollHeight - window.innerHeight;
     const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
@@ -318,8 +334,20 @@
     railItems.forEach((item) => item.classList.toggle('active', item.dataset.section === current));
   }
 
+  function refreshRail() {
+    positionRailItems();
+    updateRail();
+  }
+
   window.addEventListener('scroll', updateRail, { passive: true });
-  window.addEventListener('resize', updateRail);
-  updateRail();
+  window.addEventListener('resize', refreshRail);
+  window.addEventListener('load', refreshRail);
+
+  if ('ResizeObserver' in window) {
+    const railLayoutObserver = new ResizeObserver(() => positionRailItems());
+    railLayoutObserver.observe(document.body);
+  }
+
+  refreshRail();
   setReveal(revealControl?.value || 58);
 })();

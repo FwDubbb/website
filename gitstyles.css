@@ -132,16 +132,16 @@ position: relative; width: 1px; height: 100%; margin-left: 5px; background: var(
 position: absolute; left: -4px; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); transform: translateY(-50%); transition: top .15s linear; }
 
 .trace-rail ol{
-height: 100%; margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; justify-content: space-between; }
+position: relative; height: 100%; margin: 0; padding: 0; list-style: none; }
 
 .trace-rail li{
-display: flex; align-items: baseline; gap: 7px; color: var(--muted); opacity: .5; font: 7px var(--mono); text-transform: uppercase; transition: .2s; }
+position: absolute; left: 0; top: 0; display: flex; align-items: baseline; gap: 7px; color: var(--muted); opacity: .5; font: 7px var(--mono); text-transform: uppercase; white-space: nowrap; transform: translateY(-50%); transition: color .2s, opacity .2s, transform .2s, top .25s ease; }
 
 .trace-rail li b{
 color: var(--accent); font-size: 8px; }
 
 .trace-rail li.active{
-color: var(--ink); opacity: 1; transform: translateX(4px); }
+color: var(--ink); opacity: 1; transform: translate(4px, -50%); }
 
 
 .hero{
@@ -2198,6 +2198,12 @@ margin: 40px 0 18px; display: block; font: 400 clamp(23px, 2.5vw, 36px)/1.05 var
 
 .source-board p{
 color: rgba(220,242,227,.68); }
+
+.build-commands{
+margin-top: 22px; display: grid; gap: 7px; }
+
+.build-commands code{
+padding: 10px 12px; display: block; overflow-x: auto; border: 1px solid rgba(220,242,227,.28); color: var(--professional-light); background: #101714; font: 12px var(--mono); }
 
 .source-board a{
 margin-top: 35px; padding: 12px 14px; display: inline-block; border: 1px solid var(--accent-soft); color: var(--accent-soft); text-decoration: none; font: 11px var(--mono); text-transform: uppercase; }
