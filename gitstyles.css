@@ -1270,10 +1270,14 @@ color: var(--accent); font: 12px var(--mono); }
 color: var(--muted); font-size: 13px; }
 
 .identity-trace i{
-position: relative; height: 1px; background: var(--ink); }
+text-align: center;
+    color: var(--accent);
+    font: 28px var(--serif);
+    font-style: normal;
+}
 
-.identity-trace i:after{
-content: "›"; position: absolute; right: -2px; top: -15px; font-size: 19px; }
+/* .identity-trace i:after{
+content: "›"; position: absolute; right: -2px; top: -15px; font-size: 19px; } */
 
 .continuity-grid{
 display: grid; grid-template-columns: .75fr 1.25fr; border: 1px solid var(--ink); }
