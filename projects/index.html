@@ -216,7 +216,7 @@
               <span class="view-code">A / 01</span>
               <h4>The redesign also changed how the browser turns calendar data into useful decisions.</h4>
               <p>Exchange resource mailboxes and event calendars provide the source data. The Node service retrieves and normalizes events, applies date and mailbox filters, handles time-zone rules, and returns more fields from the API—including requester, time, purpose, and availability. The redesigned week and day views render event-based cards instead of relying only on narrow time-grid placement.</p>
-              <div class="mini-flow"><b>Exchange calendars</b><i></i><b>Node service</b><i></i><b>Calendar API</b><i></i><b>Event-based views</b></div>
+              <div class="mini-flow"><b>Exchange calendars</b><i>→</i><b>Node service</b><i>→</i><b>Calendar API</b><i>→</i><b>Event-based views</b></div>
               <pre><code>GET /api/calendar?start=&amp;end=&amp;mbox=
 status = past | happening-now | upcoming | available
 booking link = Microsoft Form + preselected vehicle
