@@ -2395,3 +2395,157 @@ border-bottom: 0; }
 
 #routeArrow path{
 fill: var(--accent-soft); }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.history-heading {
+  align-items: end;
+}
+
+.resume-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 50px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  width: min(100%, 390px);
+  padding: 16px 18px;
+  color: var(--ink);
+  text-decoration: none;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  overflow: hidden;
+  transition:
+    transform 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.resume-card::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 26px;
+  height: 26px;
+  background:
+    linear-gradient(
+      225deg,
+      var(--page-background, #f3efe5) 48%,
+      var(--ink) 49%,
+      var(--ink) 52%,
+      transparent 53%
+    );
+}
+
+.resume-card__paper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 42px;
+  height: 52px;
+  padding: 10px 8px;
+  border: 1px solid currentColor;
+}
+
+.resume-card__paper span {
+  display: block;
+  height: 2px;
+  background: currentColor;
+  opacity: 0.45;
+}
+
+.resume-card__paper span:nth-child(2) {
+  width: 75%;
+}
+
+.resume-card__paper span:nth-child(3) {
+  width: 90%;
+}
+
+.resume-card__paper span:nth-child(4) {
+  width: 55%;
+}
+
+.resume-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.resume-card__label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.65;
+}
+
+.resume-card__content strong {
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+.resume-card__content small {
+  max-width: 250px;
+  font-size: 0.8rem;
+  line-height: 1.4;
+  opacity: 0.7;
+}
+
+.resume-card__arrow {
+  align-self: end;
+  font-family: var(--mono);
+  font-size: 1.15rem;
+  transition: transform 180ms ease;
+}
+
+.resume-card:hover {
+  color: var(--paper);
+  background: var(--ink);
+  transform: translateY(-3px);
+}
+
+.resume-card:hover .resume-card__arrow {
+  transform: translate(3px, -3px);
+}
+
+.resume-card:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+}
+
+@media (max-width: 760px) {
+  .history-heading {
+    align-items: start;
+  }
+
+  .resume-card {
+    width: 100%;
+    margin-top: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resume-card,
+  .resume-card__arrow {
+    transition: none;
+  }
+}
