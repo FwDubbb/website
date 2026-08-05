@@ -218,7 +218,7 @@ font: 10px var(--mono); text-transform: uppercase; opacity: .7; }
 left: 8%; top: 53%; transform: rotate(-2deg); }
 
 .interest-b{
-left: 38%; top: 47%; transform: rotate(1.5deg); }
+left: 50%; top: 47%; transform: rotate(1.5deg); }
 
 .interest-c{
 left: 18%; top: 68%; transform: rotate(1deg); }
