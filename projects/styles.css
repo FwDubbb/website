@@ -1522,7 +1522,7 @@ min-width: 126px; font-size: 7px; }
 flex-direction: column; gap: 6px; }
 
   .identity-window{
-min-height: 680px; }
+min-height: 720px; }
 
   .personal-heading{
 left: 6%; width: 86%; }
@@ -1530,20 +1530,37 @@ left: 6%; width: 86%; }
   .personal-heading strong{
 font-size: 43px; }
 
-  .interest{
-min-width: 140px; padding: 10px; }
+  .interest {
+    left: 6%;
+    right: 6%;
+    width: auto;
+    min-width: 0;
+    padding: 10px 12px;
+    transform: none;
+  }
 
   .interest span{
 font-size: 13px; }
 
-  .interest-a{
-left: 3%; top: 49%; }
-.interest-b{
-left: 49%; top: 48%; }
-.interest-c{
-left: 5%; top: 64%; }
-.interest-d{
-left: 45%; top: 66%; }
+  .interest-a {
+    top: 43%;
+  }
+
+  .interest-b {
+    top: 53%;
+  }
+
+  .interest-c {
+    top: 63%;
+  }
+
+  .interest-d {
+    top: 73%;
+  }
+
+  .interest span {
+    font-size: 13px;
+  }
 
   .personal-note{
 font-size: 9px; }
@@ -2551,43 +2568,5 @@ fill: var(--accent-soft); }
   .resume-card,
   .resume-card__arrow {
     transition: none;
-  }
-}
-
-
-
-@media (max-width: 760px) {
-  .interest-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    width: 100%;
-  }
-
-  .interest-list .interest {
-    position: relative;
-    inset: auto;
-    top: auto;
-    right: auto;
-    bottom: auto;
-    left: auto;
-    transform: none;
-
-    display: grid;
-    grid-template-columns: 38px 1fr;
-    gap: 4px 12px;
-
-    width: 100%;
-    max-width: none;
-    margin: 0;
-  }
-
-  .interest-list .interest b {
-    grid-row: 1 / 3;
-  }
-
-  .interest-list .interest span,
-  .interest-list .interest small {
-    grid-column: 2;
   }
 }
