@@ -447,7 +447,7 @@ body {
   .project-description {
     white-space: normal;
     text-align: center;
-    max-width: 90%;
+    /* max-width: 90%; */
     margin-top: 15px;
   }
 }
