@@ -1,109 +1,54 @@
-//Some things in here might be unnecessary and unrelated to the website
-//I made many changes to the website whilst building it, so ignore those.
+const root = document.documentElement;
+const longHand = document.querySelector('.hand-long');
+const shortHand = document.querySelector('.hand-short');
+const seasons = document.querySelectorAll('.season');
 
+let restingLong = 18;
+let restingShort = 298;
+let returnTimer;
 
-const mainText = document.getElementById("typed-text");
-const extraText = document.getElementById("typed-extra");
-
-async function typeText(element, text, speed = 100) {
-  for (let i = 0; i < text.length; i++) {
-    element.textContent += text[i];
-    await new Promise(res => setTimeout(res, speed));
-  }
+function pointHands(angle) {
+  longHand.style.transform = `translateX(-50%) rotate(${angle}deg)`;
+  shortHand.style.transform = `translateX(-50%) rotate(${angle - 74}deg)`;
 }
 
-async function deleteText(to = 0, speed = 50) {
-  while (mainText.textContent.length > to) {
-    mainText.textContent = mainText.textContent.slice(0, -1);
-    await new Promise(res => setTimeout(res, speed));
-  }
+function restHands() {
+  longHand.style.transform = `translateX(-50%) rotate(${restingLong}deg)`;
+  shortHand.style.transform = `translateX(-50%) rotate(${restingShort}deg)`;
 }
 
-async function runTypewriter() {
-  await typeText(mainText, "Major - Software Engineering. Minor- None~2023");
-  await new Promise(res => setTimeout(res, 800));
+seasons.forEach((season) => {
+  const angle = Number(season.dataset.angle);
 
-  await deleteText("Major - Software Engineering. Minor- ".length);
-  await new Promise(res => setTimeout(res, 600));
+  season.addEventListener('mouseenter', () => {
+    clearTimeout(returnTimer);
+    pointHands(angle);
+  });
 
+  season.addEventListener('focus', () => {
+    clearTimeout(returnTimer);
+    pointHands(angle);
+  });
 
+  season.addEventListener('mouseleave', () => {
+    returnTimer = setTimeout(restHands, 110);
+  });
 
-  extraText.style.opacity = 1;
-  await typeText(extraText, "Cybersecurity~2025:)", 70);
-}
+  season.addEventListener('blur', () => {
+    returnTimer = setTimeout(restHands, 110);
+  });
+});
 
-runTypewriter();
+// A barely-there mechanical drift so the face never feels completely static.
+if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  let t = 0;
+  setInterval(() => {
+    t += 1;
+    restingLong = 18 + Math.sin(t / 6) * 1.2;
+    restingShort = 298 + Math.cos(t / 8) * 0.7;
 
-
-//  Scroll-in and Project Descriptions Typewriter 
-function typeWriterEffect(el, text, speed = 20) {
-  let i = 0;
-  function type() {
-    if (i < text.length) {
-      el.textContent += text.charAt(i);
-      i++;
-      setTimeout(type, speed);
+    if (![...seasons].some((item) => item.matches(':hover, :focus'))) {
+      restHands();
     }
-  }
-  type();
+  }, 900);
 }
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting && !entry.target.classList.contains('show')) {
-      entry.target.classList.add('show');
-
-
-      const description = entry.target.querySelector('.project-description');
-      if (description && description.dataset.text && !description.classList.contains('typed')) {
-        description.classList.add('typed');
-        typeWriterEffect(description, description.dataset.text, 20);
-      }
-    }
-  });
-}, { threshold: 0.3 });
-
-
-document.querySelectorAll('.project-row').forEach(row => {
-  observer.observe(row);
-});
-
-let currentSlide = 0;
-const slides = document.querySelectorAll('.slide-img');
-
-function showSlide(index) {
-  slides.forEach((img, i) => {
-    img.classList.remove('active');
-    if (i === index) img.classList.add('active');
-  });
-}
-
-function nextSlide() {
-  currentSlide = (currentSlide + 1) % slides.length;
-  showSlide(currentSlide);
-}
-
-// Initialize
-showSlide(currentSlide);
-setInterval(nextSlide, 3000); 
-
-
-document.querySelectorAll('.school-card').forEach(card => {
-  card.addEventListener('click', () => {
-
-    card.classList.toggle('flipped');
-
-  });
-});
-
-
-document.querySelectorAll('.read-more').forEach(button => {
-  button.addEventListener('click', () => {
-    const fullText = button.previousElementSibling;
-    fullText.classList.toggle('hidden');
-    button.textContent = fullText.classList.contains('hidden') ? 'Read More' : 'Read Less';
-  });
-});
-
-
-
