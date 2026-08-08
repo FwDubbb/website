@@ -7,6 +7,10 @@
   const tracePulse = document.getElementById('tracePulse');
   const railItems = [...document.querySelectorAll('.trace-rail li')];
   const observedSections = [...document.querySelectorAll('[data-observe]')];
+  const sectionLinks = [...document.querySelectorAll('[data-section-link]')];
+  const mobileIndexToggle = document.getElementById('mobileIndexToggle');
+  const mobileIndex = document.getElementById('mobileIndex');
+  const mobileInspect = document.getElementById('mobileInspect');
 
   function setReveal(value) {
     if (!inspectionWindow) return;
@@ -40,10 +44,42 @@
     }
   }
 
+  function syncInspectControls(active) {
+    globalInspect?.setAttribute('aria-pressed', String(active));
+    if (mobileInspect) {
+      mobileInspect.setAttribute('aria-pressed', String(active));
+      mobileInspect.textContent = active ? 'Return to project surfaces −' : 'Inspect project systems +';
+    }
+  }
+
   globalInspect?.addEventListener('click', () => {
     const active = body.classList.toggle('system-mode');
-    globalInspect.setAttribute('aria-pressed', String(active));
+    syncInspectControls(active);
     setAllLayers(active);
+  });
+
+  mobileInspect?.addEventListener('click', () => {
+    globalInspect?.click();
+    setMobileIndex(false);
+  });
+
+  function setMobileIndex(open) {
+    if (!mobileIndex || !mobileIndexToggle) return;
+    mobileIndex.hidden = !open;
+    mobileIndexToggle.setAttribute('aria-expanded', String(open));
+    body.classList.toggle('mobile-index-open', open);
+  }
+
+  mobileIndexToggle?.addEventListener('click', () => {
+    setMobileIndex(mobileIndexToggle.getAttribute('aria-expanded') !== 'true');
+  });
+
+  mobileIndex?.querySelectorAll('nav a').forEach((link) => {
+    link.addEventListener('click', () => setMobileIndex(false));
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') setMobileIndex(false);
   });
 
   document.querySelectorAll('.case-inspector').forEach((inspector) => {
@@ -332,6 +368,7 @@
       if (section.getBoundingClientRect().top <= trigger) current = section.dataset.observe;
     });
     railItems.forEach((item) => item.classList.toggle('active', item.dataset.section === current));
+    sectionLinks.forEach((link) => link.classList.toggle('active', link.dataset.sectionLink === current));
   }
 
   function refreshRail() {
@@ -340,7 +377,10 @@
   }
 
   window.addEventListener('scroll', updateRail, { passive: true });
-  window.addEventListener('resize', refreshRail);
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 820) setMobileIndex(false);
+    refreshRail();
+  });
   window.addEventListener('load', refreshRail);
 
   if ('ResizeObserver' in window) {
@@ -349,5 +389,6 @@
   }
 
   refreshRail();
+  syncInspectControls(body.classList.contains('system-mode'));
   setReveal(revealControl?.value || 58);
 })();

@@ -19,7 +19,7 @@
   <div class="page-noise" aria-hidden="true"></div>
 
   <header class="site-header">
-    <a class="identity" href="#top" aria-label="Return to top">
+    <a class="identity" href="#top" aria-label="Return to introduction">
       <span class="identity-mark">WOH</span>
       <span class="identity-copy">
         <strong>William Osei-Hwere</strong>
@@ -27,23 +27,43 @@
       </span>
     </a>
 
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="#work" data-section-link="work"><span>01</span> Projects</a>
+      <a href="#history" data-section-link="history"><span>02</span> Experience</a>
+      <a href="/summer26/assets/william-osei-hwere-resume.pdf" target="_blank" rel="noopener noreferrer"><span>↗</span> Résumé</a>
+      <a href="#contact" data-section-link="contact"><span>03</span> Contact</a>
+    </nav>
+
     <div class="header-actions">
-      <span class="status"><i></i> Portfolio field record / 2026 Revision</span>
       <button class="inspect-button" id="globalInspect" type="button" aria-pressed="false">
-        <span class="inspect-default">Open project layers</span>
-        <span class="inspect-active">Return to project surfaces</span>
+        <span class="inspect-default">Inspect systems</span>
+        <span class="inspect-active">Return to surfaces</span>
       </button>
+      <button class="mobile-index-toggle" id="mobileIndexToggle" type="button" aria-expanded="false" aria-controls="mobileIndex">
+        <span>Index</span><b aria-hidden="true">+</b>
+      </button>
+    </div>
+
+    <div class="mobile-index" id="mobileIndex" hidden>
+      <div class="mobile-index__topline"><span>INDEX / PORTFOLIO</span><span>SUMMER 26</span></div>
+      <nav aria-label="Mobile navigation">
+        <a href="#top" data-section-link="top"><b>00</b><span>Intro</span></a>
+        <a href="#work" data-section-link="work"><b>01</b><span>Projects</span></a>
+        <a href="#history" data-section-link="history"><b>02</b><span>Experience</span></a>
+        <a href="#contact" data-section-link="contact"><b>03</b><span>Contact</span></a>
+        <a href="/summer26/assets/william-osei-hwere-resume.pdf" target="_blank" rel="noopener noreferrer"><b>↗</b><span>Résumé</span></a>
+      </nav>
+      <button class="mobile-inspect" id="mobileInspect" type="button" aria-pressed="false">Inspect project systems +</button>
     </div>
   </header>
 
-  <aside class="trace-rail" aria-label="Page progress">
+  <aside class="trace-rail" aria-label="Page progress and section navigation">
     <div class="trace-line"><span id="tracePulse"></span></div>
     <ol>
-      <li class="active" data-section="top"><b>00</b><span>Two sides</span></li>
-      <li data-section="work"><b>01</b><span>Projects</span></li>
-      <li data-section="history"><b>02</b><span>Experience</span></li>
-      <!-- <li data-section="method"><b>03</b><span>Method</span></li> -->
-      <li data-section="contact"><b>03</b><span>Contact</span></li>
+      <li class="active" data-section="top"><a href="#top"><b>00</b><span>Intro</span></a></li>
+      <li data-section="work"><a href="#work"><b>01</b><span>Projects</span></a></li>
+      <li data-section="history"><a href="#history"><b>02</b><span>Experience</span></a></li>
+      <li data-section="contact"><a href="#contact"><b>03</b><span>Contact</span></a></li>
     </ol>
   </aside>
 
@@ -125,10 +145,34 @@
           <p class="eyebrow"><span>Field records 01–03</span> Selected projects</p>
           <h2>Projects are easier to understand when you can enter them.</h2>
         </div>
-        <p>  Three project records spanning internal systems, full-stack product development, and graph-based software.</p>
+        <p>Three project records spanning internal systems, full-stack product development, and graph-based software.</p>
       </div>
 
-      <article class="case-record calendar-record" data-case="calendar">
+      <nav class="project-index" aria-label="Jump to a project">
+        <p class="project-index__label"><span>Select a record</span> Jump directly to the work you want to inspect.</p>
+        <div class="project-index__grid">
+          <a class="project-index__card" href="#calendar">
+            <span class="project-index__number">01</span>
+            <strong>Company Calendar</strong>
+            <small>Internal systems · Node · Microsoft 365</small>
+            <b>View project →</b>
+          </a>
+          <a class="project-index__card" href="#medora">
+            <span class="project-index__number">02</span>
+            <strong>Medora Exploration Guide</strong>
+            <small>Full-stack · Express · SQLite · UX</small>
+            <b>View project →</b>
+          </a>
+          <a class="project-index__card" href="#flight">
+            <span class="project-index__number">03</span>
+            <strong>Flight Tracker &amp; Finder</strong>
+            <small>C++ · Graphs · BFS · Dijkstra</small>
+            <b>View project →</b>
+          </a>
+        </div>
+      </nav>
+
+      <article class="case-record calendar-record" id="calendar" data-case="calendar">
         <header class="case-tab">
           <div><span>CASE 01</span><strong>Company calendar and resource platform</strong></div>
           <div class="case-state">Production internal platform</div>
@@ -201,6 +245,7 @@
         </section>
 
         <div class="case-inspector rich-inspector">
+          <div class="tab-strip-hint" aria-hidden="true"><span>Project details</span><span>Swipe →</span></div>
           <div class="inspector-tabs" role="tablist" aria-label="Calendar project details">
             <button class="active" type="button" data-view="purpose">How it works</button>
             <button type="button" data-view="evolution">What changed</button>
@@ -239,9 +284,14 @@ sort(today) = happening now → upcoming → earlier</code></pre>
             </div>
           </div>
         </div>
+
+        <nav class="case-pagination case-pagination--next" aria-label="Calendar project navigation">
+          <span><b>CASE 01</b> / COMPLETE</span>
+          <a href="#medora"><small>Next record</small><strong>02 — Medora Exploration Guide →</strong></a>
+        </nav>
       </article>
 
-      <article class="case-record exploration-record" data-case="medora">
+      <article class="case-record exploration-record" id="medora" data-case="medora">
         <header class="case-tab">
           <div><span>CASE 02</span><strong>Medora exploration guide</strong></div>
           <div class="case-state">Code complete · awaiting final content</div>
@@ -290,12 +340,13 @@ sort(today) = happening now → upcoming → earlier</code></pre>
         </div>
 
         <div class="guide-dossier" id="guideDossier">
+          <div class="tab-strip-hint" aria-hidden="true"><span>Project details</span><span>Swipe →</span></div>
           <div class="guide-dossier-tabs" role="tablist" aria-label="Explore the Medora guide project">
-            <button class="active" type="button" data-guide-view="features">The product</button>
-            <button type="button" data-guide-view="challenges">Challenge system</button>
-            <button type="button" data-guide-view="identity">Personal progress</button>
-            <button type="button" data-guide-view="continuity">Built to continue</button>
-            <button type="button" data-guide-view="evolution">How it evolved</button>
+            <button class="active" type="button" data-guide-view="features"><span class="tab-label-long">The product</span><span class="tab-label-short">Product</span></button>
+            <button type="button" data-guide-view="challenges"><span class="tab-label-long">Challenge system</span><span class="tab-label-short">Challenges</span></button>
+            <button type="button" data-guide-view="identity"><span class="tab-label-long">Personal progress</span><span class="tab-label-short">Progress</span></button>
+            <button type="button" data-guide-view="continuity"><span class="tab-label-long">Built to continue</span><span class="tab-label-short">Architecture</span></button>
+            <button type="button" data-guide-view="evolution"><span class="tab-label-long">How it evolved</span><span class="tab-label-short">Evolution</span></button>
           </div>
 
           <div class="guide-dossier-body">
@@ -389,6 +440,12 @@ Database change → API response → web app</code></pre>
           <p>The remaining work is organizational rather than structural: choose the final locations and questions, decide how XP should be incentivized, enter the approved content, and launch the experience.</p>
           <b>READY FOR CONTENT</b>
         </div>
+
+        <nav class="case-pagination" aria-label="Medora project navigation">
+          <a href="#calendar" class="case-pagination__previous"><small>Previous record</small><strong>← 01 — Company Calendar</strong></a>
+          <span><b>CASE 02</b> / COMPLETE</span>
+          <a href="#flight" class="case-pagination__next"><small>Next record</small><strong>03 — Flight Tracker &amp; Finder →</strong></a>
+        </nav>
       </article>
 
       <article class="case-record flight-record" id="flight" data-case="flight">
@@ -452,6 +509,7 @@ Database change → API response → web app</code></pre>
         </div>
 
         <div class="flight-dossier">
+          <div class="tab-strip-hint" aria-hidden="true"><span>Project details</span><span>Swipe →</span></div>
           <div class="flight-dossier-tabs" role="tablist" aria-label="Flight project details">
             <button class="active" type="button" data-flight-view="queries">Search menu</button>
             <button type="button" data-flight-view="engine">Route engine</button>
@@ -633,6 +691,12 @@ Database change → API response → web app</code></pre>
           <span><strong>2</strong> core graph algorithms</span>
           <span><strong>1</strong> directed network</span>
         </div>
+
+        <nav class="case-pagination" aria-label="Flight project navigation">
+          <a href="#medora" class="case-pagination__previous"><small>Previous record</small><strong>← 02 — Medora Exploration Guide</strong></a>
+          <span><b>CASE 03</b> / COMPLETE</span>
+          <a href="#history" class="case-pagination__next"><small>Continue</small><strong>Experience →</strong></a>
+        </nav>
       </article>
 
       <!-- <article class="case-record design-record" data-case="design">
