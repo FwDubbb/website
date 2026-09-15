@@ -16,6 +16,11 @@
     if (!inspectionWindow) return;
     const bounded = Math.max(0, Math.min(100, Number(value)));
     inspectionWindow.style.setProperty('--reveal', `${bounded}%`);
+    revealControl.value = bounded;
+    revealControl.setAttribute('aria-valuetext', bounded === 0 ? 'Professional side' : bounded === 100 ? 'Personal side' : `${bounded}% personal side`);
+    inspectionWindow.querySelector('.personal-layer').setAttribute('aria-hidden', String(bounded === 0));
+    inspectionWindow.querySelector('.professional-layer').setAttribute('aria-hidden', String(bounded === 100));
+    document.querySelectorAll('[data-reveal]').forEach(button => button.setAttribute('aria-pressed', String(Number(button.dataset.reveal) === bounded)));
     if (layerLabel) {
       layerLabel.textContent = bounded > 64 ? 'Personal side' : bounded < 36 ? 'Professional side' : 'Both in view';
     }
@@ -23,10 +28,19 @@
 
   revealControl?.addEventListener('input', (event) => setReveal(event.target.value));
 
+  document.querySelectorAll('[data-reveal]').forEach(button => button.addEventListener('click', () => setReveal(button.dataset.reveal)));
+
+  function setMachine(machine, active) {
+    machine.classList.toggle('inspecting', active);
+    machine.querySelector('.machine-switch').setAttribute('aria-pressed', String(active));
+    machine.querySelector('.phone-surface').inert = active;
+    machine.querySelector('.machine-underlay').inert = !active;
+  }
+
   function setAllLayers(active) {
+    document.querySelectorAll('.project-details').forEach(details => { details.open = active; });
     document.querySelectorAll('.experience-machine').forEach((machine) => {
-      machine.classList.toggle('inspecting', active);
-      machine.querySelector('.machine-switch')?.setAttribute('aria-pressed', String(active));
+      setMachine(machine, active);
     });
 
     document.querySelectorAll('.case-inspector').forEach((inspector) => {
@@ -68,6 +82,7 @@
     mobileIndex.hidden = !open;
     mobileIndexToggle.setAttribute('aria-expanded', String(open));
     body.classList.toggle('mobile-index-open', open);
+    mobileIndexToggle.setAttribute('aria-label', open ? 'Close section menu' : 'Open section menu');
   }
 
   mobileIndexToggle?.addEventListener('click', () => {
@@ -79,49 +94,66 @@
   });
 
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') setMobileIndex(false);
+    if (event.key === 'Escape' && !mobileIndex.hidden) {
+      setMobileIndex(false);
+      mobileIndexToggle.focus();
+    }
   });
 
-  document.querySelectorAll('.case-inspector').forEach((inspector) => {
-    const tabs = [...inspector.querySelectorAll('[data-view]')];
-    const panels = [...inspector.querySelectorAll('[data-panel]')];
-
-    tabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        const view = tab.dataset.view;
-        tabs.forEach((item) => {
-          const selected = item === tab;
-          item.classList.toggle('active', selected);
-          item.setAttribute('aria-selected', String(selected));
-        });
-        panels.forEach((panel) => panel.classList.toggle('active', panel.dataset.panel === view));
+  // Shared tab behavior: one selected tab, associated panels, and arrow-key navigation.
+  function setupTabs(root, tabAttribute, panelAttribute) {
+    const tabs = [...root.querySelectorAll('[' + tabAttribute + ']')];
+    const panels = [...root.querySelectorAll('[' + panelAttribute + ']')];
+    const prefix = root.closest('[data-case]').id + '-' + tabAttribute;
+    function select(tab) {
+      tabs.forEach((item, i) => {
+        const active = item === tab;
+        item.classList.toggle('active', active);
+        item.setAttribute('aria-selected', String(active));
+        item.tabIndex = active ? 0 : -1;
+        const panel = panels.find(p => p.getAttribute(panelAttribute) === item.getAttribute(tabAttribute));
+        panel.hidden = !active;
+        panel.classList.toggle('active', active);
+      });
+    }
+    tabs.forEach((tab, i) => {
+      const panel = panels.find(p => p.getAttribute(panelAttribute) === tab.getAttribute(tabAttribute));
+      tab.id = prefix + '-tab-' + i;
+      panel.id = panel.id || prefix + '-panel-' + i;
+      tab.setAttribute('role', 'tab');
+      tab.setAttribute('aria-controls', panel.id);
+      panel.setAttribute('role', 'tabpanel');
+      panel.setAttribute('aria-labelledby', tab.id);
+      panel.tabIndex = 0;
+      tab.addEventListener('click', () => select(tab));
+      tab.addEventListener('keydown', event => {
+        let index = i;
+        if (event.key === 'ArrowRight') index = (i + 1) % tabs.length;
+        else if (event.key === 'ArrowLeft') index = (i + tabs.length - 1) % tabs.length;
+        else if (event.key === 'Home') index = 0;
+        else if (event.key === 'End') index = tabs.length - 1;
+        else return;
+        event.preventDefault();
+        select(tabs[index]);
+        tabs[index].focus({ preventScroll: true });
+        tabs[index].scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' });
       });
     });
+    select(tabs.find(tab => tab.classList.contains('active')) || tabs[0]);
+  }
+  [['.case-inspector', 'data-view', 'data-panel'], ['.guide-dossier', 'data-guide-view', 'data-guide-panel'], ['.flight-dossier', 'data-flight-view', 'data-flight-panel']].forEach(([selector, tab, panel]) => {
+    document.querySelectorAll(selector).forEach(root => setupTabs(root, tab, panel));
   });
 
-  document.querySelectorAll('.machine-switch').forEach((button) => {
-    button.addEventListener('click', () => {
-      const machine = button.closest('.experience-machine');
-      const active = machine.classList.toggle('inspecting');
-      button.setAttribute('aria-pressed', String(active));
-    });
+  document.querySelectorAll('.experience-machine').forEach(machine => {
+    setMachine(machine, false);
+    machine.querySelector('.machine-switch').addEventListener('click', () => setMachine(machine, !machine.classList.contains('inspecting')));
   });
-
-  document.querySelectorAll('.guide-dossier').forEach((dossier) => {
-    const tabs = [...dossier.querySelectorAll('[data-guide-view]')];
-    const panels = [...dossier.querySelectorAll('[data-guide-panel]')];
-
-    tabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        const view = tab.dataset.guideView;
-        tabs.forEach((item) => {
-          const selected = item === tab;
-          item.classList.toggle('active', selected);
-          item.setAttribute('aria-selected', String(selected));
-        });
-        panels.forEach((panel) => panel.classList.toggle('active', panel.dataset.guidePanel === view));
-      });
-    });
+  document.getElementById('openGuideChallenge')?.addEventListener('click', () => {
+    const tab = document.querySelector('[data-guide-view="challenges"]');
+    tab.click();
+    tab.focus({ preventScroll: true });
+    document.getElementById('guideDossier').scrollIntoView({ block: 'start' });
   });
 
   const routeData = {
@@ -157,7 +189,7 @@
     button.addEventListener('click', () => {
       const data = routeData[button.dataset.route];
       if (!data) return;
-      routeButtons.forEach((item) => item.classList.toggle('active', item === button));
+      routeButtons.forEach((item) => { item.classList.toggle('active', item === button); item.setAttribute('aria-pressed', String(item === button)); });
       document.getElementById('routeStatus').textContent = data.status;
       document.getElementById('routeMethod').textContent = data.method;
       document.getElementById('routePath').textContent = data.path;
@@ -170,23 +202,6 @@
           routePath.style.animation = '';
         });
       }
-    });
-  });
-
-  document.querySelectorAll('.flight-dossier').forEach((dossier) => {
-    const tabs = [...dossier.querySelectorAll('[data-flight-view]')];
-    const panels = [...dossier.querySelectorAll('[data-flight-panel]')];
-
-    tabs.forEach((tab) => {
-      tab.addEventListener('click', () => {
-        const view = tab.dataset.flightView;
-        tabs.forEach((item) => {
-          const selected = item === tab;
-          item.classList.toggle('active', selected);
-          item.setAttribute('aria-selected', String(selected));
-        });
-        panels.forEach((panel) => panel.classList.toggle('active', panel.dataset.flightPanel === view));
-      });
     });
   });
 
@@ -214,7 +229,7 @@
     button.addEventListener('click', () => {
       const data = flightQueryData[button.dataset.flightQuery];
       if (!data) return;
-      flightQueryButtons.forEach((item) => item.classList.toggle('active', item === button));
+      flightQueryButtons.forEach((item) => { item.classList.toggle('active', item === button); item.setAttribute('aria-pressed', String(item === button)); });
       document.getElementById('flightQueryNumber').textContent = data.number;
       document.getElementById('flightQueryTitle').textContent = data.title;
       document.getElementById('flightQueryDescription').textContent = data.description;
@@ -223,17 +238,6 @@
       document.getElementById('flightQueryEngine').textContent = data.engine;
     });
   });
-
-  const designButtons = [...document.querySelectorAll('[data-design]')];
-  const designPanels = [...document.querySelectorAll('[data-design-panel]')];
-  designButtons.forEach((button) => {
-    button.addEventListener('click', () => {
-      const target = button.dataset.design;
-      designButtons.forEach((item) => item.classList.toggle('active', item === button));
-      designPanels.forEach((panel) => panel.classList.toggle('active', panel.dataset.designPanel === target));
-    });
-  });
-
 
   const calendarCompareData = {
     lsc: {
@@ -295,11 +299,12 @@
       if (!areaData[selectedVersion]) selectedVersion = 'after';
       const data = areaData[selectedVersion];
 
-      areaButtons.forEach((button) => button.classList.toggle('active', button.dataset.compareArea === selectedArea));
+      areaButtons.forEach((button) => { const active = button.dataset.compareArea === selectedArea; button.classList.toggle('active', active); button.setAttribute('aria-pressed', String(active)); });
       versionButtons.forEach((button) => {
         const isBefore = button.dataset.compareVersion === 'before';
         button.disabled = selectedArea === 'day' && isBefore;
         button.classList.toggle('active', button.dataset.compareVersion === selectedVersion);
+        button.setAttribute('aria-pressed', String(button.dataset.compareVersion === selectedVersion));
       });
 
       if (compareImage) {
@@ -332,28 +337,60 @@
     renderCalendarComparison();
   }
 
-  const revealTargets = document.querySelectorAll('.case-record, .principle-statement, .history-heading, .history-ledger, .method-grid, .contact-grid');
-  revealTargets.forEach((target) => target.classList.add('reveal-on-scroll'));
+  // These controls choose an illustrative state, rather than separate tab panels.
+  document.querySelectorAll('.route-controls, .compare-control-group').forEach(group => group.setAttribute('role', 'group'));
+  document.querySelectorAll('[data-route], [data-flight-query]').forEach(button => button.setAttribute('aria-pressed', String(button.classList.contains('active'))));
+  document.querySelector('.route-output')?.setAttribute('aria-live', 'polite');
+  document.querySelector('.compare-figure figcaption')?.setAttribute('aria-live', 'polite');
+  const imageShell = document.querySelector('.compare-image-shell');
+  imageShell.tabIndex = 0;
+  imageShell.setAttribute('role', 'region');
+  imageShell.setAttribute('aria-label', 'Calendar screenshot; scroll horizontally to explore the full image');
 
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) entry.target.classList.add('visible');
-    });
-  }, { threshold: 0.1 });
-  revealTargets.forEach((target) => revealObserver.observe(target));
+  document.querySelectorAll('.close-record').forEach(button => button.addEventListener('click', () => {
+    const details = button.closest('details');
+    details.open = false;
+    details.querySelector('summary').focus({ preventScroll: true });
+    details.closest('.case-record').scrollIntoView({ block: 'start' });
+  }));
+  function revealTarget(hash, focus = false) {
+    let id;
+    try { id = decodeURIComponent(hash.slice(1)); } catch { return; }
+    const target = document.getElementById(id);
+    if (!target) return;
+    let ancestor = target.closest('details');
+    while (ancestor) { ancestor.open = true; ancestor = ancestor.parentElement.closest('details'); }
+    if (target.matches('.case-record')) target.querySelector('.project-details').open = true;
+    if (target.matches('[role="tabpanel"]')) document.getElementById(target.getAttribute('aria-labelledby'))?.click();
+    target.scrollIntoView({ block: 'start' });
+    if (focus) { if (!target.hasAttribute('tabindex')) target.tabIndex = -1; target.focus({ preventScroll: true }); }
+  }
+  document.querySelectorAll('a[href^="#"]').forEach(link => link.addEventListener('click', event => {
+    const hash = link.getAttribute('href');
+    if (!document.getElementById(hash.slice(1))) return;
+    event.preventDefault();
+    setMobileIndex(false);
+    if (location.hash !== hash) history.pushState(null, '', hash);
+    revealTarget(hash, true);
+  }));
+  window.addEventListener('hashchange', () => revealTarget(location.hash));
+  window.addEventListener('load', () => { if (location.hash) revealTarget(location.hash); });
+  document.addEventListener('click', event => {
+    if (!mobileIndex.hidden && !event.target.closest('.site-header')) setMobileIndex(false);
+  });
+  document.addEventListener('focusin', event => {
+    if (!mobileIndex.hidden && !event.target.closest('.site-header')) setMobileIndex(false);
+  });
 
-  function positionRailItems() {
-    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
-    if (scrollable <= 0) return;
-
-    observedSections.forEach((section) => {
-      const item = railItems.find((railItem) => railItem.dataset.section === section.dataset.observe);
-      if (!item) return;
-
-      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-      const activationScroll = sectionTop - (window.innerHeight * 0.36);
-      const ratio = Math.max(0, Math.min(1, activationScroll / scrollable));
-      item.style.top = `${ratio * 100}%`;
+  if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
+      });
+    }, { threshold: 0, rootMargin: '0px 0px -25px 0px' });
+    document.querySelectorAll('.case-overview, .history-heading, .skills-grid, .contact-grid').forEach(target => {
+      target.classList.add('reveal-on-scroll');
+      observer.observe(target);
     });
   }
 
@@ -367,28 +404,29 @@
     observedSections.forEach((section) => {
       if (section.getBoundingClientRect().top <= trigger) current = section.dataset.observe;
     });
-    railItems.forEach((item) => item.classList.toggle('active', item.dataset.section === current));
-    sectionLinks.forEach((link) => link.classList.toggle('active', link.dataset.sectionLink === current));
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4) current = 'contact';
+    function markCurrent(link, active) {
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    }
+    railItems.forEach(item => { item.classList.toggle('active', item.dataset.section === current); markCurrent(item.querySelector('a'), item.dataset.section === current); });
+    sectionLinks.forEach(link => markCurrent(link, link.dataset.sectionLink === current));
+    document.getElementById('mobileSectionLabel').textContent = { top: 'About', work: 'Projects', history: 'Experience', skills: 'Skills', contact: 'Contact' }[current];
   }
 
-  function refreshRail() {
-    positionRailItems();
-    updateRail();
+  let railFrame = 0;
+  function scheduleRail() {
+    if (railFrame) return;
+    railFrame = requestAnimationFrame(() => { updateRail(); railFrame = 0; });
   }
-
-  window.addEventListener('scroll', updateRail, { passive: true });
+  window.addEventListener('scroll', scheduleRail, { passive: true });
   window.addEventListener('resize', () => {
     if (window.innerWidth > 820) setMobileIndex(false);
-    refreshRail();
+    scheduleRail();
   });
-  window.addEventListener('load', refreshRail);
-
-  if ('ResizeObserver' in window) {
-    const railLayoutObserver = new ResizeObserver(() => positionRailItems());
-    railLayoutObserver.observe(document.body);
-  }
-
-  refreshRail();
+  if ('ResizeObserver' in window) new ResizeObserver(scheduleRail).observe(document.body);
+  updateRail();
   syncInspectControls(body.classList.contains('system-mode'));
-  setReveal(revealControl?.value || 58);
+  setReveal(revealControl?.value || 0);
 })();

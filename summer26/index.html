@@ -7,17 +7,16 @@
   <title>William OH | Interactive Portfolio</title>
   <link rel="stylesheet" href="styles.css">
 
-
-
   <meta name="robots" content="index, follow">
 
   <link
     rel="canonical"
     href="https://oseihwere.com/summer26"
   >
-  
+
 </head>
 <body>
+  <a class="skip-link" href="#top">Skip to content</a>
   <div class="page-noise" aria-hidden="true"></div>
 
   <header class="site-header">
@@ -25,15 +24,17 @@
       <span class="identity-mark">WOH</span>
       <span class="identity-copy">
         <strong>William Osei-Hwere</strong>
-        <small>Systems · Software · Automation · UI/UX</small>
+        <small>Software engineering · Systems · Automation</small>
       </span>
     </a>
 
     <nav class="site-nav" aria-label="Primary navigation">
+      <a href="#about" data-section-link="top"><span>00</span> About</a>
       <a href="#work" data-section-link="work"><span>01</span> Projects</a>
       <a href="#history" data-section-link="history"><span>02</span> Experience</a>
-      <a href="/summer26/assets/william-osei-hwere-resume.pdf" target="_blank" rel="noopener noreferrer"><span>↗</span> Résumé</a>
-      <a href="#contact" data-section-link="contact"><span>03</span> Contact</a>
+      <a href="#skills" data-section-link="skills"><span>03</span> Skills</a>
+      <a href="#contact" data-section-link="contact"><span>04</span> Contact</a>
+      <a href="assets/william-osei-hwere-resume.pdf" target="_blank" rel="noopener noreferrer"><span>↗</span> Résumé</a>
     </nav>
 
     <div class="header-actions">
@@ -41,19 +42,20 @@
         <span class="inspect-default">Inspect systems</span>
         <span class="inspect-active">Return to surfaces</span>
       </button>
-      <button class="mobile-index-toggle" id="mobileIndexToggle" type="button" aria-expanded="false" aria-controls="mobileIndex">
-        <span>Index</span><b aria-hidden="true">+</b>
+      <button class="mobile-index-toggle" id="mobileIndexToggle" type="button" aria-label="Open section menu" aria-expanded="false" aria-controls="mobileIndex">
+        <span id="mobileSectionLabel">About</span><b aria-hidden="true">+</b>
       </button>
     </div>
 
     <div class="mobile-index" id="mobileIndex" hidden>
       <div class="mobile-index__topline"><span>INDEX / PORTFOLIO</span><span>SUMMER 26</span></div>
       <nav aria-label="Mobile navigation">
-        <a href="#top" data-section-link="top"><b>00</b><span>Intro</span></a>
+        <a href="#about" data-section-link="top"><b>00</b><span>About</span></a>
         <a href="#work" data-section-link="work"><b>01</b><span>Projects</span></a>
         <a href="#history" data-section-link="history"><b>02</b><span>Experience</span></a>
-        <a href="#contact" data-section-link="contact"><b>03</b><span>Contact</span></a>
-        <a href="/summer26/assets/william-osei-hwere-resume.pdf" target="_blank" rel="noopener noreferrer"><b>↗</b><span>Résumé</span></a>
+        <a href="#skills" data-section-link="skills"><b>03</b><span>Skills</span></a>
+        <a href="#contact" data-section-link="contact"><b>04</b><span>Contact</span></a>
+        <a href="assets/william-osei-hwere-resume.pdf" target="_blank" rel="noopener noreferrer"><b>↗</b><span>Résumé</span></a>
       </nav>
       <button class="mobile-inspect" id="mobileInspect" type="button" aria-pressed="false">Inspect project systems +</button>
     </div>
@@ -62,24 +64,27 @@
   <aside class="trace-rail" aria-label="Page progress and section navigation">
     <div class="trace-line"><span id="tracePulse"></span></div>
     <ol>
-      <li class="active" data-section="top"><a href="#top"><b>00</b><span>Intro</span></a></li>
+      <li class="active" data-section="top"><a href="#about"><b>00</b><span>About</span></a></li>
       <li data-section="work"><a href="#work"><b>01</b><span>Projects</span></a></li>
       <li data-section="history"><a href="#history"><b>02</b><span>Experience</span></a></li>
-      <li data-section="contact"><a href="#contact"><b>03</b><span>Contact</span></a></li>
+      <li data-section="skills"><a href="#skills"><b>03</b><span>Skills</span></a></li>
+      <li data-section="contact"><a href="#contact"><b>04</b><span>Contact</span></a></li>
     </ol>
   </aside>
 
-  <main id="top">
-    <section class="hero section-shell" data-observe="top">
+  <main id="top" tabindex="-1">
+    <section class="hero section-shell" id="about" data-observe="top" aria-labelledby="introTitle">
       <div class="hero-copy">
-        <p class="eyebrow"><span>Personal record 00</span> Dual Living</p>
-        <h1>I create.<br><em>I explore.</em><br> I improve</h1>
-        <p class="hero-intro">
-          My work is technical, operational, and detail-heavy. Outside of it, I am creative, competitive, reflective, and always learning something new. Drag across the record to meet both sides.
-        </p>
+        <p class="eyebrow"><span>Personal record 00</span> About William</p>
+        <p class="hero-role">Computer science student. Software developer.</p>
+        <h1 id="introTitle">I create.<br><em>I explore.</em><br>I improve.</h1>
+        <p class="hero-intro">I’m William Osei-Hwere, a Dakota State University student specializing in software engineering and cybersecurity. I build useful software, automate everyday work, and make complex systems easier to use.</p>
+        <p class="hero-stack">JavaScript / Node.js / C++ / Python / SQL</p>
+        <div class="hero-actions"><a class="action-link primary-action" href="#work">Explore projects <span>↓</span></a><a class="action-link" href="assets/william-osei-hwere-resume.pdf" target="_blank" rel="noopener noreferrer">Résumé ↗</a><a class="text-action" href="#contact">Get in touch ↗</a></div>
+        <p class="hero-fact">DSU · Class of 2027 <span>Recent IT intern at TRMF</span></p>
         <div class="hero-instructions">
           <span class="instruction-number">01</span>
-          <p>Move the inspection line from my professional life to the person behind the projects.</p>
+          <p>Drag to meet both sides of me, or choose a view below.</p>
         </div>
       </div>
 
@@ -89,12 +94,12 @@
           <span id="layerLabel">Professional side</span>
         </div>
 
-        <div class="inspection-window identity-window" style="--reveal: 58%;">
+        <div class="inspection-window identity-window" style="--reveal: 0%;">
           <div class="personal-layer" aria-hidden="true">
             <div class="personal-grid"></div>
             <div class="personal-heading">
               <small>OFF THE CLOCK</small>
-              <strong>Creativity does not clock out after 5pm.</strong>
+              <strong>Curiosity beyond the keyboard.</strong>
               <p>Competition, music, design, stories, faith, and the people around me all shape how I approach the work.</p>
             </div>
             <div class="interest interest-a"><b>01</b><span>Sports</span><small>Competition / movement</small></div>
@@ -107,9 +112,9 @@
           <div class="professional-layer">
             <div class="professional-topline"><span>WORKING PROFILE</span><span> 📍USA</span></div>
             <div class="professional-main">
-              <p class="professional-kicker">Systems administrator · Developer · Builder</p>
+              <p class="professional-kicker">Software developer · Systems thinker</p>
               <h2>I make complex tools easier to trust.</h2>
-              <p>I work across infrastructure, automation, web development, identity, internal platforms, and the messy boundaries between them.</p>
+              <p>From internal tools to full-stack apps, I connect reliable systems with thoughtful interfaces.</p>
               <div class="professional-counters">
                 <div><strong>Systems</strong><span>M365 · Entra · Windows · IIS</span></div>
                 <div><strong>Software</strong><span>JavaScript · Node · C++ · SQL</span></div>
@@ -120,23 +125,13 @@
           </div>
 
           <div class="inspection-divider" aria-hidden="true"><span>DRAG</span></div>
-          <input id="revealControl" class="reveal-control" type="range" min="0" max="100" value="58" aria-label="Move between William's personal and professional sides">
+          <input id="revealControl" class="reveal-control" type="range" min="0" max="100" value="0" aria-label="Move between William's personal and professional sides">
         </div>
 
+        <div class="identity-presets" role="group" aria-label="Choose an identity view"><button type="button" data-reveal="0" aria-pressed="true">At work</button><button type="button" data-reveal="50" aria-pressed="false">Both sides</button><button type="button" data-reveal="100" aria-pressed="false">Off the clock</button></div>
         <div class="layer-legend">
           <span><i class="personal-dot"></i> Life outside the work</span>
           <span><i class="professional-dot"></i> Professional practice</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="principle section-shell ruled-section">
-      <div class="section-index">01 / PROJECT INDEX</div>
-      <div class="principle-statement">
-        <p class="pull-quote">“Do not just show the finished screen. Show the thinking that made it possible.”</p>
-        <div class="principle-copy">
-          <p>This portfolio is built as a set of project records. Every record explains the need, the construction, the decisions, and what changed because the project existed.</p>
-          <div class="notation"><span>HOW TO USE</span> Click, switch, trace, and inspect. Each interaction reflects something distinct about the project itself.</div>
         </div>
       </div>
     </section>
@@ -145,30 +140,30 @@
       <div class="section-header">
         <div>
           <p class="eyebrow"><span>Field records 01–03</span> Selected projects</p>
-          <h2>Projects are easier to understand when you can enter them.</h2>
+          <h2>Selected work.<br><em>Open for inspection.</em></h2>
         </div>
-        <p>Three project records spanning internal systems, full-stack product development, and graph-based software.</p>
+        <p>Useful tools, from company operations to route-finding algorithms. Scan the essentials, then open a record to explore how it works.</p>
       </div>
 
       <nav class="project-index" aria-label="Jump to a project">
-        <p class="project-index__label"><span>Select a record</span> Jump directly to the work you want to inspect.</p>
+        <p class="project-index__label"><span>Three projects / three different problems</span> Choose a record to explore.</p>
         <div class="project-index__grid">
           <a class="project-index__card" href="#calendar">
             <span class="project-index__number">01</span>
             <strong>Company Calendar</strong>
-            <small>Internal systems · Node · Microsoft 365</small>
+            <p>Room and vehicle availability at a glance.</p><small>Node.js · Microsoft 365</small>
             <b>View project →</b>
           </a>
           <a class="project-index__card" href="#medora">
             <span class="project-index__number">02</span>
             <strong>Medora Exploration Guide</strong>
-            <small>Full-stack · Express · SQLite · UX</small>
+            <p>Turn a town visit into a personal discovery trail.</p><small>JavaScript · Express · SQLite</small>
             <b>View project →</b>
           </a>
           <a class="project-index__card" href="#flight">
             <span class="project-index__number">03</span>
             <strong>Flight Tracker &amp; Finder</strong>
-            <small>C++ · Graphs · BFS · Dijkstra</small>
+            <p>Find routes by fare, distance, or connections.</p><small>C++ · BFS · Dijkstra</small>
             <b>View project →</b>
           </a>
         </div>
@@ -180,42 +175,15 @@
           <div class="case-state">Production internal platform</div>
         </header>
 
-        <div class="calendar-case-grid">
-          <div class="case-summary expanded-summary">
-            <p class="case-label">The project</p>
-            <h3>One place to understand what is booked, what is happening, when it is happening, and where people need to be.</h3>
-            <p>The calendar brings rooms, vehicles, events, and department schedules into one internal platform. The original system already contained working data, but much of the information employees needed was clipped, hidden, or difficult to interpret. I rebuilt the most-used views around the way people actually scan availability and make decisions.</p>
-            <dl>
-              <div><dt>Coverage</dt><dd>LSC · RRH · GES · Vehicles · Schafer · Training &amp; Development</dd></div>
-              <div><dt>Original views</dt><dd>Month · Week · Agenda</dd></div>
-              <div><dt>Added views</dt><dd>Day · Holiday through 2027</dd></div>
-              <div><dt>Reach</dt><dd>Company environment supporting 900+ users</dd></div>
-            </dl>
-          </div>
-
-          <div class="calendar-demo">
-            <div class="calendar-demo-bar"><span>TRMF / OPERATIONS</span><span>AUGUST 2026</span></div>
-            <div class="calendar-demo-tabs"><button class="active" type="button">Month</button><button type="button">Week</button><button type="button">Day</button><button type="button">Agenda</button><button type="button">Holiday</button></div>
-            <div class="calendar-demo-body">
-              <aside><b>FILTER</b><span class="checked">Vehicles</span><span class="checked">LSC Rooms</span><span>GES</span><span>RRH</span><span>Holidays</span></aside>
-              <div class="calendar-days">
-                <span>MON</span><span>TUE</span><span class="today">WED</span><span>THU</span><span>FRI</span>
-                <article><small>8:00</small><b>Vehicle 18</b><em>Booked · Facilities</em></article>
-                <article class="wide"><small>10:30</small><b>LSC Boardroom</b><em>Operations meeting</em></article>
-                <article class="available"><small>ALL DAY</small><b>Vehicle 116</b><em>Available · click to book</em></article>
-              </div>
-            </div>
-            <div class="calendar-demo-footer"><span>Existing brand language retained</span><span>Information redesigned around decisions</span></div>
-          </div>
-        </div>
-
+        <div class="case-summary case-overview"><div><p class="case-label">Production internal platform</p><h3>Clearer bookings. Faster decisions.</h3><p>I rebuilt the company calendar’s busiest views so employees could scan room bookings, vehicle availability, and events without losing details in crowded grids.</p></div><dl><div><dt>Built</dt><dd>Redesigned week views; new day and holiday views</dd></div><div><dt>Stack</dt><dd>JavaScript · Node.js · Exchange / Microsoft 365</dd></div><div><dt>Reach</dt><dd>Six calendar areas in an environment supporting 900+ users</dd></div></dl></div>
+        <details class="project-details" id="calendar-details"><summary><span>Explore the redesign</span><small>Before / after · architecture · outcomes</small><b aria-hidden="true">+</b></summary>
         <section class="calendar-evidence" aria-labelledby="calendarEvidenceTitle">
           <div class="evidence-header">
             <div>
               <p class="case-label">Visual evidence</p>
-              <h4 id="calendarEvidenceTitle">The same operational data became much easier to read.</h4>
+              <h4 id="calendarEvidenceTitle">See what changed.</h4>
             </div>
-            <p>Choose a calendar area, then switch between the original and redesigned view. Names and email addresses in these public screenshots have been blurred.</p>
+            <p>Choose an area and compare the original with the redesign. Names and emails are blurred.</p>
           </div>
 
           <div class="calendar-compare" id="calendarCompare">
@@ -235,7 +203,7 @@
 
             <figure class="compare-figure">
               <div class="compare-image-shell">
-                <img id="calendarCompareImage" src="oldlsc.png" alt="Original LSC weekly calendar view">
+                <img loading="lazy" decoding="async" id="calendarCompareImage" src="oldlsc.png" alt="Original LSC weekly calendar view">
                 <span id="calendarCompareBadge">ORIGINAL / LSC WEEK</span>
               </div>
               <figcaption>
@@ -257,20 +225,20 @@
           <div class="inspector-body">
             <div class="case-view active" data-panel="purpose">
               <span class="view-code">P / 01</span>
-              <h4>Several operational calendars become one place employees can actually use.</h4>
-              <p>The platform combines room bookings, vehicle bookings, department events, and company schedules across LSC, RRH, GES, Vehicles, Schafer, and Training &amp; Development. Employees can move between month, week, day, agenda, and holiday views instead of opening separate calendars and comparing them manually.</p>
+              <h4>Six calendars. One place to act.</h4>
+              <p>Room, vehicle, and event calendars cover LSC, RRH, GES, Vehicles, Schafer, and Training &amp; Development. Employees can switch between month, week, day, agenda, and holiday views.</p>
               <div class="detail-grid"><div><b>Know what is booked</b><span>Rooms and vehicles appear alongside their status and booking window.</span></div><div><b>Know what is happening</b><span>Company events are grouped by place, date, and operational context.</span></div><div><b>Know where to act</b><span>Available vehicles can open the booking form with the vehicle already selected.</span></div></div>
             </div>
             <div class="case-view" data-panel="evolution">
               <span class="view-code">E / 01</span>
-              <h4>I kept the familiar company brand, then rebuilt the views around the information people were missing.</h4>
-              <p>The original version included month, week, and agenda views for all six calendar areas, but crowded time-based layouts hid important details. I designed a new day view, created a holiday view covering company holidays through 2027, and redesigned the week experience for each area so rooms, vehicles, and events could present the information their users needed.</p>
+              <h4>Familiar branding. More useful views.</h4>
+              <p>Crowded time grids hid booking details. I redesigned each area’s week view, added a day view, and introduced company holidays through 2027. Existing month and agenda views remained available.</p>
               <div class="change-ledger"><span>Preserved</span><b>Company branding · existing data · familiar navigation · six operational areas</b><span>Rebuilt</span><b>Week layouts for LSC, RRH, GES, Vehicles, Schafer, and Training &amp; Development</b><span>Added</span><b>Day view · holiday view · requester details · availability · booking actions · hover information</b></div>
             </div>
             <div class="case-view" data-panel="architecture">
               <span class="view-code">A / 01</span>
-              <h4>The redesign also changed how the browser turns calendar data into useful decisions.</h4>
-              <p>Exchange resource mailboxes and event calendars provide the source data. The Node service retrieves and normalizes events, applies date and mailbox filters, handles time-zone rules, and returns more fields from the API—including requester, time, purpose, and availability. The redesigned week and day views render event-based cards instead of relying only on narrow time-grid placement.</p>
+              <h4>From Exchange data to readable event cards.</h4>
+              <p>A Node service normalizes Exchange events, filters dates and mailboxes, and handles time zones. The API supplies requester, time, purpose, and availability fields for readable week and day cards.</p>
               <div class="mini-flow"><b>Exchange calendars</b><i>→</i><b>Node service</b><i>→</i><b>Calendar API</b><i>→</i><b>Event-based views</b></div>
               <pre><code>GET /api/calendar?start=&amp;end=&amp;mbox=
 status = past | happening-now | upcoming | available
@@ -279,10 +247,10 @@ sort(today) = happening now → upcoming → earlier</code></pre>
             </div>
             <div class="case-view" data-panel="outcome">
               <span class="view-code">O / 01</span>
-              <h4>The finished platform reduces the time between “What is available?” and “I know what to do next.”</h4>
+              <h4>Availability becomes a clear next action.</h4>
               <p>Green identifies availability, blue identifies future bookings, orange identifies events happening now, grey identifies past events, and a red treatment marks the current day. Current events automatically appear ahead of future and past items. Requester and booking information is visible where useful, and clicking an available vehicle opens a shorter booking path with the vehicle already selected.</p>
               <div class="impact-grid"><div><strong>900+</strong><span>users in the supported company environment</span></div><div><strong>6</strong><span>calendar areas redesigned for their own information needs</span></div><div><strong>5</strong><span>ways to inspect time: month, week, day, agenda, holiday</span></div><div><strong>1 click</strong><span>from an available vehicle to a preselected booking form</span></div></div>
-              <!-- <div class="result-stamp">LESS SEARCHING<br><small>FASTER DECISIONS</small></div> -->
+
             </div>
           </div>
         </div>
@@ -291,6 +259,8 @@ sort(today) = happening now → upcoming → earlier</code></pre>
           <span><b>CASE 01</b> / COMPLETE</span>
           <a href="#medora"><small>Next record</small><strong>02 — Medora Exploration Guide →</strong></a>
         </nav>
+        <button class="close-record" type="button">Close record ↑</button>
+        </details>
       </article>
 
       <article class="case-record exploration-record" id="medora" data-case="medora">
@@ -299,19 +269,9 @@ sort(today) = happening now → upcoming → earlier</code></pre>
           <div class="case-state">Code complete · awaiting final content</div>
         </header>
 
+        <div class="case-summary case-overview"><div><p class="case-label">Full-stack exploration app</p><h3>A town to explore. A reason to look closer.</h3><p>I designed and built a full-stack exploration guide for Medora. Players discover locations, complete challenges, earn XP, and keep a personal journal.</p></div><dl><div><dt>Role</dt><dd>Concept · UX · database · full-stack development</dd></div><div><dt>Stack</dt><dd>HTML · CSS · JavaScript · Node.js · Express · SQLite</dd></div><div><dt>Result</dt><dd>Code complete and presented; awaiting final company content</dd></div></dl></div>
+        <details class="project-details" id="medora-details"><summary><span>Explore the experience</span><small>Interactive preview · product · development story</small><b aria-hidden="true">+</b></summary>
         <div class="case-layout reverse">
-          <div class="case-summary expanded-summary exploration-summary">
-            <p class="case-label">The origin</p>
-            <h3>A scavenger hunt was the first idea—and it grew into a digital way to experience Medora more intentionally.</h3>
-            <p>The idea arrived almost immediately when I began deciding what I could build for the company: a scavenger hunt. Medora already has rich history, memorable places, and far more information than most visitors can absorb by simply walking through town. I wanted to digitize that experience, make it fun and competitive, and give people just enough guidance to slow down, look closer, and become more intentional about what they were experiencing.</p>
-            <p>The project went through roughly five major iterations before reaching the current version. The final product is designed for everyone—guests, employees, seasonal workers, and anyone who wants a more active way to explore Medora.</p>
-            <dl>
-              <div><dt>Environment</dt><dd>HTML · CSS · JavaScript · Node · Express · SQLite</dd></div>
-              <div><dt>Role</dt><dd>Concept · UX · database · full-stack development</dd></div>
-              <div><dt>Audience</dt><dd>Guests · employees · seasonal workers · explorers</dd></div>
-              <div><dt>Status</dt><dd>Code complete · presented · ready for final company content</dd></div>
-            </dl>
-          </div>
 
           <div class="experience-machine">
             <div class="phone-surface">
@@ -321,7 +281,7 @@ sort(today) = happening now → upcoming → earlier</code></pre>
               <div class="challenge-card">
                 <span>INVESTIGATE · 1,000 XP</span>
                 <p>What detail tells you how this home changed over time?</p>
-                <button type="button">Open challenge</button>
+                <button type="button" id="openGuideChallenge">Explore challenge system ↗</button>
               </div>
               <div class="progress-line"><i></i></div>
               <small>2 of 3 discoveries complete</small>
@@ -355,21 +315,21 @@ sort(today) = happening now → upcoming → earlier</code></pre>
             <section class="guide-panel active" data-guide-panel="features">
               <div class="guide-panel-intro">
                 <span>PRODUCT MAP / 01</span>
-                <h4>Four connected pages turn a list of locations into a complete exploration loop.</h4>
-                <p>The experience is not only about answering questions. It helps the player decide where to go, understand what they completed, compare progress, and remember what they discovered afterward.</p>
+                <h4>Discover. Complete. Remember.</h4>
+                <p>Built for guests, employees, and seasonal workers, the guide connects location discovery, personal progress, recommendations, and a journal.</p>
               </div>
               <div class="feature-map">
-                <article><b>01</b><h5>Profile</h5><p>Shows the player’s chosen character, total XP, completed locations, completed challenges, personal statistics, and position on the global leaderboard.</p></article>
-                <article><b>02</b><h5>Hunt</h5><p>Lists the available Medora locations and the Observe, Investigate, and Experience challenges attached to each place.</p></article>
-                <article><b>03</b><h5>Recommendations</h5><p>Suggests places to visit and activities to try, helping players discover options they may not have known were available.</p></article>
-                <article><b>04</b><h5>Journal</h5><p>Preserves completed challenges with timestamps, location details, answers, XP earned, and Did You Know facts about what the player experienced.</p></article>
+                <article><b>01</b><h5>Profile</h5><p>Character, XP, completed locations and challenges, personal stats, and leaderboard position.</p></article>
+                <article><b>02</b><h5>Hunt</h5><p>Medora locations with Observe, Investigate, and Experience challenges.</p></article>
+                <article><b>03</b><h5>Recommendations</h5><p>Places and activities to help players decide what to explore next.</p></article>
+                <article><b>04</b><h5>Journal</h5><p>Completed challenges, timestamps, locations, answers, XP, and Did You Know facts.</p></article>
               </div>
             </section>
 
             <section class="guide-panel" data-guide-panel="challenges">
               <div class="guide-panel-intro">
                 <span>CHALLENGE LADDER / 02</span>
-                <h4>The XP system rewards the amount of attention a player gives a place.</h4>
+                <h4>Deeper exploration earns more XP.</h4>
                 <p>XP accumulates across independent locations. The more a person observes, investigates, and experiences, the more progress they earn and the farther they can move on the leaderboard.</p>
               </div>
               <div class="challenge-ladder">
@@ -383,7 +343,7 @@ sort(today) = happening now → upcoming → earlier</code></pre>
             <section class="guide-panel" data-guide-panel="identity">
               <div class="guide-panel-intro">
                 <span>PLAYER RECORD / 03</span>
-                <h4>Every player receives an individual identity, history, and record of progress.</h4>
+                <h4>A personal record for every player.</h4>
                 <p>Authentication happens behind the interface. Once signed in, every answer and completion belongs to the correct user and remains available when they return.</p>
               </div>
               <div class="identity-system">
@@ -400,8 +360,8 @@ sort(today) = happening now → upcoming → earlier</code></pre>
             <section class="guide-panel" data-guide-panel="continuity">
               <div class="guide-panel-intro">
                 <span>CONTINUITY PLAN / 04</span>
-                <h4>The app was designed to remain useful after the original developer leaves.</h4>
-                <p>After completing the application, I focused on making it flexible, self-sufficient, and easy for the company to update. The code supplies the reusable structure; the database supplies the content that changes over time.</p>
+                <h4>Built for the next administrator.</h4>
+                <p>Locations, questions, rewards, and recommendations live in the database. Administrators can update content without changing application code.</p>
               </div>
               <div class="continuity-grid">
                 <div class="database-catalog">
@@ -425,7 +385,7 @@ Database change → API response → web app</code></pre>
             <section class="guide-panel" data-guide-panel="evolution">
               <div class="guide-panel-intro">
                 <span>ITERATION RECORD / 05</span>
-                <h4>The project moved from a controlled scavenger route to an open exploration platform.</h4>
+                <h4>From a fixed route to free exploration.</h4>
                 <p>The final product kept the playful motivation of the original scavenger hunt while removing the restrictions that made the early version harder to expand and less flexible for players.</p>
               </div>
               <div class="evolution-track">
@@ -438,8 +398,8 @@ Database change → API response → web app</code></pre>
         </div>
 
         <div class="guide-status">
-          <div><span>CURRENT STATE</span><strong>The application code is complete and has been presented to the company.</strong></div>
-          <p>The remaining work is organizational rather than structural: choose the final locations and questions, decide how XP should be incentivized, enter the approved content, and launch the experience.</p>
+          <div><span>CURRENT STATE</span><strong>Code complete. Presented to the company.</strong></div>
+          <p>Next: approve locations and questions, decide XP incentives, enter the final content, and launch.</p>
           <b>READY FOR CONTENT</b>
         </div>
 
@@ -448,6 +408,8 @@ Database change → API response → web app</code></pre>
           <span><b>CASE 02</b> / COMPLETE</span>
           <a href="#flight" class="case-pagination__next"><small>Next record</small><strong>03 — Flight Tracker &amp; Finder →</strong></a>
         </nav>
+        <button class="close-record" type="button">Close record ↑</button>
+        </details>
       </article>
 
       <article class="case-record flight-record" id="flight" data-case="flight">
@@ -456,22 +418,9 @@ Database change → API response → web app</code></pre>
           <div class="case-state">Advanced Data Structures · C++</div>
         </header>
 
+        <div class="case-summary case-overview"><div><p class="case-label">Advanced Data Structures · course project</p><h3>One network. More ways to find a route.</h3><p>I built a C++ command-line engine that turns airport and flight files into a searchable graph. It finds routes by fare, distance, connections, time, and required stops.</p><a class="source-link" href="https://github.com/FwDubbb/flighttracker" target="_blank" rel="noopener noreferrer">View source on GitHub <span>↗</span></a></div><dl><div><dt>Built</dt><dd>16 search operations in approximately one month</dd></div><div><dt>Stack</dt><dd>C++ · BFS · Dijkstra · time-aware search</dd></div><div><dt>Scale</dt><dd>100+ airports; 100,000+ original course flight records</dd></div></dl></div>
+        <details class="project-details" id="flight-details"><summary><span>Explore the route engine</span><small>Interactive graph · 16 searches · source code</small><b aria-hidden="true">+</b></summary>
         <div class="flight-grid">
-          <div class="case-summary expanded-summary flight-summary">
-            <p class="case-label">The project</p>
-            <h3>A flight-search engine built for an original course dataset of more than 100,000 directed flight records.</h3>
-            <p>Created for an Advanced Data Structures course, Flight Tracker and Finder parses airport and flight files into a searchable directed graph. Through a 16-option command-line menu, a user can inspect airports and direct flights, discover multi-stop paths, optimize by fare or distance, minimize connections, find destinations under time or budget limits, and require a route to pass through a chosen airport.</p>
-            <p>This was my first project at this scale. Over roughly one month, I had to make file parsing, graph construction, indexed lookup, breadth-first traversal, Dijkstra-based optimization, time-aware searches, and a large menu of user requests work together as one system.</p>
-            <dl>
-              <div><dt>Course</dt><dd>Advanced Data Structures</dd></div>
-              <div><dt>Scale</dt><dd>100+ airports · 100,000+ records in the original course dataset</dd></div>
-              <div><dt>Graph</dt><dd>Directed airport-to-airport connections</dd></div>
-              <div><dt>Language</dt><dd>C++</dd></div>
-              <div><dt>Algorithms</dt><dd>BFS · Dijkstra · constrained time-aware search</dd></div>
-              <div><dt>Duration</dt><dd>Approximately one month</dd></div>
-            </dl>
-            <a class="source-link" href="https://github.com/FwDubbb/flighttracker" target="_blank" rel="noreferrer">Source repository <span>Published now! ↗</span></a>
-          </div>
 
           <div class="route-machine" id="routeMachine">
             <div class="route-machine-top"><span>ILLUSTRATIVE ROUTE REQUEST / USER VIEW</span><span id="routeStatus">LOWEST TOTAL FARE</span></div>
@@ -481,7 +430,7 @@ Database change → API response → web app</code></pre>
               <button type="button" data-route="hops">Fewest connections</button>
             </div>
             <div class="route-map" aria-label="Illustrated directed airport route graph">
-              <svg viewBox="0 0 760 390" role="img" aria-label="Network of airports connected by possible directed flight paths">
+              <svg viewBox="0 0 760 390" preserveAspectRatio="none" role="img" aria-label="Network of airports connected by possible directed flight paths">
                 <defs>
                   <marker id="routeArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 z"></path></marker>
                 </defs>
@@ -524,8 +473,8 @@ Database change → API response → web app</code></pre>
             <section class="flight-panel active" data-flight-panel="queries">
               <div class="flight-panel-intro">
                 <span>Q / 01</span>
-                <h4>The user chose a question. The program chose the search strategy.</h4>
-                <p>The application exposed a broad menu rather than asking users to understand BFS, Dijkstra, or the time-aware search routines behind each request. Select an operation below to see the information required and the type of answer returned.</p>
+                <h4>Choose the question. Inspect the search.</h4>
+                <p>Explore the original 16-operation menu. Each request shows its inputs, output, and underlying search strategy.</p>
               </div>
 
               <div class="query-workbench">
@@ -699,56 +648,10 @@ Database change → API response → web app</code></pre>
           <span><b>CASE 03</b> / COMPLETE</span>
           <a href="#history" class="case-pagination__next"><small>Continue</small><strong>Experience →</strong></a>
         </nav>
+        <button class="close-record" type="button">Close record ↑</button>
+        </details>
       </article>
 
-      <!-- <article class="case-record design-record" data-case="design">
-        <header class="case-tab">
-          <div><span>CASE 04</span><strong>Visual systems: intranet and portfolio</strong></div>
-          <div class="case-state">Creative development</div>
-        </header>
-
-        <div class="design-grid">
-          <div class="case-summary expanded-summary">
-            <p class="case-label">The project family</p>
-            <h3>Technical work also has to communicate.</h3>
-            <p>I use interface design to make systems feel intentional rather than merely functional. The company intranet needed clearer pathways and a more coherent visual experience. This portfolio needed a format that could explain technical work without becoming another grid of project cards.</p>
-            <dl>
-              <div><dt>Surfaces</dt><dd>SharePoint · custom web interfaces</dd></div>
-              <div><dt>Focus</dt><dd>Hierarchy · navigation · identity</dd></div>
-              <div><dt>Tools</dt><dd>HTML · CSS · JavaScript · design systems</dd></div>
-            </dl>
-          </div>
-
-          <div class="design-machine" id="designMachine">
-            <div class="design-switches" role="tablist" aria-label="Choose a design project">
-              <button class="active" type="button" data-design="intranet">Company intranet</button>
-              <button type="button" data-design="portfolio">This portfolio</button>
-            </div>
-            <div class="design-canvas active" data-design-panel="intranet">
-              <div class="intranet-shell">
-                <div class="intranet-brand"><b>TRMF</b><span>EMPLOYEE INTRANET</span></div>
-                <div class="intranet-hero"><small>WELCOME BACK</small><strong>Where do you need to go?</strong></div>
-                <div class="intranet-links"><span>Employee hub</span><span>Business hub</span><span>Summer season</span></div>
-                <div class="intranet-tools"><i>Microsoft 365</i><i>HR forms</i><i>Company calendar</i><i>Brand book</i></div>
-              </div>
-              <div class="design-annotation annotation-one">A landing page should reduce searching, not simply collect links.</div>
-              <div class="design-annotation annotation-two">Existing brand language was extended into clearer sections and actions.</div>
-            </div>
-            <div class="design-canvas" data-design-panel="portfolio">
-              <div class="portfolio-blueprint">
-                <div class="blueprint-line line-one"></div><div class="blueprint-line line-two"></div>
-                <strong>WORK / REVEALED</strong>
-                <p>Instead of decorating a résumé, the interface turns each project into an object the visitor can inspect.</p>
-                <div class="blueprint-modules"><span>Identity cross-section</span><span>Calendar record</span><span>Route simulator</span><span>Work timeline</span></div>
-              </div>
-              <div class="design-annotation annotation-one">The interaction language comes from the work: traces, records, systems, and decisions.</div>
-              <div class="design-annotation annotation-two">Professional does not have to mean visually interchangeable.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="design-principles"><span><b>01</b> Preserve identity</span><span><b>02</b> Clarify the next action</span><span><b>03</b> Make structure visible</span><span><b>04</b> Use motion to explain</span></div>
-      </article> -->
     </section>
 
 <section
@@ -766,13 +669,13 @@ Database change → API response → web app</code></pre>
       </p>
 
       <h2>
-        Where the projects met real people and real constraints.
+        Experience that<br>shapes the work.
       </h2>
     </div>
 
     <a
       class="resume-card"
-      href="/summer26/assets/william-osei-hwere-resume.pdf"
+      href="assets/william-osei-hwere-resume.pdf"
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Open William Osei-Hwere's résumé as a PDF"
@@ -794,8 +697,6 @@ Database change → API response → web app</code></pre>
     </a>
   </div>
 
-  <!-- Keep your existing work-history content below this point -->
-
 <div class="history-ledger">
   <article>
     <div class="history-date">MAY – AUG 2026</div>
@@ -803,7 +704,7 @@ Database change → API response → web app</code></pre>
       <span>THEODORE ROOSEVELT MEDORA FOUNDATION · MEDORA, ND</span>
       <h3>IT Intern</h3>
       <p>
-        Built and improved internal tools while supporting day-to-day IT across a large seasonal organization.
+        Built internal tools and automation while supporting IT across approximately 30 outlets and venues. Managed access for 90+ full-time employees and 300 seasonal workers.
       </p>
     </div>
     <div class="history-tags">
@@ -839,7 +740,7 @@ Database change → API response → web app</code></pre>
       <span>E-CRIMEBUREAU · GHANA</span>
       <h3>IT and Cybersecurity Intern</h3>
       <p>
-        Worked across cybersecurity and internal platforms, automating reporting and improving the LMS experience.
+        Automated security reporting in Python, reducing case documentation time by 25%. Improved the LMS for 200+ users and supported digital forensics investigations.
       </p>
     </div>
     <div class="history-tags">
@@ -857,7 +758,7 @@ Database change → API response → web app</code></pre>
       <span>JOBS NATION INC.</span>
       <h3>Technology Research and Risk Intern</h3>
       <p>
-        Explored emerging technologies, assessed risk, and automated market-research data collection with Python.
+        Researched emerging technologies and risk. Built Python scripts that improved market-research data collection efficiency by 30%.
       </p>
     </div>
     <div class="history-tags">
@@ -868,28 +769,34 @@ Database change → API response → web app</code></pre>
     </div>
   </article>
 </div>
+
+    <div class="education-record" aria-labelledby="educationTitle">
+      <div><p class="case-label">Education / next chapter</p><h3 id="educationTitle">Dakota State University</h3><p>B.S. Computer Science · Software Engineering &amp; Cyber Security</p><p class="education-meta">Expected June 2027 · Honors List · GPA 3.86 / 4.0</p></div>
+      <details class="supporting-details"><summary>Coursework &amp; campus leadership <span aria-hidden="true">+</span></summary><div>
+        <h4>Technical foundation</h4><p>Advanced Data Structures, Software Security, Web Development, Networking, Discrete Math, Calculus II, Statistics, Parallel Computing, Operating Systems, and Object Oriented Design.</p>
+        <h4>Beyond the classroom</h4><ul><li><strong>Teaching Assistant:</strong> tutored 40+ students in programming and algorithms.</li><li><strong>Black Students Union Vice President:</strong> helped grow membership by 70%.</li><li><strong>Student Activities Board:</strong> organized 10+ campus events.</li><li><strong>DSU CRU:</strong> worship, cell, and Bible study group leader.</li></ul>
+      </div></details>
+    </div>
+</section>
+
+    <section class="skills section-shell ruled-section" id="skills" data-observe="skills" aria-labelledby="skillsTitle">
+      <div class="section-index">03 / TOOLKIT</div>
+      <div class="section-header"><div><p class="eyebrow">Skills / applied in the work</p><h2 id="skillsTitle">The tools behind<br>the experience.</h2></div><p>Software engineering, reliable systems, and interfaces that help people get things done.</p></div>
+      <div class="skills-grid">
+        <article><span class="case-label">01 / Build</span><h3>Software &amp; web</h3><p>JavaScript · Node.js · Express · HTML · CSS · SQL · SQLite</p><a href="#medora">Applied in the Medora guide ↗</a></article>
+        <article><span class="case-label">02 / Solve</span><h3>Algorithms &amp; automation</h3><p>C++ · Python · BFS · Dijkstra · data structures · Zapier</p><a href="#flight">Applied in Flight Tracker ↗</a></article>
+        <article><span class="case-label">03 / Support</span><h3>Systems &amp; security</h3><p>Microsoft 365 · Entra · SharePoint · Windows · IIS · TCP/IP · digital forensics</p><a href="#history">Applied across internships ↗</a></article>
+      </div>
+      <details class="supporting-details toolkit-details"><summary>More technologies &amp; coursework projects <span aria-hidden="true">+</span></summary><div><p><strong>Additional tools:</strong> C, C#, Java, x86 Assembly, ReactJS, Linux, Git, Docker, AWS (basic), packet analysis, and vulnerability assessment.</p><ul><li><strong>Interactive Shopping System:</strong> C++ shopping flow with dynamic discounts and real-time cart updates.</li><li><strong>Assembly optimization:</strong> binary search in x86 Assembly with a 30% execution speedup.</li><li><strong>Data structures analysis:</strong> file-based C++ key-value storage comparing hashing, Trie, and Red-Black Tree structures.</li><li><strong>This portfolio:</strong> custom interactive design; 500+ unique visitors since launch, as recorded in my résumé.</li></ul></div></details>
     </section>
 
-    <!-- <section class="method section-shell" id="method" data-observe="method">
-      <div class="section-index">03 / WORKING METHOD</div>
-      <div class="method-grid">
-        <div class="method-intro"><h2>I like the point where technical correctness and human experience meet.</h2><p>That is why the portfolio includes infrastructure, algorithms, full-stack systems, and visual design rather than forcing every project into one category.</p></div>
-        <ol class="method-list">
-          <li><span>01</span><div><b>Understand the real need</b><p>Start with the person, task, or operational failure—not the technology I hope to use.</p></div></li>
-          <li><span>02</span><div><b>Model the system clearly</b><p>Identify data, states, dependencies, boundaries, and the places where assumptions can break.</p></div></li>
-          <li><span>03</span><div><b>Make the interface explain itself</b><p>Use hierarchy, feedback, and interaction so people do not need a separate manual for ordinary actions.</p></div></li>
-          <li><span>04</span><div><b>Leave room for the next version</b><p>Configuration, components, data models, and documentation should make future changes less expensive.</p></div></li>
-        </ol>
-      </div>
-    </section> -->
-
     <section class="contact section-shell" id="contact" data-observe="contact">
-      <p class="eyebrow"><span>End of record</span> Contact</p>
+      <p class="eyebrow"><span>04 / Next step</span> Contact</p>
       <div class="contact-grid">
-        <h2>Good work should leave something easier to use and easier to understand.</h2>
+        <h2>Let’s build<br>something useful.</h2>
         <div class="contact-action">
-          <p>I’m interested in systems administration, automation, internal platforms, software development, and projects where thoughtful technical work can create a noticeably better experience.</p>
-          <a href="mailto:william.osei-hwere@trojans.dsu.edu">Start a conversation <span>↗</span></a>
+          <p>Have a software role, a project, or an idea to explore? I’m interested in development, automation, and systems that make everyday work easier.</p>
+          <a href="mailto:william.osei-hwere@trojans.dsu.edu">Email William <span>↗</span></a>
           <a class="secondary-link" href="https://linkedin.com/in/william-osei-hwere-61867b252/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
         </div>
       </div>
