@@ -32,6 +32,8 @@ body {
   background: rgba(0,0,0,0.3);
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 16px;
   padding: 20px 5vw;
   position: sticky;
   top: 0;
@@ -45,12 +47,18 @@ body {
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 30px;
+  gap: 12px 30px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 .nav-links li a {
   color: #ccc;
   text-decoration: none;
   font-size: 1rem;
+}
+.nav-links li a:focus-visible {
+  outline: 2px solid #0ff;
+  outline-offset: 5px;
 }
 .nav-links li a:hover {
   color: #0ff;
