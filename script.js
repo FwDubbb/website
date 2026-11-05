@@ -1,54 +1,24 @@
-const root = document.documentElement;
-const longHand = document.querySelector('.hand-long');
-const shortHand = document.querySelector('.hand-short');
-const seasons = document.querySelectorAll('.season');
+﻿// A small amount of movement keeps the year selector tactile without
+// getting in the way of its links or keyboard navigation.
+const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
 
-let restingLong = 18;
-let restingShort = 298;
-let returnTimer;
+document.querySelectorAll('.season').forEach((season) => {
+  function resetPosition() {
+    season.style.removeProperty('--shift-x');
+    season.style.removeProperty('--shift-y');
+  }
 
-function pointHands(angle) {
-  longHand.style.transform = `translateX(-50%) rotate(${angle}deg)`;
-  shortHand.style.transform = `translateX(-50%) rotate(${angle - 74}deg)`;
-}
-
-function restHands() {
-  longHand.style.transform = `translateX(-50%) rotate(${restingLong}deg)`;
-  shortHand.style.transform = `translateX(-50%) rotate(${restingShort}deg)`;
-}
-
-seasons.forEach((season) => {
-  const angle = Number(season.dataset.angle);
-
-  season.addEventListener('mouseenter', () => {
-    clearTimeout(returnTimer);
-    pointHands(angle);
+  season.addEventListener('pointermove', (event) => {
+    if (motionPreference.matches || !finePointer.matches) return;
+    const bounds = season.getBoundingClientRect();
+    const x = (event.clientX - bounds.left) / bounds.width - 0.5;
+    const y = (event.clientY - bounds.top) / bounds.height - 0.5;
+    season.style.setProperty('--shift-x', `${x * 8}px`);
+    season.style.setProperty('--shift-y', `${y * 6}px`);
   });
 
-  season.addEventListener('focus', () => {
-    clearTimeout(returnTimer);
-    pointHands(angle);
-  });
-
-  season.addEventListener('mouseleave', () => {
-    returnTimer = setTimeout(restHands, 110);
-  });
-
-  season.addEventListener('blur', () => {
-    returnTimer = setTimeout(restHands, 110);
-  });
+  season.addEventListener('pointerleave', resetPosition);
+  season.addEventListener('blur', resetPosition);
+  motionPreference.addEventListener('change', resetPosition);
 });
-
-// A barely-there mechanical drift so the face never feels completely static.
-if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  let t = 0;
-  setInterval(() => {
-    t += 1;
-    restingLong = 18 + Math.sin(t / 6) * 1.2;
-    restingShort = 298 + Math.cos(t / 8) * 0.7;
-
-    if (![...seasons].some((item) => item.matches(':hover, :focus'))) {
-      restHands();
-    }
-  }, 900);
-}
