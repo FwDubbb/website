@@ -3,703 +3,63 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="William Osei-Hwere's interactive portfolio: systems, software, interfaces, and the person behind the work.">
-  <title>William OH | Interactive Portfolio</title>
+  <meta name="description" content="Meet William Osei-Hwere, a computer science student and software developer. Explore his projects, experience, and skills.">
+  <title>William Osei-Hwere | 2026 Portfolio</title>
   <link rel="stylesheet" href="styles.css">
-
+  <link rel="canonical" href="https://oseihwere.com/summer26">
   <meta name="robots" content="index, follow">
-
-  <link
-    rel="canonical"
-    href="https://oseihwere.com/summer26"
-  >
-
 </head>
 <body>
-  <a class="skip-link" href="#top">Skip to content</a>
-  <div class="page-noise" aria-hidden="true"></div>
-
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
-    <a class="identity" href="#top" aria-label="Return to introduction">
-      <span class="identity-mark">WOH</span>
-      <span class="identity-copy">
-        <strong>William Osei-Hwere</strong>
-        <small>Software engineering · Systems · Automation</small>
-      </span>
-    </a>
-
-    <nav class="site-nav" aria-label="Primary navigation">
-      <a href="/" aria-label="Back to the portfolio year selector"><span aria-hidden="true">&larr;</span> All editions</a>
-      <a href="#about" data-section-link="top"><span>00</span> About</a>
-      <a href="#work" data-section-link="work"><span>01</span> Projects</a>
-      <a href="#history" data-section-link="history"><span>02</span> Experience</a>
-      <a href="#skills" data-section-link="skills"><span>03</span> Skills</a>
-      <a href="#contact" data-section-link="contact"><span>04</span> Contact</a>
-      <a href="assets/william-osei-hwere-resume.pdf" target="_blank" rel="noopener noreferrer"><span>↗</span> Résumé</a>
+    <a class="identity" href="#about" aria-label="William Osei-Hwere, introduction">WOH<span>William Osei-Hwere</span></a>
+    <a class="archive-link" href="/">&larr; All editions</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation" hidden>Menu <span aria-hidden="true">+</span></button>
+    <nav id="navigation" aria-label="Main navigation">
+      <a href="#work">Projects</a><a href="#history">Experience</a><a href="#skills">Skills</a><a href="#contact">Contact</a>
+      <a href="assets/william-osei-hwere-resume.pdf" target="_blank" rel="noopener noreferrer">R&eacute;sum&eacute; &nearr;</a>
     </nav>
-
-    <div class="header-actions">
-      <button class="inspect-button" id="globalInspect" type="button" aria-pressed="false">
-        <span class="inspect-default">Inspect systems</span>
-        <span class="inspect-active">Return to surfaces</span>
-      </button>
-      <button class="mobile-index-toggle" id="mobileIndexToggle" type="button" aria-label="Open section menu" aria-expanded="false" aria-controls="mobileIndex">
-        <span id="mobileSectionLabel">About</span><b aria-hidden="true">+</b>
-      </button>
-    </div>
-
-    <div class="mobile-index" id="mobileIndex" hidden>
-      <div class="mobile-index__topline"><span>INDEX / PORTFOLIO</span><span>SUMMER 26</span></div>
-      <nav aria-label="Mobile navigation">
-        <a href="/" aria-label="Back to the portfolio year selector"><b aria-hidden="true">&larr;</b><span>All editions</span></a>
-        <a href="#about" data-section-link="top"><b>00</b><span>About</span></a>
-        <a href="#work" data-section-link="work"><b>01</b><span>Projects</span></a>
-        <a href="#history" data-section-link="history"><b>02</b><span>Experience</span></a>
-        <a href="#skills" data-section-link="skills"><b>03</b><span>Skills</span></a>
-        <a href="#contact" data-section-link="contact"><b>04</b><span>Contact</span></a>
-        <a href="assets/william-osei-hwere-resume.pdf" target="_blank" rel="noopener noreferrer"><b>↗</b><span>Résumé</span></a>
-      </nav>
-      <button class="mobile-inspect" id="mobileInspect" type="button" aria-pressed="false">Inspect project systems +</button>
-    </div>
   </header>
 
-  <aside class="trace-rail" aria-label="Page progress and section navigation">
-    <div class="trace-line"><span id="tracePulse"></span></div>
-    <ol>
-      <li class="active" data-section="top"><a href="#about"><b>00</b><span>About</span></a></li>
-      <li data-section="work"><a href="#work"><b>01</b><span>Projects</span></a></li>
-      <li data-section="history"><a href="#history"><b>02</b><span>Experience</span></a></li>
-      <li data-section="skills"><a href="#skills"><b>03</b><span>Skills</span></a></li>
-      <li data-section="contact"><a href="#contact"><b>04</b><span>Contact</span></a></li>
-    </ol>
-  </aside>
-
-  <main id="top" tabindex="-1">
-    <section class="hero section-shell" id="about" data-observe="top" aria-labelledby="introTitle">
-      <div class="hero-copy">
-        <p class="eyebrow"><span>Personal record 00</span> About William</p>
-        <p class="hero-role">Computer science student. Software developer.</p>
-        <h1 id="introTitle">I create.<br><em>I explore.</em><br>I improve.</h1>
-        <p class="hero-intro">I’m William Osei-Hwere, a Dakota State University student specializing in software engineering and cybersecurity. I build useful software, automate everyday work, and make complex systems easier to use.</p>
-        <p class="hero-stack">JavaScript / Node.js / C++ / Python / SQL</p>
-        <div class="hero-actions"><a class="action-link primary-action" href="#work">Explore projects <span>↓</span></a><a class="action-link" href="assets/william-osei-hwere-resume.pdf" target="_blank" rel="noopener noreferrer">Résumé ↗</a><a class="text-action" href="#contact">Get in touch ↗</a></div>
-        <p class="hero-fact">DSU · Class of 2027 <span>Recent IT intern at TRMF</span></p>
-        <div class="hero-instructions">
-          <span class="instruction-number">01</span>
-          <p>Drag to meet both sides of me, or choose a view below.</p>
-        </div>
-      </div>
-
-      <div class="inspection-stage" id="inspectionStage">
-        <div class="stage-heading">
-          <span>Identity record / live cross-section</span>
-          <span id="layerLabel">Professional side</span>
-        </div>
-
-        <div class="inspection-window identity-window" style="--reveal: 0%;">
-          <div class="personal-layer" aria-hidden="true">
-            <div class="personal-grid"></div>
-            <div class="personal-heading">
-              <small>OFF THE CLOCK</small>
-              <strong>Curiosity beyond the keyboard.</strong>
-              <p>Competition, music, design, stories, faith, and the people around me all shape how I approach the work.</p>
-            </div>
-            <div class="interest interest-a"><b>01</b><span>Sports</span><small>Competition / movement</small></div>
-            <div class="interest interest-b"><b>02</b><span>Piano + Music</span><small>Patience / Discipline</small></div>
-            <div class="interest interest-c"><b>03</b><span>Graphic design</span><small>Visual systems</small></div>
-            <div class="interest interest-d"><b>04</b><span>Reading + gaming</span><small>Stories / strategy</small></div>
-            <div class="personal-note"><span>PERSONAL NOTE</span>I like doing things that give me room to think deeply and make something people can actually enjoy using.</div>
-          </div>
-
-          <div class="professional-layer">
-            <div class="professional-topline"><span>WORKING PROFILE</span><span> 📍USA</span></div>
-            <div class="professional-main">
-              <p class="professional-kicker">Software developer · Systems thinker</p>
-              <h2>I make complex tools easier to trust.</h2>
-              <p>From internal tools to full-stack apps, I connect reliable systems with thoughtful interfaces.</p>
-              <div class="professional-counters">
-                <div><strong>Systems</strong><span>M365 · Entra · Windows · IIS</span></div>
-                <div><strong>Software</strong><span>JavaScript · Node · C++ · SQL</span></div>
-                <div><strong>Focus</strong><span>Usability · reliability · scale</span></div>
-              </div>
-            </div>
-            <div class="professional-footer"><span>Build the experience</span><span>Understand the machinery</span></div>
-          </div>
-
-          <div class="inspection-divider" aria-hidden="true"><span>DRAG</span></div>
-          <input id="revealControl" class="reveal-control" type="range" min="0" max="100" value="0" aria-label="Move between William's personal and professional sides">
-        </div>
-
-        <div class="identity-presets" role="group" aria-label="Choose an identity view"><button type="button" data-reveal="0" aria-pressed="true">At work</button><button type="button" data-reveal="50" aria-pressed="false">Both sides</button><button type="button" data-reveal="100" aria-pressed="false">Off the clock</button></div>
-        <div class="layer-legend">
-          <span><i class="personal-dot"></i> Life outside the work</span>
-          <span><i class="professional-dot"></i> Professional practice</span>
-        </div>
-      </div>
+  <main id="main">
+    <section class="hero shell" id="about" aria-labelledby="intro-title">
+      <p class="eyebrow">Computer science student &amp; software developer</p>
+      <h1 id="intro-title">Hi, I'm William.<br><em>I build useful software.</em></h1>
+      <p class="hero-intro">I'm William Osei-Hwere, a computer science student at Dakota State University focused on software engineering and cybersecurity. I enjoy turning complicated problems into tools that are easier to use.</p>
+      <div class="hero-actions"><a class="button primary" href="#work">See my projects <span aria-hidden="true">&darr;</span></a><a class="button" href="assets/william-osei-hwere-resume.pdf" target="_blank" rel="noopener noreferrer">View r&eacute;sum&eacute; <span aria-hidden="true">&nearr;</span></a></div>
+      <div class="about-notes"><p><strong>What I work on</strong>Web applications, automation, and IT systems.</p><p><strong>Outside of work</strong>Sports, piano, graphic design, reading, and gaming.</p><p><strong>What comes next</strong>B.S. Computer Science, expected June 2027.</p></div>
     </section>
 
-    <section class="cases section-shell" id="work" data-observe="work">
-      <div class="section-header">
-        <div>
-          <p class="eyebrow"><span>Field records 01–03</span> Selected projects</p>
-          <h2>Selected work.<br><em>Open for inspection.</em></h2>
-        </div>
-        <p>Useful tools, from company operations to route-finding algorithms. Scan the essentials, then open a record to explore how it works.</p>
-      </div>
-
-      <nav class="project-index" aria-label="Jump to a project">
-        <p class="project-index__label"><span>Three projects / three different problems</span> Choose a record to explore.</p>
-        <div class="project-index__grid">
-          <a class="project-index__card" href="#calendar">
-            <span class="project-index__number">01</span>
-            <strong>Company Calendar</strong>
-            <p>Room and vehicle availability at a glance.</p><small>Node.js · Microsoft 365</small>
-            <b>View project →</b>
-          </a>
-          <a class="project-index__card" href="#medora">
-            <span class="project-index__number">02</span>
-            <strong>Medora Exploration Guide</strong>
-            <p>Turn a town visit into a personal discovery trail.</p><small>JavaScript · Express · SQLite</small>
-            <b>View project →</b>
-          </a>
-          <a class="project-index__card" href="#flight">
-            <span class="project-index__number">03</span>
-            <strong>Flight Tracker &amp; Finder</strong>
-            <p>Find routes by fare, distance, or connections.</p><small>C++ · BFS · Dijkstra</small>
-            <b>View project →</b>
-          </a>
-        </div>
-      </nav>
-
-      <article class="case-record calendar-record" id="calendar" data-case="calendar">
-        <header class="case-tab">
-          <div><span>CASE 01</span><strong>Company calendar and resource platform</strong></div>
-          <div class="case-state">Production internal platform</div>
-        </header>
-
-        <div class="case-summary case-overview"><div><p class="case-label">Production internal platform</p><h3>Clearer bookings. Faster decisions.</h3><p>I rebuilt the company calendar’s busiest views so employees could scan room bookings, vehicle availability, and events without losing details in crowded grids.</p></div><dl><div><dt>Built</dt><dd>Redesigned week views; new day and holiday views</dd></div><div><dt>Stack</dt><dd>JavaScript · Node.js · Exchange / Microsoft 365</dd></div><div><dt>Reach</dt><dd>Six calendar areas in an environment supporting 900+ users</dd></div></dl></div>
-        <details class="project-details" id="calendar-details"><summary><span>Explore the redesign</span><small>Before / after · architecture · outcomes</small><b aria-hidden="true">+</b></summary>
-        <section class="calendar-evidence" aria-labelledby="calendarEvidenceTitle">
-          <div class="evidence-header">
-            <div>
-              <p class="case-label">Visual evidence</p>
-              <h4 id="calendarEvidenceTitle">See what changed.</h4>
-            </div>
-            <p>Choose an area and compare the original with the redesign. Names and emails are blurred.</p>
-          </div>
-
-          <div class="calendar-compare" id="calendarCompare">
-            <div class="compare-toolbar">
-              <div class="compare-control-group" role="tablist" aria-label="Choose a calendar area">
-                <span>AREA</span>
-                <button class="active" type="button" data-compare-area="lsc">LSC</button>
-                <button type="button" data-compare-area="vehicles">Vehicles</button>
-                <button type="button" data-compare-area="day">Day view</button>
-              </div>
-              <div class="compare-control-group" role="tablist" aria-label="Choose the original or redesigned view">
-                <span>VERSION</span>
-                <button class="active" type="button" data-compare-version="before">Original</button>
-                <button type="button" data-compare-version="after">Redesigned</button>
-              </div>
-            </div>
-
-            <figure class="compare-figure">
-              <div class="compare-image-shell">
-                <img loading="lazy" decoding="async" id="calendarCompareImage" src="oldlsc.png" alt="Original LSC weekly calendar view">
-                <span id="calendarCompareBadge">ORIGINAL / LSC WEEK</span>
-              </div>
-              <figcaption>
-                <strong id="calendarCompareTitle">Original LSC week view</strong>
-                <p id="calendarCompareCaption">Events were positioned mainly by time. When many bookings overlapped, cards became narrow, titles were clipped, and employees could not quickly see the requester or enough booking context.</p>
-              </figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <div class="case-inspector rich-inspector">
-          <div class="tab-strip-hint" aria-hidden="true"><span>Project details</span><span>Swipe →</span></div>
-          <div class="inspector-tabs" role="tablist" aria-label="Calendar project details">
-            <button class="active" type="button" data-view="purpose">How it works</button>
-            <button type="button" data-view="evolution">What changed</button>
-            <button type="button" data-view="architecture">Underneath</button>
-            <button type="button" data-view="outcome">Why it matters</button>
-          </div>
-          <div class="inspector-body">
-            <div class="case-view active" data-panel="purpose">
-              <span class="view-code">P / 01</span>
-              <h4>Six calendars. One place to act.</h4>
-              <p>Room, vehicle, and event calendars cover LSC, RRH, GES, Vehicles, Schafer, and Training &amp; Development. Employees can switch between month, week, day, agenda, and holiday views.</p>
-              <div class="detail-grid"><div><b>Know what is booked</b><span>Rooms and vehicles appear alongside their status and booking window.</span></div><div><b>Know what is happening</b><span>Company events are grouped by place, date, and operational context.</span></div><div><b>Know where to act</b><span>Available vehicles can open the booking form with the vehicle already selected.</span></div></div>
-            </div>
-            <div class="case-view" data-panel="evolution">
-              <span class="view-code">E / 01</span>
-              <h4>Familiar branding. More useful views.</h4>
-              <p>Crowded time grids hid booking details. I redesigned each area’s week view, added a day view, and introduced company holidays through 2027. Existing month and agenda views remained available.</p>
-              <div class="change-ledger"><span>Preserved</span><b>Company branding · existing data · familiar navigation · six operational areas</b><span>Rebuilt</span><b>Week layouts for LSC, RRH, GES, Vehicles, Schafer, and Training &amp; Development</b><span>Added</span><b>Day view · holiday view · requester details · availability · booking actions · hover information</b></div>
-            </div>
-            <div class="case-view" data-panel="architecture">
-              <span class="view-code">A / 01</span>
-              <h4>From Exchange data to readable event cards.</h4>
-              <p>A Node service normalizes Exchange events, filters dates and mailboxes, and handles time zones. The API supplies requester, time, purpose, and availability fields for readable week and day cards.</p>
-              <div class="mini-flow"><b>Exchange calendars</b><i>→</i><b>Node service</b><i>→</i><b>Calendar API</b><i>→</i><b>Event-based views</b></div>
-              <pre><code>GET /api/calendar?start=&amp;end=&amp;mbox=
-status = past | happening-now | upcoming | available
-booking link = Microsoft Form + preselected vehicle
-sort(today) = happening now → upcoming → earlier</code></pre>
-            </div>
-            <div class="case-view" data-panel="outcome">
-              <span class="view-code">O / 01</span>
-              <h4>Availability becomes a clear next action.</h4>
-              <p>Green identifies availability, blue identifies future bookings, orange identifies events happening now, grey identifies past events, and a red treatment marks the current day. Current events automatically appear ahead of future and past items. Requester and booking information is visible where useful, and clicking an available vehicle opens a shorter booking path with the vehicle already selected.</p>
-              <div class="impact-grid"><div><strong>900+</strong><span>users in the supported company environment</span></div><div><strong>6</strong><span>calendar areas redesigned for their own information needs</span></div><div><strong>5</strong><span>ways to inspect time: month, week, day, agenda, holiday</span></div><div><strong>1 click</strong><span>from an available vehicle to a preselected booking form</span></div></div>
-
-            </div>
-          </div>
-        </div>
-
-        <nav class="case-pagination case-pagination--next" aria-label="Calendar project navigation">
-          <span><b>CASE 01</b> / COMPLETE</span>
-          <a href="#medora"><small>Next record</small><strong>02 — Medora Exploration Guide →</strong></a>
-        </nav>
-        <button class="close-record" type="button">Close record ↑</button>
-        </details>
+    <section class="shell section" id="work" aria-labelledby="work-title">
+      <div class="section-heading"><div><p class="eyebrow">Selected projects</p><h2 id="work-title">Things I've built.</h2></div><p>A look at the problem, my contribution, and what the finished tool does.</p></div>
+      <article class="project" id="calendar" aria-labelledby="calendar-title">
+        <div class="project-heading"><span class="project-number">01</span><div><p class="eyebrow">Work project &middot; Internal company tool</p><h3 id="calendar-title">Company Calendar</h3><p class="project-description">Helping employees find available rooms, vehicles, and company events.</p></div></div>
+        <div class="project-facts"><div><h4>The problem</h4><p>Busy calendar views made it hard to read overlapping bookings or tell what was available.</p></div><div><h4>What I built</h4><p>I redesigned the weekly views across six calendar areas and added day and holiday views, clearer booking details, and vehicle booking links.</p></div><div><h4>The result</h4><p>Employees can see what's happening, what's available, and who made a booking without digging through crowded calendars.</p></div></div>
+        <p class="tools">JavaScript / Node.js / Microsoft 365</p>
+        <figure class="project-image"><img src="newlsc.png" alt="Redesigned company calendar showing bookings in readable cards grouped by day" loading="lazy" width="1200" height="675"><figcaption>The redesigned weekly calendar. Names and emails are blurred for privacy.</figcaption></figure>
+        <details><summary>See the before and after</summary><div class="detail-content"><p>The earlier layout squeezed overlapping events into narrow columns. The redesign groups bookings into readable cards and shows requester and booking information where it's needed.</p><div class="comparison"><figure><img src="oldlsc.png" alt="Original calendar with overlapping events in narrow columns" loading="lazy"><figcaption>Before: crowded weekly bookings.</figcaption></figure><figure><img src="newlsc.png" alt="Redesigned calendar with readable booking cards" loading="lazy"><figcaption>After: clearer details, grouped by day.</figcaption></figure></div><p>A Node.js service prepares the Microsoft Exchange calendar data for the interface. Available vehicles link directly to a booking form with the vehicle already selected.</p></div></details>
       </article>
 
-      <article class="case-record exploration-record" id="medora" data-case="medora">
-        <header class="case-tab">
-          <div><span>CASE 02</span><strong>Medora exploration guide</strong></div>
-          <div class="case-state">Code complete · awaiting final content</div>
-        </header>
-
-        <div class="case-summary case-overview"><div><p class="case-label">Full-stack exploration app</p><h3>A town to explore. A reason to look closer.</h3><p>I designed and built a full-stack exploration guide for Medora. Players discover locations, complete challenges, earn XP, and keep a personal journal.</p></div><dl><div><dt>Role</dt><dd>Concept · UX · database · full-stack development</dd></div><div><dt>Stack</dt><dd>HTML · CSS · JavaScript · Node.js · Express · SQLite</dd></div><div><dt>Result</dt><dd>Code complete and presented; awaiting final company content</dd></div></dl></div>
-        <details class="project-details" id="medora-details"><summary><span>Explore the experience</span><small>Interactive preview · product · development story</small><b aria-hidden="true">+</b></summary>
-        <div class="case-layout reverse">
-
-          <div class="experience-machine">
-            <div class="phone-surface">
-              <div class="phone-top"><span>9:41</span><span>● ● ●</span></div>
-              <p class="phone-label">YOU ARE HERE</p>
-              <h4>Von Hoffman House</h4>
-              <div class="challenge-card">
-                <span>INVESTIGATE · 1,000 XP</span>
-                <p>What detail tells you how this home changed over time?</p>
-                <button type="button" id="openGuideChallenge">Explore challenge system ↗</button>
-              </div>
-              <div class="progress-line"><i></i></div>
-              <small>2 of 3 discoveries complete</small>
-            </div>
-            <div class="machine-underlay">
-              <span class="machine-title">TRANSACTION TRACE / ANSWER SUBMISSION</span>
-              <ol>
-                <li><b>01</b><span>Session verified</span><small>requireAuth</small></li>
-                <li><b>02</b><span>Location resolved</span><small>route_stops</small></li>
-                <li><b>03</b><span>Challenge loaded</span><small>stop_challenges</small></li>
-                <li><b>04</b><span>Answer recorded</span><small>user progress</small></li>
-                <li><b>05</b><span>XP committed</span><small>profile update</small></li>
-                <li><b>06</b><span>Journal created</span><small>history preserved</small></li>
-              </ol>
-            </div>
-            <button class="machine-switch" type="button" aria-pressed="false"><span>Show transaction</span><span>Show experience</span></button>
-          </div>
-        </div>
-
-        <div class="guide-dossier" id="guideDossier">
-          <div class="tab-strip-hint" aria-hidden="true"><span>Project details</span><span>Swipe →</span></div>
-          <div class="guide-dossier-tabs" role="tablist" aria-label="Explore the Medora guide project">
-            <button class="active" type="button" data-guide-view="features"><span class="tab-label-long">The product</span><span class="tab-label-short">Product</span></button>
-            <button type="button" data-guide-view="challenges"><span class="tab-label-long">Challenge system</span><span class="tab-label-short">Challenges</span></button>
-            <button type="button" data-guide-view="identity"><span class="tab-label-long">Personal progress</span><span class="tab-label-short">Progress</span></button>
-            <button type="button" data-guide-view="continuity"><span class="tab-label-long">Built to continue</span><span class="tab-label-short">Architecture</span></button>
-            <button type="button" data-guide-view="evolution"><span class="tab-label-long">How it evolved</span><span class="tab-label-short">Evolution</span></button>
-          </div>
-
-          <div class="guide-dossier-body">
-            <section class="guide-panel active" data-guide-panel="features">
-              <div class="guide-panel-intro">
-                <span>PRODUCT MAP / 01</span>
-                <h4>Discover. Complete. Remember.</h4>
-                <p>Built for guests, employees, and seasonal workers, the guide connects location discovery, personal progress, recommendations, and a journal.</p>
-              </div>
-              <div class="feature-map">
-                <article><b>01</b><h5>Profile</h5><p>Character, XP, completed locations and challenges, personal stats, and leaderboard position.</p></article>
-                <article><b>02</b><h5>Hunt</h5><p>Medora locations with Observe, Investigate, and Experience challenges.</p></article>
-                <article><b>03</b><h5>Recommendations</h5><p>Places and activities to help players decide what to explore next.</p></article>
-                <article><b>04</b><h5>Journal</h5><p>Completed challenges, timestamps, locations, answers, XP, and Did You Know facts.</p></article>
-              </div>
-            </section>
-
-            <section class="guide-panel" data-guide-panel="challenges">
-              <div class="guide-panel-intro">
-                <span>CHALLENGE LADDER / 02</span>
-                <h4>Deeper exploration earns more XP.</h4>
-                <p>XP accumulates across independent locations. The more a person observes, investigates, and experiences, the more progress they earn and the farther they can move on the leaderboard.</p>
-              </div>
-              <div class="challenge-ladder">
-                <article class="observe"><span>LEVEL 01</span><strong>Observe</strong><b>Quick discovery</b><p>Something a player can notice in seconds or within a few minutes. It introduces the location and asks them to look with purpose.</p><i>Lower XP</i></article>
-                <article class="investigate"><span>LEVEL 02</span><strong>Investigate</strong><b>Focused exploration</b><p>The player must search, read, compare, or spend several minutes looking around to find the answer.</p><i>Higher XP</i></article>
-                <article class="experience"><span>LEVEL 03</span><strong>Experience</strong><b>Participate in the place</b><p>The player must actually engage with what the location offers. These challenges take the most time and intentionally earn the greatest XP.</p><i>Highest XP</i></article>
-              </div>
-              <div class="xp-rule"><span>THE SIMPLE RULE</span><strong>More time and deeper participation → more XP → stronger leaderboard progress.</strong></div>
-            </section>
-
-            <section class="guide-panel" data-guide-panel="identity">
-              <div class="guide-panel-intro">
-                <span>PLAYER RECORD / 03</span>
-                <h4>A personal record for every player.</h4>
-                <p>Authentication happens behind the interface. Once signed in, every answer and completion belongs to the correct user and remains available when they return.</p>
-              </div>
-              <div class="identity-system">
-                <div class="identity-card"><span>PLAYER / WOH-024</span><div class="character-token">W</div><h5>Chosen character</h5><p>Each user selects a character that becomes part of their personal profile and experience.</p></div>
-                <div class="identity-trace">
-                  <div><b>AUTHENTICATION</b><span>Identifies the returning player</span></div><i>→</i>
-                  <div><b>PROFILE</b><span>XP, character, locations, challenges</span></div><i>→</i>
-                  <div><b>PROGRESS</b><span>Answers and completions by user</span></div><i>→</i>
-                  <div><b>JOURNAL</b><span>Permanent record of discoveries</span></div>
-                </div>
-              </div>
-            </section>
-
-            <section class="guide-panel" data-guide-panel="continuity">
-              <div class="guide-panel-intro">
-                <span>CONTINUITY PLAN / 04</span>
-                <h4>Built for the next administrator.</h4>
-                <p>Locations, questions, rewards, and recommendations live in the database. Administrators can update content without changing application code.</p>
-              </div>
-              <div class="continuity-grid">
-                <div class="database-catalog">
-                  <span>DATABASE-CONTROLLED CONTENT</span>
-                  <ul><li>Locations and display order</li><li>Questions, answers, and categories</li><li>XP rewards and automatic totals</li><li>Users, characters, and progress</li><li>Recommended places and activities</li><li>Did You Know facts and journal content</li></ul>
-                </div>
-                <div class="operator-sheet">
-                  <div class="operator-bar"><span>OPERATOR CHEAT SHEET</span><span>NO CODE CHANGE REQUIRED</span></div>
-                  <pre><code>-- Add or update content
-UPDATE stop_challenges
-SET xp_reward = 1500
-WHERE difficulty = 'experience';
-
--- Result
-Database change → API response → web app</code></pre>
-                  <p>Ready-to-use SQL instructions let a future administrator copy the correct statement into the database application. The updated location, question, reward, recommendation, or order then appears in the web app without requiring knowledge of the underlying code.</p>
-                </div>
-              </div>
-            </section>
-
-            <section class="guide-panel" data-guide-panel="evolution">
-              <div class="guide-panel-intro">
-                <span>ITERATION RECORD / 05</span>
-                <h4>From a fixed route to free exploration.</h4>
-                <p>The final product kept the playful motivation of the original scavenger hunt while removing the restrictions that made the early version harder to expand and less flexible for players.</p>
-              </div>
-              <div class="evolution-track">
-                <article class="early-model"><span>EARLIER MODEL</span><h5>Routes, letters, and character powers</h5><ul><li>Three predefined routes</li><li>Locations completed in a required order</li><li>One question and one earned letter per stop</li><li>Letters combined into a final word</li><li>Characters planned to have task-solving powers</li><li>A simpler points-per-question model</li></ul></article>
-                <div class="evolution-arrow"><span>≈ 5 MAJOR ITERATIONS</span><i>→</i></div>
-                <article class="current-model"><span>CURRENT MODEL</span><h5>Free-roam locations and independent progress</h5><ul><li>Start anywhere and visit places in any order</li><li>Every location works independently</li><li>Multiple questions and activities per location</li><li>Observe, Investigate, and Experience categories</li><li>Characters personalize the profile rather than changing difficulty</li><li>XP accumulates by completed activity and location</li></ul></article>
-              </div>
-            </section>
-          </div>
-        </div>
-
-        <div class="guide-status">
-          <div><span>CURRENT STATE</span><strong>Code complete. Presented to the company.</strong></div>
-          <p>Next: approve locations and questions, decide XP incentives, enter the final content, and launch.</p>
-          <b>READY FOR CONTENT</b>
-        </div>
-
-        <nav class="case-pagination" aria-label="Medora project navigation">
-          <a href="#calendar" class="case-pagination__previous"><small>Previous record</small><strong>← 01 — Company Calendar</strong></a>
-          <span><b>CASE 02</b> / COMPLETE</span>
-          <a href="#flight" class="case-pagination__next"><small>Next record</small><strong>03 — Flight Tracker &amp; Finder →</strong></a>
-        </nav>
-        <button class="close-record" type="button">Close record ↑</button>
-        </details>
+      <article class="project" id="medora" aria-labelledby="medora-title">
+        <div class="project-heading"><span class="project-number">02</span><div><p class="eyebrow">Full-stack web application</p><h3 id="medora-title">Medora Exploration Guide</h3><p class="project-description">A guide that helps visitors discover Medora through activities and challenges.</p></div></div>
+        <div class="project-facts"><div><h4>The idea</h4><p>Give guests and seasonal workers a fun way to discover places around town, at their own pace.</p></div><div><h4>What I built</h4><p>A web app with location challenges, points, personal profiles, recommendations, and a journal of completed activities.</p></div><div><h4>Where it stands</h4><p>The code is complete and has been presented to the company. Final locations, questions, and rewards still need approval before launch.</p></div></div>
+        <p class="tools">JavaScript / Node.js / Express / SQLite</p>
+        <div class="guide-preview" aria-label="How the guide works"><div><span>1</span><h4>Choose a place</h4><p>Start anywhere and explore locations in any order.</p></div><div><span>2</span><h4>Try a challenge</h4><p>Observe, investigate, or take part in an activity.</p></div><div><span>3</span><h4>Save your progress</h4><p>Earn points and revisit discoveries in your journal.</p></div></div>
+        <details><summary>More about how I built it</summary><div class="detail-content"><p>I built both the website and the server, with SQLite storing locations, questions, rewards, and player progress. Signing in connects each person's completed activities to their profile.</p><p>The project evolved from a fixed scavenger-hunt route into a flexible guide where each location can be visited independently. Administrators can update the content in the database without rewriting the application.</p></div></details>
       </article>
 
-      <article class="case-record flight-record" id="flight" data-case="flight">
-        <header class="case-tab">
-          <div><span>CASE 03</span><strong>Flight Tracker and Finder</strong></div>
-          <div class="case-state">Advanced Data Structures · C++</div>
-        </header>
-
-        <div class="case-summary case-overview"><div><p class="case-label">Advanced Data Structures · course project</p><h3>One network. More ways to find a route.</h3><p>I built a C++ command-line engine that turns airport and flight files into a searchable graph. It finds routes by fare, distance, connections, time, and required stops.</p><a class="source-link" href="https://github.com/FwDubbb/flighttracker" target="_blank" rel="noopener noreferrer">View source on GitHub <span>↗</span></a></div><dl><div><dt>Built</dt><dd>16 search operations in approximately one month</dd></div><div><dt>Stack</dt><dd>C++ · BFS · Dijkstra · time-aware search</dd></div><div><dt>Scale</dt><dd>100+ airports; 100,000+ original course flight records</dd></div></dl></div>
-        <details class="project-details" id="flight-details"><summary><span>Explore the route engine</span><small>Interactive graph · 16 searches · source code</small><b aria-hidden="true">+</b></summary>
-        <div class="flight-grid">
-
-          <div class="route-machine" id="routeMachine">
-            <div class="route-machine-top"><span>ILLUSTRATIVE ROUTE REQUEST / USER VIEW</span><span id="routeStatus">LOWEST TOTAL FARE</span></div>
-            <div class="route-controls" role="tablist" aria-label="Choose a route request">
-              <button class="active" type="button" data-route="cost">Cheapest fare</button>
-              <button type="button" data-route="miles">Shortest miles</button>
-              <button type="button" data-route="hops">Fewest connections</button>
-            </div>
-            <div class="route-map" aria-label="Illustrated directed airport route graph">
-              <svg viewBox="0 0 760 390" preserveAspectRatio="none" role="img" aria-label="Network of airports connected by possible directed flight paths">
-                <defs>
-                  <marker id="routeArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 z"></path></marker>
-                </defs>
-                <g class="all-routes">
-                  <path d="M90 210 L245 90 L385 175 L555 80 L675 205"/>
-                  <path d="M90 210 L245 285 L385 175 L530 300 L675 205"/>
-                  <path d="M245 90 L245 285 M555 80 L530 300 M385 175 L675 205"/>
-                </g>
-                <g class="route-highlight" id="routeHighlight"><path d="M90 210 L245 90 L385 175 L675 205"/></g>
-              </svg>
-              <div class="airport airport-a"><b>BIS</b><span>Bismarck</span></div>
-              <div class="airport airport-b"><b>DEN</b><span>Denver</span></div>
-              <div class="airport airport-c"><b>MSP</b><span>Minneapolis</span></div>
-              <div class="airport airport-d"><b>ORD</b><span>Chicago</span></div>
-              <div class="airport airport-e"><b>ATL</b><span>Atlanta</span></div>
-              <div class="airport airport-f"><b>DFW</b><span>Dallas</span></div>
-              <div class="airport airport-g"><b>JFK</b><span>New York</span></div>
-              <span class="illustration-note">Conceptual example — not captured program output</span>
-            </div>
-            <div class="route-output">
-              <div><small>REQUEST</small><strong id="routeMethod">Minimum total cost</strong></div>
-              <div><small>EXAMPLE ROUTE</small><strong id="routePath">BIS → DEN → ORD → JFK</strong></div>
-              <div><small>EDGE WEIGHT</small><strong id="routePriority">Fare in dollars</strong></div>
-              <div><small>ENGINE</small><strong id="routeResult">Dijkstra with fare weights</strong></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="flight-dossier">
-          <div class="tab-strip-hint" aria-hidden="true"><span>Project details</span><span>Swipe →</span></div>
-          <div class="flight-dossier-tabs" role="tablist" aria-label="Flight project details">
-            <button class="active" type="button" data-flight-view="queries">Search menu</button>
-            <button type="button" data-flight-view="engine">Route engine</button>
-            <button type="button" data-flight-view="model">Data model</button>
-            <button type="button" data-flight-view="challenge">The challenge</button>
-            <button type="button" data-flight-view="source">Source and evidence</button>
-          </div>
-
-          <div class="flight-dossier-body">
-            <section class="flight-panel active" data-flight-panel="queries">
-              <div class="flight-panel-intro">
-                <span>Q / 01</span>
-                <h4>Choose the question. Inspect the search.</h4>
-                <p>Explore the original 16-operation menu. Each request shows its inputs, output, and underlying search strategy.</p>
-              </div>
-
-              <div class="query-workbench">
-                <div class="query-catalog">
-                  <section>
-                    <h5>Airport and direct-flight lookup</h5>
-                    <button type="button" data-flight-query="airport" class="active"><b>01</b> Airport details by code</button>
-                    <button type="button" data-flight-query="state"><b>02</b> Airports in a state</button>
-                    <button type="button" data-flight-query="departures"><b>03</b> Flights leaving a source</button>
-                    <button type="button" data-flight-query="arrivals"><b>04</b> Flights arriving at a destination</button>
-                    <button type="button" data-flight-query="direct"><b>05</b> Direct flights from source to destination</button>
-                  </section>
-                  <section>
-                    <h5>Path and optimization</h5>
-                    <button type="button" data-flight-query="path"><b>06</b> Find a flight path with stops</button>
-                    <button type="button" data-flight-query="mincost"><b>07</b> Minimum total fare</button>
-                    <button type="button" data-flight-query="minmiles"><b>08</b> Minimum total miles</button>
-                    <button type="button" data-flight-query="minhops"><b>09</b> Minimum number of flights</button>
-                  </section>
-                  <section>
-                    <h5>Reachability limits</h5>
-                    <button type="button" data-flight-query="withinflights"><b>10</b> Reachable within F flights after time T</button>
-                    <button type="button" data-flight-query="underfare"><b>11</b> Reachable under total fare M</button>
-                    <button type="button" data-flight-query="underhours"><b>12</b> Reachable within H hours</button>
-                  </section>
-                  <section>
-                    <h5>Required stop and time</h5>
-                    <button type="button" data-flight-query="earliest"><b>13</b> Earliest arrival after time T</button>
-                    <button type="button" data-flight-query="viahops"><b>14</b> Via M with the fewest flights</button>
-                    <button type="button" data-flight-query="viaearly"><b>15</b> Via M with the earliest arrival</button>
-                    <button type="button" data-flight-query="viacheap"><b>16</b> Via M with the cheapest trip</button>
-                  </section>
-                </div>
-
-                <aside class="query-inspector" aria-live="polite">
-                  <div class="query-inspector-top"><span>SELECTED OPERATION</span><b id="flightQueryNumber">01</b></div>
-                  <h5 id="flightQueryTitle">Display airport details</h5>
-                  <p id="flightQueryDescription">Resolve an airport code and return the information stored for that airport.</p>
-                  <dl>
-                    <div><dt>User provides</dt><dd id="flightQueryInput">Airport code</dd></div>
-                    <div><dt>Program returns</dt><dd id="flightQueryOutput">Airport name, city, state, and other stored details</dd></div>
-                    <div><dt>Internal work</dt><dd id="flightQueryEngine">Unordered-map index lookup</dd></div>
-                  </dl>
-                  <div class="query-scale"><span>ORIGINAL COURSE DATASET</span><strong>100+ airports</strong><strong>100,000+ directed flight records</strong></div>
-                </aside>
-              </div>
-              <p class="catalog-note">All 16 operations from the original command-line menu are represented here.</p>
-            </section>
-
-            <section class="flight-panel" data-flight-panel="engine">
-              <div class="flight-panel-intro">
-                <span>E / 01</span>
-                <h4>One graph, multiple definitions of “best.”</h4>
-                <p>Every flight is directional. A route from airport A to airport B does not automatically create a route back from B to A. The request determines how the graph is traversed and what each connection means.</p>
-              </div>
-              <div class="algorithm-board">
-                <article><span>BFS</span><h5>Queue-based traversal</h5><p>Used to discover a valid multi-stop path and to explore which destinations remain reachable under flight-count or fare limits.</p><b>PATHS / REACHABILITY</b></article>
-                <article><span>DIJKSTRA</span><h5>Variable edge weights</h5><p>The same shortest-path routine can treat each connection as fare, miles, or a unit weight of one flight, depending on the selected menu operation.</p><b>FARE / MILES / CONNECTIONS</b></article>
-                <article><span>TIME-AWARE</span><h5>Constrained route search</h5><p>Separate routines account for departure times, arrival times, elapsed hours, and a required middle airport. Required-stop requests run in two stages: source to M, then M to destination.</p><b>TIME / REQUIRED STOP</b></article>
-              </div>
-              <div class="engine-rule"><span>USER CHOICE</span><strong>Menu operation</strong><i>→</i><span>SEARCH PRIORITY</span><strong>Path · hops · fare · miles · time</strong><i>→</i><span>RETURN</span><strong>Matching flights or best route</strong></div>
-              <p class="accuracy-note">The algorithms operated behind the interface; users selected the travel question they wanted answered rather than selecting an algorithm by name.</p>
-            </section>
-
-            <section class="flight-panel" data-flight-panel="model">
-              <div class="flight-panel-intro">
-                <span>D / 01</span>
-                <h4>The data structure made every route addressable.</h4>
-                <p>Airport codes were mapped to indexes for fast lookup. The route matrix then used an origin index, destination index, and flight-option index to preserve every available directed flight between two airports.</p>
-              </div>
-              <div class="vector-model">
-                <div class="map-card"><span>FAST LOOKUP</span><code>airportIndex["BIS"] → 12</code><code>airportIndex["DEN"] → 46</code><p>An unordered map converts a human-readable airport code into the index used by the graph.</p></div>
-                <div class="model-arrow">→</div>
-                <div class="vector-card"><span>3D FLIGHT STORAGE</span><strong>flights[origin][destination][option]</strong><div class="vector-layers"><i>12</i><i>46</i><i>0...n</i></div><p>The first two dimensions identify the route. The third stores each separate flight option available on that route.</p></div>
-                <div class="model-arrow">→</div>
-                <div class="record-card"><span>FLIGHT RECORD</span><ul><li>Origin and destination</li><li>Departure, arrival, and duration</li><li>Fare and miles</li><li>Flight ID and airline</li></ul></div>
-              </div>
-              <div class="structure-ledger">
-                <article><b>Classes and structs</b><p>Grouped related airport and flight fields into records the algorithms could pass through consistently.</p></article>
-                <article><b>Directed connections</b><p>Each stored flight represented movement from one specific origin to one specific destination.</p></article>
-                <article><b>Multiple flight options</b><p>The third dimension retained more than one possible flight between the same pair of airports.</p></article>
-                <article><b>Indexed access</b><p>The unordered map avoided repeatedly scanning the airport dataset to locate a code.</p></article>
-              </div>
-            </section>
-
-            <section class="flight-panel" data-flight-panel="challenge">
-              <div class="flight-panel-intro">
-                <span>C / 01</span>
-                <h4>The difficult part was making the entire system agree.</h4>
-                <p>This was my first time working with a dataset this large and my first time combining graph traversal, weighted optimization, schedule constraints, and 16 different requests in one application. The challenge was not limited to one isolated bug.</p>
-              </div>
-              <div class="challenge-chain">
-                <article><b>01</b><span>Parse</span><p>Read two large datasets while keeping airport and flight records consistent.</p></article>
-                <i>→</i>
-                <article><b>02</b><span>Index</span><p>Resolve airport codes quickly enough to support repeated interactive requests.</p></article>
-                <i>→</i>
-                <article><b>03</b><span>Model</span><p>Represent directed routes and multiple flight options without losing their details.</p></article>
-                <i>→</i>
-                <article><b>04</b><span>Search</span><p>Choose the correct traversal or weighted strategy for each user request.</p></article>
-                <i>→</i>
-                <article><b>05</b><span>Constrain</span><p>Combine stops, times, fares, hours, distances, and destination requirements.</p></article>
-              </div>
-              <blockquote>“The whole thing was hard to do.” <small>That difficulty is what made it the first project that showed me I could work through real data complexity rather than only small classroom examples.</small></blockquote>
-            </section>
-
-            <section class="flight-panel" data-flight-panel="source">
-              <div class="flight-panel-intro">
-                <span>S / 01</span>
-  <h4>The complete project is now available on GitHub.</h4>
-
-  <p>
-    The public repository contains the original C++ implementation,
-    supporting data files, and instructions for compiling and running
-    the 16-operation command-line application locally.
-  </p>
-</div>
-
-<div class="source-board">
-  <div>
-    <span>PUBLIC REPOSITORY</span>
-
-    <strong>github.com/FwDubbb/flighttracker</strong>
-
-    <p>
-      Review the graph structure, route-search algorithms, airport
-      lookup system, and constrained flight operations used throughout
-      the project.
-    </p>
-
-    <div class="build-commands">
-      <code>g++ -std=c++11 11weird.cpp -o flighttracker</code>
-      <code>./flighttracker place.a1 quizn.air2</code>
-    </div>
-
-    <a
-      href="https://github.com/FwDubbb/flighttracker"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      View source and run locally ↗
-    </a>
-  </div>
-
-  <div>
-    <span>PROJECT CONTENTS</span>
-
-    <ul>
-      <li>Complete C++ source code</li>
-      <li>Airport and flight data files</li>
-      <li>Sixteen command-line operations</li>
-      <li>BFS, Dijkstra, and constrained graph searches</li>
-      <li>Local compilation and usage instructions</li>
-    </ul>
-  </div>
-</div>
-              <p class="accuracy-note">The route map above is an interactive explanation, not a claim that the original program used a graphical interface. The 100,000+ scale refers to the original course dataset; smaller public sample files can be included for reproducible demonstrations.</p>
-            </section>
-          </div>
-        </div>
-
-        <div class="flight-metrics">
-          <span><strong>100+</strong> airports</span>
-          <span><strong>100,000+</strong> original course records</span>
-          <span><strong>16</strong> menu operations</span>
-          <span><strong>2</strong> core graph algorithms</span>
-          <span><strong>1</strong> directed network</span>
-        </div>
-
-        <nav class="case-pagination" aria-label="Flight project navigation">
-          <a href="#medora" class="case-pagination__previous"><small>Previous record</small><strong>← 02 — Medora Exploration Guide</strong></a>
-          <span><b>CASE 03</b> / COMPLETE</span>
-          <a href="#history" class="case-pagination__next"><small>Continue</small><strong>Experience →</strong></a>
-        </nav>
-        <button class="close-record" type="button">Close record ↑</button>
-        </details>
+      <article class="project" id="flight" aria-labelledby="flight-title">
+        <div class="project-heading"><span class="project-number">03</span><div><p class="eyebrow">C++ course project</p><h3 id="flight-title">Flight Tracker &amp; Finder</h3><p class="project-description">Finding flight routes based on cost, distance, and connections.</p></div></div>
+        <div class="project-facts"><div><h4>The problem</h4><p>A traveler may want the cheapest trip, the shortest distance, or the fewest flights. Each question needs a different search.</p></div><div><h4>What I built</h4><p>A command-line application with 16 search options, including routes with required stops, departure times, and fare limits.</p></div><div><h4>What I learned</h4><p>How to organize large datasets and combine graph algorithms with real travel constraints. The original course data included 100+ airports and 100,000+ flight records.</p></div></div>
+        <p class="tools">C++ / Data structures / BFS / Dijkstra's algorithm</p>
+        <a class="project-link" href="https://github.com/FwDubbb/flighttracker" target="_blank" rel="noopener noreferrer">View the code on GitHub &nearr;</a>
+        <details><summary>More about the route search</summary><div class="detail-content"><p>The application treats airports as points in a network and flights as connections between them. Breadth-first search finds paths; Dijkstra's algorithm finds routes with the lowest fare, distance, or number of flights.</p><p>An airport-code lookup makes records quick to find. Separate searches handle departure times, arrival times, and required stops. The GitHub repository includes the C++ source, data files, and instructions to run the program.</p></div></details>
       </article>
-
     </section>
 
-<section
-  class="history section-shell ruled-section"
-  id="history"
-  data-observe="history"
->
-  <div class="section-index">02 / EXPERIENCE RECORD</div>
-
-  <div class="history-heading">
-    <div>
-      <p class="eyebrow">
-        <span>Places and practice</span>
-        Work history
-      </p>
-
-      <h2>
-        Experience that<br>shapes the work.
-      </h2>
-    </div>
-
-    <a
-      class="resume-card"
-      href="assets/william-osei-hwere-resume.pdf"
-      target="_blank"
-      rel="noopener noreferrer"
-      aria-label="Open William Osei-Hwere's résumé as a PDF"
-    >
-      <span class="resume-card__paper" aria-hidden="true">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </span>
-
-      <span class="resume-card__content">
-        <span class="resume-card__label">Full record · PDF</span>
-        <strong>Open my résumé</strong>
-        <small>Dates, roles, responsibilities, and outcomes</small>
-      </span>
-
-      <span class="resume-card__arrow" aria-hidden="true">↗</span>
-    </a>
-  </div>
-
-<div class="history-ledger">
+    <section class="shell section" id="history" aria-labelledby="history-title">
+      <div class="section-heading"><div><p class="eyebrow">Experience &amp; education</p><h2 id="history-title">Where I've learned<br><em>and contributed.</em></h2></div><a class="project-link" href="assets/william-osei-hwere-resume.pdf" target="_blank" rel="noopener noreferrer">View full r&eacute;sum&eacute; &nearr;</a></div>
+      <div class="history-ledger">
   <article>
     <div class="history-date">MAY – AUG 2026</div>
     <div class="history-main">
@@ -773,39 +133,23 @@ Database change → API response → web app</code></pre>
 </div>
 
     <div class="education-record" aria-labelledby="educationTitle">
-      <div><p class="case-label">Education / next chapter</p><h3 id="educationTitle">Dakota State University</h3><p>B.S. Computer Science · Software Engineering &amp; Cyber Security</p><p class="education-meta">Expected June 2027 · Honors List · GPA 3.86 / 4.0</p></div>
+      <div><p class="case-label">Education</p><h3 id="educationTitle">Dakota State University</h3><p>B.S. Computer Science · Software Engineering &amp; Cyber Security</p><p class="education-meta">Expected June 2027 · Honors List · GPA 3.86 / 4.0</p></div>
       <details class="supporting-details"><summary>Coursework &amp; campus leadership <span aria-hidden="true">+</span></summary><div>
         <h4>Technical foundation</h4><p>Advanced Data Structures, Software Security, Web Development, Networking, Discrete Math, Calculus II, Statistics, Parallel Computing, Operating Systems, and Object Oriented Design.</p>
         <h4>Beyond the classroom</h4><ul><li><strong>Teaching Assistant:</strong> tutored 40+ students in programming and algorithms.</li><li><strong>Black Students Union Vice President:</strong> helped grow membership by 70%.</li><li><strong>Student Activities Board:</strong> organized 10+ campus events.</li><li><strong>DSU CRU:</strong> worship, cell, and Bible study group leader.</li></ul>
       </div></details>
     </div>
-</section>
 
-    <section class="skills section-shell ruled-section" id="skills" data-observe="skills" aria-labelledby="skillsTitle">
-      <div class="section-index">03 / TOOLKIT</div>
-      <div class="section-header"><div><p class="eyebrow">Skills / applied in the work</p><h2 id="skillsTitle">The tools behind<br>the experience.</h2></div><p>Software engineering, reliable systems, and interfaces that help people get things done.</p></div>
-      <div class="skills-grid">
-        <article><span class="case-label">01 / Build</span><h3>Software &amp; web</h3><p>JavaScript · Node.js · Express · HTML · CSS · SQL · SQLite</p><a href="#medora">Applied in the Medora guide ↗</a></article>
-        <article><span class="case-label">02 / Solve</span><h3>Algorithms &amp; automation</h3><p>C++ · Python · BFS · Dijkstra · data structures · Zapier</p><a href="#flight">Applied in Flight Tracker ↗</a></article>
-        <article><span class="case-label">03 / Support</span><h3>Systems &amp; security</h3><p>Microsoft 365 · Entra · SharePoint · Windows · IIS · TCP/IP · digital forensics</p><a href="#history">Applied across internships ↗</a></article>
-      </div>
-      <details class="supporting-details toolkit-details"><summary>More technologies &amp; coursework projects <span aria-hidden="true">+</span></summary><div><p><strong>Additional tools:</strong> C, C#, Java, x86 Assembly, ReactJS, Linux, Git, Docker, AWS (basic), packet analysis, and vulnerability assessment.</p><ul><li><strong>Interactive Shopping System:</strong> C++ shopping flow with dynamic discounts and real-time cart updates.</li><li><strong>Assembly optimization:</strong> binary search in x86 Assembly with a 30% execution speedup.</li><li><strong>Data structures analysis:</strong> file-based C++ key-value storage comparing hashing, Trie, and Red-Black Tree structures.</li><li><strong>This portfolio:</strong> custom interactive design; 500+ unique visitors since launch, as recorded in my résumé.</li></ul></div></details>
     </section>
 
-    <section class="contact section-shell" id="contact" data-observe="contact">
-      <p class="eyebrow"><span>04 / Next step</span> Contact</p>
-      <div class="contact-grid">
-        <h2>Let’s build<br>something useful.</h2>
-        <div class="contact-action">
-          <p>Have a software role, a project, or an idea to explore? I’m interested in development, automation, and systems that make everyday work easier.</p>
-          <a href="mailto:william.osei-hwere@trojans.dsu.edu">Email William <span>↗</span></a>
-          <a class="secondary-link" href="https://linkedin.com/in/william-osei-hwere-61867b252/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
-        </div>
-      </div>
+    <section class="shell section" id="skills" aria-labelledby="skills-title">
+      <div class="section-heading"><div><p class="eyebrow">Skills</p><h2 id="skills-title">What I work with.</h2></div><p>Tools I've used in my projects, internships, and coursework.</p></div>
+      <div class="skills-grid"><article><h3>Web development</h3><p>JavaScript, Node.js, Express, HTML, CSS, SQL, and SQLite.</p><a href="#medora">See the Medora project &uarr;</a></article><article><h3>Programming &amp; automation</h3><p>C++, Python, data structures, graph algorithms, and Zapier.</p><a href="#flight">See the flight project &uarr;</a></article><article><h3>IT &amp; cybersecurity</h3><p>Microsoft 365, Entra, SharePoint, Windows, IIS, networking, and digital forensics.</p><a href="#history">See my experience &uarr;</a></article></div>
     </section>
+
+    <section class="shell section contact" id="contact" aria-labelledby="contact-title"><p class="eyebrow">Get in touch</p><h2 id="contact-title">Let's build<br><em>something useful.</em></h2><p>Have a software role, a project, or an idea? I'd love to hear about it.</p><div class="hero-actions"><a class="button primary" href="mailto:william.osei-hwere@trojans.dsu.edu">Email me &nearr;</a><a class="button" href="https://linkedin.com/in/william-osei-hwere-61867b252/" target="_blank" rel="noopener noreferrer">LinkedIn &nearr;</a></div></section>
   </main>
-
-  <footer><span>William Osei-Hwere / Interactive portfolio</span><span>Systems · software · experience</span><a href="#top">Return to entry ↑</a></footer>
+  <footer class="shell"><span>William Osei-Hwere &middot; 2026</span><a href="/">&larr; All editions</a><a href="#about">Back to top &uarr;</a></footer>
   <script src="script.js"></script>
 </body>
 </html>
