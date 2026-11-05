@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Flight Tracker &amp; Finder | William Osei-Hwere</title><meta name="description" content="A flight-search engine that answers real travel questions about price, distance, connections, and time."><link rel="canonical" href="https://oseihwere.com/summer26/projects/flight-tracker.html"><link rel="stylesheet" href="projects.css"></head>
+<body class="theme-flight"><a class="skip-link" href="#main">Skip to content</a><header class="project-header"><a href="../index.html#work" class="back-link">&larr; Back to projects</a><a class="project-brand" href="../index.html">W·O–H <span>/ SUMMER 2026</span></a><a href="/" class="all-editions">All editions &nearr;</a></header>
+<main id="main"><section class="project-hero shell"><p class="eyebrow">PROJECT 03 / C++ / ALGORITHMS & DATA</p><p class="project-name">Flight Tracker &amp; Finder</p><h1>Many connections.<br><em>One better route.</em></h1><p>A flight-search engine that answers real travel questions about price, distance, connections, and time.</p><a class="hero-cta" href="#flight">Explore the project &darr;</a><span class="hero-number" aria-hidden="true">03</span></section><div class="shell"><nav class="project-sections" aria-label="Project sections"><a href="#overview">Overview</a><a href="#section-queries">Search options</a><a href="#section-engine">Algorithms</a><a href="#section-model">Data model</a><a href="#section-challenge">Challenges</a><a href="#section-source">Source code</a></nav><article class="case-record flight-record" id="flight" data-case="flight">
+        
+
+        <div class="case-summary case-overview" id="overview"><div><p class="case-label">Advanced Data Structures · course project</p><h3>One network. More ways to find a route.</h3><p>I built a C++ command-line engine that turns airport and flight files into a searchable graph. It finds routes by fare, distance, connections, time, and required stops.</p><a class="source-link" href="https://github.com/FwDubbb/flighttracker" target="_blank" rel="noopener noreferrer">View source on GitHub <span>↗</span></a></div><dl><div><dt>Built</dt><dd>16 search operations in approximately one month</dd></div><div><dt>Stack</dt><dd>C++ · BFS · Dijkstra · time-aware search</dd></div><div><dt>Scale</dt><dd>100+ airports; 100,000+ original course flight records</dd></div></dl></div>
+        <div class="project-content">
+        <div class="flight-grid">
+
+          <div class="route-machine" id="routeMachine">
+            <div class="route-machine-top"><span>TRY A ROUTE EXAMPLE</span><span id="routeStatus">LOWEST TOTAL FARE</span></div>
+            <div class="route-controls" role="tablist" aria-label="Choose a route request">
+              <button class="active" type="button" data-route="cost">Cheapest fare</button>
+              <button type="button" data-route="miles">Shortest miles</button>
+              <button type="button" data-route="hops">Fewest connections</button>
+            </div>
+            <div class="route-map" aria-label="Illustrated directed airport route graph">
+              <svg viewBox="0 0 760 390" preserveAspectRatio="none" role="img" aria-label="Network of airports connected by possible directed flight paths">
+                <defs>
+                  <marker id="routeArrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L8,4 L0,8 z"></path></marker>
+                </defs>
+                <g class="all-routes">
+                  <path d="M90 210 L245 90 L385 175 L555 80 L675 205"/>
+                  <path d="M90 210 L245 285 L385 175 L530 300 L675 205"/>
+                  <path d="M245 90 L245 285 M555 80 L530 300 M385 175 L675 205"/>
+                </g>
+                <g class="route-highlight" id="routeHighlight"><path d="M90 210 L245 90 L385 175 L675 205"/></g>
+              </svg>
+              <div class="airport airport-a"><b>BIS</b><span>Bismarck</span></div>
+              <div class="airport airport-b"><b>DEN</b><span>Denver</span></div>
+              <div class="airport airport-c"><b>MSP</b><span>Minneapolis</span></div>
+              <div class="airport airport-d"><b>ORD</b><span>Chicago</span></div>
+              <div class="airport airport-e"><b>ATL</b><span>Atlanta</span></div>
+              <div class="airport airport-f"><b>DFW</b><span>Dallas</span></div>
+              <div class="airport airport-g"><b>JFK</b><span>New York</span></div>
+              <span class="illustration-note">Conceptual example — not captured program output</span>
+            </div>
+            <div class="route-output">
+              <div><small>REQUEST</small><strong id="routeMethod">Minimum total cost</strong></div>
+              <div><small>EXAMPLE ROUTE</small><strong id="routePath">BIS → DEN → ORD → JFK</strong></div>
+              <div><small>EDGE WEIGHT</small><strong id="routePriority">Fare in dollars</strong></div>
+              <div><small>ENGINE</small><strong id="routeResult">Dijkstra with fare weights</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flight-dossier">
+          
+          
+
+          <div class="flight-dossier-body">
+            <section class="flight-panel active" data-flight-panel="queries" id="section-queries">
+              <div class="flight-panel-intro">
+                <span>SEARCH OPTIONS</span>
+                <h4>What would you like to find?</h4>
+                <p>Explore the original 16-operation menu. Each request shows its inputs, output, and underlying search strategy.</p>
+              </div>
+
+              <div class="query-workbench">
+                <div class="query-catalog">
+                  <section>
+                    <h5>Airport and direct-flight lookup</h5>
+                    <button type="button" data-flight-query="airport" class="active"><b>01</b> Airport details by code</button>
+                    <button type="button" data-flight-query="state"><b>02</b> Airports in a state</button>
+                    <button type="button" data-flight-query="departures"><b>03</b> Flights leaving a source</button>
+                    <button type="button" data-flight-query="arrivals"><b>04</b> Flights arriving at a destination</button>
+                    <button type="button" data-flight-query="direct"><b>05</b> Direct flights from source to destination</button>
+                  </section>
+                  <section>
+                    <h5>Path and optimization</h5>
+                    <button type="button" data-flight-query="path"><b>06</b> Find a flight path with stops</button>
+                    <button type="button" data-flight-query="mincost"><b>07</b> Minimum total fare</button>
+                    <button type="button" data-flight-query="minmiles"><b>08</b> Minimum total miles</button>
+                    <button type="button" data-flight-query="minhops"><b>09</b> Minimum number of flights</button>
+                  </section>
+                  <section>
+                    <h5>Reachability limits</h5>
+                    <button type="button" data-flight-query="withinflights"><b>10</b> Reachable within F flights after time T</button>
+                    <button type="button" data-flight-query="underfare"><b>11</b> Reachable under total fare M</button>
+                    <button type="button" data-flight-query="underhours"><b>12</b> Reachable within H hours</button>
+                  </section>
+                  <section>
+                    <h5>Required stop and time</h5>
+                    <button type="button" data-flight-query="earliest"><b>13</b> Earliest arrival after time T</button>
+                    <button type="button" data-flight-query="viahops"><b>14</b> Via M with the fewest flights</button>
+                    <button type="button" data-flight-query="viaearly"><b>15</b> Via M with the earliest arrival</button>
+                    <button type="button" data-flight-query="viacheap"><b>16</b> Via M with the cheapest trip</button>
+                  </section>
+                </div>
+
+                <aside class="query-inspector" aria-live="polite">
+                  <div class="query-inspector-top"><span>SELECTED OPERATION</span><b id="flightQueryNumber">01</b></div>
+                  <h5 id="flightQueryTitle">Display airport details</h5>
+                  <p id="flightQueryDescription">Resolve an airport code and return the information stored for that airport.</p>
+                  <dl>
+                    <div><dt>User provides</dt><dd id="flightQueryInput">Airport code</dd></div>
+                    <div><dt>Program returns</dt><dd id="flightQueryOutput">Airport name, city, state, and other stored details</dd></div>
+                    <div><dt>Internal work</dt><dd id="flightQueryEngine">Unordered-map index lookup</dd></div>
+                  </dl>
+                  <div class="query-scale"><span>ORIGINAL COURSE DATASET</span><strong>100+ airports</strong><strong>100,000+ directed flight records</strong></div>
+                </aside>
+              </div>
+              <p class="catalog-note">All 16 operations from the original command-line menu are represented here.</p>
+            </section>
+
+            <section class="flight-panel" data-flight-panel="engine" id="section-engine">
+              <div class="flight-panel-intro">
+                <span>ALGORITHMS</span>
+                <h4>One graph, multiple definitions of “best.”</h4>
+                <p>Every flight is directional. A route from airport A to airport B does not automatically create a route back from B to A. The request determines how the graph is traversed and what each connection means.</p>
+              </div>
+              <div class="algorithm-board">
+                <article><span>BFS</span><h5>Queue-based traversal</h5><p>Used to discover a valid multi-stop path and to explore which destinations remain reachable under flight-count or fare limits.</p><b>PATHS / REACHABILITY</b></article>
+                <article><span>DIJKSTRA</span><h5>Variable edge weights</h5><p>The same shortest-path routine can treat each connection as fare, miles, or a unit weight of one flight, depending on the selected menu operation.</p><b>FARE / MILES / CONNECTIONS</b></article>
+                <article><span>TIME-AWARE</span><h5>Constrained route search</h5><p>Separate routines account for departure times, arrival times, elapsed hours, and a required middle airport. Required-stop requests run in two stages: source to M, then M to destination.</p><b>TIME / REQUIRED STOP</b></article>
+              </div>
+              <div class="engine-rule"><span>USER CHOICE</span><strong>Menu operation</strong><i>→</i><span>SEARCH PRIORITY</span><strong>Path · hops · fare · miles · time</strong><i>→</i><span>RETURN</span><strong>Matching flights or best route</strong></div>
+              <p class="accuracy-note">The algorithms operated behind the interface; users selected the travel question they wanted answered rather than selecting an algorithm by name.</p>
+            </section>
+
+            <section class="flight-panel" data-flight-panel="model" id="section-model">
+              <div class="flight-panel-intro">
+                <span>DATA MODEL</span>
+                <h4>The data structure made every route addressable.</h4>
+                <p>Airport codes were mapped to indexes for fast lookup. The route matrix then used an origin index, destination index, and flight-option index to preserve every available directed flight between two airports.</p>
+              </div>
+              <div class="vector-model">
+                <div class="map-card"><span>FAST LOOKUP</span><code>airportIndex["BIS"] → 12</code><code>airportIndex["DEN"] → 46</code><p>An unordered map converts a human-readable airport code into the index used by the graph.</p></div>
+                <div class="model-arrow">→</div>
+                <div class="vector-card"><span>3D FLIGHT STORAGE</span><strong>flights[origin][destination][option]</strong><div class="vector-layers"><i>12</i><i>46</i><i>0...n</i></div><p>The first two dimensions identify the route. The third stores each separate flight option available on that route.</p></div>
+                <div class="model-arrow">→</div>
+                <div class="record-card"><span>FLIGHT RECORD</span><ul><li>Origin and destination</li><li>Departure, arrival, and duration</li><li>Fare and miles</li><li>Flight ID and airline</li></ul></div>
+              </div>
+              <div class="structure-ledger">
+                <article><b>Classes and structs</b><p>Grouped related airport and flight fields into records the algorithms could pass through consistently.</p></article>
+                <article><b>Directed connections</b><p>Each stored flight represented movement from one specific origin to one specific destination.</p></article>
+                <article><b>Multiple flight options</b><p>The third dimension retained more than one possible flight between the same pair of airports.</p></article>
+                <article><b>Indexed access</b><p>The unordered map avoided repeatedly scanning the airport dataset to locate a code.</p></article>
+              </div>
+            </section>
+
+            <section class="flight-panel" data-flight-panel="challenge" id="section-challenge">
+              <div class="flight-panel-intro">
+                <span>CHALLENGES</span>
+                <h4>The difficult part was making the entire system agree.</h4>
+                <p>This was my first time working with a dataset this large and my first time combining graph traversal, weighted optimization, schedule constraints, and 16 different requests in one application. The challenge was not limited to one isolated bug.</p>
+              </div>
+              <div class="challenge-chain">
+                <article><b>01</b><span>Parse</span><p>Read two large datasets while keeping airport and flight records consistent.</p></article>
+                <i>→</i>
+                <article><b>02</b><span>Index</span><p>Resolve airport codes quickly enough to support repeated interactive requests.</p></article>
+                <i>→</i>
+                <article><b>03</b><span>Model</span><p>Represent directed routes and multiple flight options without losing their details.</p></article>
+                <i>→</i>
+                <article><b>04</b><span>Search</span><p>Choose the correct traversal or weighted strategy for each user request.</p></article>
+                <i>→</i>
+                <article><b>05</b><span>Constrain</span><p>Combine stops, times, fares, hours, distances, and destination requirements.</p></article>
+              </div>
+              <blockquote>“The whole thing was hard to do.” <small>That difficulty is what made it the first project that showed me I could work through real data complexity rather than only small classroom examples.</small></blockquote>
+            </section>
+
+            <section class="flight-panel" data-flight-panel="source" id="section-source">
+              <div class="flight-panel-intro">
+                <span>SOURCE CODE</span>
+  <h4>The complete project is now available on GitHub.</h4>
+
+  <p>
+    The public repository contains the original C++ implementation,
+    supporting data files, and instructions for compiling and running
+    the 16-operation command-line application locally.
+  </p>
+</div>
+
+<div class="source-board">
+  <div>
+    <span>PUBLIC REPOSITORY</span>
+
+    <strong>github.com/FwDubbb/flighttracker</strong>
+
+    <p>
+      Review the graph structure, route-search algorithms, airport
+      lookup system, and constrained flight operations used throughout
+      the project.
+    </p>
+
+    <div class="build-commands">
+      <code>g++ -std=c++11 11weird.cpp -o flighttracker</code>
+      <code>./flighttracker place.a1 quizn.air2</code>
+    </div>
+
+    <a
+      href="https://github.com/FwDubbb/flighttracker"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      View source and run locally ↗
+    </a>
+  </div>
+
+  <div>
+    <span>PROJECT CONTENTS</span>
+
+    <ul>
+      <li>Complete C++ source code</li>
+      <li>Airport and flight data files</li>
+      <li>Sixteen command-line operations</li>
+      <li>BFS, Dijkstra, and constrained graph searches</li>
+      <li>Local compilation and usage instructions</li>
+    </ul>
+  </div>
+</div>
+              <p class="accuracy-note">The route map above is an interactive explanation, not a claim that the original program used a graphical interface. The 100,000+ scale refers to the original course dataset; smaller public sample files can be included for reproducible demonstrations.</p>
+            </section>
+          </div>
+        </div>
+
+        <div class="flight-metrics">
+          <span><strong>100+</strong> airports</span>
+          <span><strong>100,000+</strong> original course records</span>
+          <span><strong>16</strong> menu operations</span>
+          <span><strong>2</strong> core graph algorithms</span>
+          <span><strong>1</strong> directed network</span>
+        </div>
+
+        
+        
+        </div>
+      </article></div></main>
+<footer class="shell project-footer"><a href="../index.html#work">&larr; All projects</a><a href="company-calendar.html"><small>UP NEXT / 01</small><strong>Company Calendar &rarr;</strong></a><a href="../index.html#contact">Get in touch &nearr;</a></footer><script src="projects.js"></script></body></html>

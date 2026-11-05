@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Medora Exploration Guide | William Osei-Hwere</title><meta name="description" content="A playful guide to Medora, built around curiosity, local challenges, and progress that stays with you."><link rel="canonical" href="https://oseihwere.com/summer26/projects/medora-guide.html"><link rel="stylesheet" href="projects.css"></head>
+<body class="theme-medora"><a class="skip-link" href="#main">Skip to content</a><header class="project-header"><a href="../index.html#work" class="back-link">&larr; Back to projects</a><a class="project-brand" href="../index.html">W·O–H <span>/ SUMMER 2026</span></a><a href="/" class="all-editions">All editions &nearr;</a></header>
+<main id="main"><section class="project-hero shell"><p class="eyebrow">PROJECT 02 / FULL-STACK APP / EXPLORATION</p><p class="project-name">Medora Exploration Guide</p><h1>Go somewhere.<br><em>Discover something.</em></h1><p>A playful guide to Medora, built around curiosity, local challenges, and progress that stays with you.</p><a class="hero-cta" href="#medora">Explore the project &darr;</a><span class="hero-number" aria-hidden="true">02</span></section><div class="shell"><nav class="project-sections" aria-label="Project sections"><a href="#overview">Overview</a><a href="#section-features">The app</a><a href="#section-challenges">Challenges</a><a href="#section-identity">Player progress</a><a href="#section-continuity">Administration</a><a href="#section-evolution">How it evolved</a></nav><article class="case-record exploration-record" id="medora" data-case="medora">
+        
+
+        <div class="case-summary case-overview" id="overview"><div><p class="case-label">Full-stack exploration app</p><h3>A town to explore. A reason to look closer.</h3><p>I designed and built a full-stack exploration guide for Medora. Players discover locations, complete challenges, earn XP, and keep a personal journal.</p></div><dl><div><dt>Role</dt><dd>Concept · UX · database · full-stack development</dd></div><div><dt>Stack</dt><dd>HTML · CSS · JavaScript · Node.js · Express · SQLite</dd></div><div><dt>Result</dt><dd>Code complete and presented; awaiting final company content</dd></div></dl></div>
+        <div class="project-content">
+        <div class="case-layout reverse">
+
+          <div class="experience-machine">
+            <div class="phone-surface">
+              <div class="phone-top"><span>9:41</span><span>● ● ●</span></div>
+              <p class="phone-label">YOU ARE HERE</p>
+              <h4>Von Hoffman House</h4>
+              <div class="challenge-card">
+                <span>INVESTIGATE · 1,000 XP</span>
+                <p>What detail tells you how this home changed over time?</p>
+                <button type="button" id="openGuideChallenge">Explore challenge system ↗</button>
+              </div>
+              <div class="progress-line"><i></i></div>
+              <small>2 of 3 discoveries complete</small>
+            </div>
+            <div class="machine-underlay">
+              <span class="machine-title">WHAT HAPPENS WHEN YOU SUBMIT AN ANSWER</span>
+              <ol>
+                <li><b>01</b><span>Session verified</span><small>requireAuth</small></li>
+                <li><b>02</b><span>Location resolved</span><small>route_stops</small></li>
+                <li><b>03</b><span>Challenge loaded</span><small>stop_challenges</small></li>
+                <li><b>04</b><span>Answer recorded</span><small>user progress</small></li>
+                <li><b>05</b><span>XP committed</span><small>profile update</small></li>
+                <li><b>06</b><span>Journal created</span><small>history preserved</small></li>
+              </ol>
+            </div>
+            <button class="machine-switch" type="button" aria-pressed="false"><span>See how answers are saved</span><span>Back to the app preview</span></button>
+          </div>
+        </div>
+
+        <div class="guide-dossier" id="guideDossier">
+          
+          
+
+          <div class="guide-dossier-body">
+            <section class="guide-panel active" data-guide-panel="features" id="section-features">
+              <div class="guide-panel-intro">
+                <span>THE APP</span>
+                <h4>Discover. Complete. Remember.</h4>
+                <p>Built for guests, employees, and seasonal workers, the guide connects location discovery, personal progress, recommendations, and a journal.</p>
+              </div>
+              <div class="feature-map">
+                <article><b>01</b><h5>Profile</h5><p>Character, XP, completed locations and challenges, personal stats, and leaderboard position.</p></article>
+                <article><b>02</b><h5>Hunt</h5><p>Medora locations with Observe, Investigate, and Experience challenges.</p></article>
+                <article><b>03</b><h5>Recommendations</h5><p>Places and activities to help players decide what to explore next.</p></article>
+                <article><b>04</b><h5>Journal</h5><p>Completed challenges, timestamps, locations, answers, XP, and Did You Know facts.</p></article>
+              </div>
+            </section>
+
+            <section class="guide-panel" data-guide-panel="challenges" id="section-challenges">
+              <div class="guide-panel-intro">
+                <span>CHALLENGES</span>
+                <h4>Deeper exploration earns more XP.</h4>
+                <p>XP accumulates across independent locations. The more a person observes, investigates, and experiences, the more progress they earn and the farther they can move on the leaderboard.</p>
+              </div>
+              <div class="challenge-ladder">
+                <article class="observe"><span>LEVEL 01</span><strong>Observe</strong><b>Quick discovery</b><p>Something a player can notice in seconds or within a few minutes. It introduces the location and asks them to look with purpose.</p><i>Lower XP</i></article>
+                <article class="investigate"><span>LEVEL 02</span><strong>Investigate</strong><b>Focused exploration</b><p>The player must search, read, compare, or spend several minutes looking around to find the answer.</p><i>Higher XP</i></article>
+                <article class="experience"><span>LEVEL 03</span><strong>Experience</strong><b>Participate in the place</b><p>The player must actually engage with what the location offers. These challenges take the most time and intentionally earn the greatest XP.</p><i>Highest XP</i></article>
+              </div>
+              <div class="xp-rule"><span>THE SIMPLE RULE</span><strong>More time and deeper participation → more XP → stronger leaderboard progress.</strong></div>
+            </section>
+
+            <section class="guide-panel" data-guide-panel="identity" id="section-identity">
+              <div class="guide-panel-intro">
+                <span>PLAYER PROGRESS</span>
+                <h4>A personal record for every player.</h4>
+                <p>Authentication happens behind the interface. Once signed in, every answer and completion belongs to the correct user and remains available when they return.</p>
+              </div>
+              <div class="identity-system">
+                <div class="identity-card"><span>PLAYER / WOH-024</span><div class="character-token">W</div><h5>Chosen character</h5><p>Each user selects a character that becomes part of their personal profile and experience.</p></div>
+                <div class="identity-trace">
+                  <div><b>AUTHENTICATION</b><span>Identifies the returning player</span></div><i>→</i>
+                  <div><b>PROFILE</b><span>XP, character, locations, challenges</span></div><i>→</i>
+                  <div><b>PROGRESS</b><span>Answers and completions by user</span></div><i>→</i>
+                  <div><b>JOURNAL</b><span>Permanent record of discoveries</span></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="guide-panel" data-guide-panel="continuity" id="section-continuity">
+              <div class="guide-panel-intro">
+                <span>ADMINISTRATION</span>
+                <h4>Built for the next administrator.</h4>
+                <p>Locations, questions, rewards, and recommendations live in the database. Administrators can update content without changing application code.</p>
+              </div>
+              <div class="continuity-grid">
+                <div class="database-catalog">
+                  <span>DATABASE-CONTROLLED CONTENT</span>
+                  <ul><li>Locations and display order</li><li>Questions, answers, and categories</li><li>XP rewards and automatic totals</li><li>Users, characters, and progress</li><li>Recommended places and activities</li><li>Did You Know facts and journal content</li></ul>
+                </div>
+                <div class="operator-sheet">
+                  <div class="operator-bar"><span>OPERATOR CHEAT SHEET</span><span>NO CODE CHANGE REQUIRED</span></div>
+                  <pre><code>-- Add or update content
+UPDATE stop_challenges
+SET xp_reward = 1500
+WHERE difficulty = 'experience';
+
+-- Result
+Database change → API response → web app</code></pre>
+                  <p>Ready-to-use SQL instructions let a future administrator copy the correct statement into the database application. The updated location, question, reward, recommendation, or order then appears in the web app without requiring knowledge of the underlying code.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="guide-panel" data-guide-panel="evolution" id="section-evolution">
+              <div class="guide-panel-intro">
+                <span>HOW IT EVOLVED</span>
+                <h4>From a fixed route to free exploration.</h4>
+                <p>The final product kept the playful motivation of the original scavenger hunt while removing the restrictions that made the early version harder to expand and less flexible for players.</p>
+              </div>
+              <div class="evolution-track">
+                <article class="early-model"><span>EARLIER MODEL</span><h5>Routes, letters, and character powers</h5><ul><li>Three predefined routes</li><li>Locations completed in a required order</li><li>One question and one earned letter per stop</li><li>Letters combined into a final word</li><li>Characters planned to have task-solving powers</li><li>A simpler points-per-question model</li></ul></article>
+                <div class="evolution-arrow"><span>≈ 5 MAJOR ITERATIONS</span><i>→</i></div>
+                <article class="current-model"><span>CURRENT MODEL</span><h5>Free-roam locations and independent progress</h5><ul><li>Start anywhere and visit places in any order</li><li>Every location works independently</li><li>Multiple questions and activities per location</li><li>Observe, Investigate, and Experience categories</li><li>Characters personalize the profile rather than changing difficulty</li><li>XP accumulates by completed activity and location</li></ul></article>
+              </div>
+            </section>
+          </div>
+        </div>
+
+        <div class="guide-status">
+          <div><span>CURRENT STATE</span><strong>Code complete. Presented to the company.</strong></div>
+          <p>Next: approve locations and questions, decide XP incentives, enter the final content, and launch.</p>
+          <b>READY FOR CONTENT</b>
+        </div>
+
+        
+        
+        </div>
+      </article></div></main>
+<footer class="shell project-footer"><a href="../index.html#work">&larr; All projects</a><a href="flight-tracker.html"><small>UP NEXT / 03</small><strong>Flight Tracker &amp; Finder &rarr;</strong></a><a href="../index.html#contact">Get in touch &nearr;</a></footer><script src="projects.js"></script></body></html>

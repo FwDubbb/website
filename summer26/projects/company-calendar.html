@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Company Calendar | William Osei-Hwere</title><meta name="description" content="Making room bookings, vehicle availability, and company events easier to find and act on."><link rel="canonical" href="https://oseihwere.com/summer26/projects/company-calendar.html"><link rel="stylesheet" href="projects.css"></head>
+<body class="theme-calendar"><a class="skip-link" href="#main">Skip to content</a><header class="project-header"><a href="../index.html#work" class="back-link">&larr; Back to projects</a><a class="project-brand" href="../index.html">W·O–H <span>/ SUMMER 2026</span></a><a href="/" class="all-editions">All editions &nearr;</a></header>
+<main id="main"><section class="project-hero shell"><p class="eyebrow">PROJECT 01 / INTERNAL TOOLS / MICROSOFT 365</p><p class="project-name">Company Calendar</p><h1>A clearer view.<br><em>A better working day.</em></h1><p>Making room bookings, vehicle availability, and company events easier to find and act on.</p><a class="hero-cta" href="#calendar">Explore the project &darr;</a><span class="hero-number" aria-hidden="true">01</span></section><div class="shell"><nav class="project-sections" aria-label="Project sections"><a href="#overview">Overview</a><a href="#section-purpose">How it works</a><a href="#section-evolution">What changed</a><a href="#section-architecture">Architecture</a><a href="#section-outcome">Results</a></nav><article class="case-record calendar-record" id="calendar" data-case="calendar">
+        
+
+        <div class="case-summary case-overview" id="overview"><div><p class="case-label">Production internal platform</p><h3>Clearer bookings. Faster decisions.</h3><p>I rebuilt the company calendar’s busiest views so employees could scan room bookings, vehicle availability, and events without losing details in crowded grids.</p></div><dl><div><dt>Built</dt><dd>Redesigned week views; new day and holiday views</dd></div><div><dt>Stack</dt><dd>JavaScript · Node.js · Exchange / Microsoft 365</dd></div><div><dt>Reach</dt><dd>Six calendar areas in an environment supporting 900+ users</dd></div></dl></div>
+        <div class="project-content">
+        <section class="calendar-evidence" aria-labelledby="calendarEvidenceTitle">
+          <div class="evidence-header">
+            <div>
+              <p class="case-label">Visual evidence</p>
+              <h4 id="calendarEvidenceTitle">See what changed.</h4>
+            </div>
+            <p>Choose an area and compare the original with the redesign. Names and emails are blurred.</p>
+          </div>
+
+          <div class="calendar-compare" id="calendarCompare">
+            <div class="compare-toolbar">
+              <div class="compare-control-group" role="tablist" aria-label="Choose a calendar area">
+                <span>AREA</span>
+                <button class="active" type="button" data-compare-area="lsc">LSC</button>
+                <button type="button" data-compare-area="vehicles">Vehicles</button>
+                <button type="button" data-compare-area="day">Day view</button>
+              </div>
+              <div class="compare-control-group" role="tablist" aria-label="Choose the original or redesigned view">
+                <span>VERSION</span>
+                <button class="active" type="button" data-compare-version="before">Original</button>
+                <button type="button" data-compare-version="after">Redesigned</button>
+              </div>
+            </div>
+
+            <figure class="compare-figure">
+              <div class="compare-image-shell">
+                <img loading="lazy" decoding="async" id="calendarCompareImage" src="../oldlsc.png" alt="Original LSC weekly calendar view">
+                <span id="calendarCompareBadge">ORIGINAL / LSC WEEK</span>
+              </div>
+              <figcaption>
+                <strong id="calendarCompareTitle">Original LSC week view</strong>
+                <p id="calendarCompareCaption">Events were positioned mainly by time. When many bookings overlapped, cards became narrow, titles were clipped, and employees could not quickly see the requester or enough booking context.</p>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <div class="case-inspector rich-inspector">
+          
+          
+          <div class="inspector-body">
+            <div class="case-view active" data-panel="purpose" id="section-purpose">
+              
+              <h4>Six calendars. One place to act.</h4>
+              <p>Room, vehicle, and event calendars cover LSC, RRH, GES, Vehicles, Schafer, and Training &amp; Development. Employees can switch between month, week, day, agenda, and holiday views.</p>
+              <div class="detail-grid"><div><b>Know what is booked</b><span>Rooms and vehicles appear alongside their status and booking window.</span></div><div><b>Know what is happening</b><span>Company events are grouped by place, date, and operational context.</span></div><div><b>Know where to act</b><span>Available vehicles can open the booking form with the vehicle already selected.</span></div></div>
+            </div>
+            <div class="case-view" data-panel="evolution" id="section-evolution">
+              
+              <h4>Familiar branding. More useful views.</h4>
+              <p>Crowded time grids hid booking details. I redesigned each area’s week view, added a day view, and introduced company holidays through 2027. Existing month and agenda views remained available.</p>
+              <div class="change-ledger"><span>Preserved</span><b>Company branding · existing data · familiar navigation · six operational areas</b><span>Rebuilt</span><b>Week layouts for LSC, RRH, GES, Vehicles, Schafer, and Training &amp; Development</b><span>Added</span><b>Day view · holiday view · requester details · availability · booking actions · hover information</b></div>
+            </div>
+            <div class="case-view" data-panel="architecture" id="section-architecture">
+              
+              <h4>From Exchange data to readable event cards.</h4>
+              <p>A Node service normalizes Exchange events, filters dates and mailboxes, and handles time zones. The API supplies requester, time, purpose, and availability fields for readable week and day cards.</p>
+              <div class="mini-flow"><b>Exchange calendars</b><i>→</i><b>Node service</b><i>→</i><b>Calendar API</b><i>→</i><b>Event-based views</b></div>
+              <pre><code>GET /api/calendar?start=&amp;end=&amp;mbox=
+status = past | happening-now | upcoming | available
+booking link = Microsoft Form + preselected vehicle
+sort(today) = happening now → upcoming → earlier</code></pre>
+            </div>
+            <div class="case-view" data-panel="outcome" id="section-outcome">
+              
+              <h4>Availability becomes a clear next action.</h4>
+              <p>Green identifies availability, blue identifies future bookings, orange identifies events happening now, grey identifies past events, and a red treatment marks the current day. Current events automatically appear ahead of future and past items. Requester and booking information is visible where useful, and clicking an available vehicle opens a shorter booking path with the vehicle already selected.</p>
+              <div class="impact-grid"><div><strong>900+</strong><span>users in the supported company environment</span></div><div><strong>6</strong><span>calendar areas redesigned for their own information needs</span></div><div><strong>5</strong><span>ways to inspect time: month, week, day, agenda, holiday</span></div><div><strong>1 click</strong><span>from an available vehicle to a preselected booking form</span></div></div>
+
+            </div>
+          </div>
+        </div>
+
+        
+        
+        </div>
+      </article></div></main>
+<footer class="shell project-footer"><a href="../index.html#work">&larr; All projects</a><a href="medora-guide.html"><small>UP NEXT / 02</small><strong>Medora Exploration Guide &rarr;</strong></a><a href="../index.html#contact">Get in touch &nearr;</a></footer><script src="projects.js"></script></body></html>
